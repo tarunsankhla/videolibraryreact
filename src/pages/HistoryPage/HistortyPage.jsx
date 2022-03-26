@@ -3,7 +3,7 @@ import "./HistoryPage.css";
 
 function HistortyPage() {
   return (
-    <div>HistortyPage</div>
+    <></>
   )
 }
 
