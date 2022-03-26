@@ -22,7 +22,7 @@ function VideoContentPage() {
       <iframe src={VideoUrl} className="iframe-video" frameBorder="0" type="text\html" />
       <div className='video-content-body'>
       
-        <div className='video-content-title'>Video : {data.snippet.title}</div>
+        <div className='video-content-title'>{data.snippet.title}</div>
         <hr />
         <div className='video-content-header'>
           <div className='video-content-action'>
