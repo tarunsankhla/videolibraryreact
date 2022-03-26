@@ -1,3 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+:root{
+  --nav-color:#282c34;
+}
+body{
+  background-color: var(--nav-color);
+}
 .App {
   text-align: center;
 }
@@ -35,4 +49,33 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* MAin */
+.main-container{
+  display: flex;
+  background-color: var(--nav-color);
+  flex-direction: column;
+}
+
+.main-body{
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100vh;
+}
+
+.Navbar{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em;
+}
+
+.AsideNav{
+  display: flex;
+  flex-basis: 15%;
+  background-color: rgba(0, 0, 0, 0.1);
+  flex-direction: column;
 }

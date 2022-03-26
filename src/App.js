@@ -14,7 +14,7 @@ import Mockman from 'mockman-js';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="">
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -27,7 +27,7 @@ function App() {
         >
           Learn React
         </a> */}
-        <h1>React</h1>
+        {/* <h1>React</h1> */}
         <Routes >
           <Route element={<Main/>}>
             <Route path='/' element={<Homepage/>} />
