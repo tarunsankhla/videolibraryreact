@@ -10,6 +10,7 @@ import HistortyPage from './pages/HistoryPage/HistortyPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignUpPage/SignupPage';
 import Mockman from 'mockman-js';
+import VideoContentPage from './pages/VideoContentPage/VideoContentPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/history" element={<HistortyPage/>} />
             <Route path="/login" element={<LoginPage/>} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/video/watch" element={<VideoContentPage />} />
             <Route path="*" element={<Homepage/>} />
           </Route>
           <Route path='/mockman' element={<div className='MockAPI'><Mockman/></div>}/>

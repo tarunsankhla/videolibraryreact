@@ -1,0 +1,107 @@
+.iframe-video{
+    width: 100%;
+    height: auto;
+    height: auto;
+    min-height: 60vh;
+    
+}
+.video-content-container{
+    display: flex;
+    padding: 1em;
+    width: 100%;
+    flex-direction: column;
+    color: white;
+    min-height: 100vh;
+}
+.video-content-header{
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.video-content-title{
+    padding: 1em;
+    display: flex;
+
+}
+.video-content-action{
+    gap: 0.3em;
+    flex-wrap: wrap;
+    display: flex;
+}
+.video-content-body{
+    word-break: break-word;
+}
+.video-action{
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+.video-content-channel{
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-title{
+    padding: 1em;
+    font-weight: 600;
+    display: flex;
+}
+.video-description-container{
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+
+}
+.video-description{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    word-break: break-all;
+    font-size: 0.7em;
+    padding: 0.5em;
+}
+
+
+@media screen and (max-width: 1030px) {
+    .iframe-video{
+        min-height: 60vh;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .iframe-video{
+        min-height: 55vh;
+    }
+}
+
+
+@media screen and (max-width: 660px) {
+    .iframe-video{
+        min-height: 50vh;
+        width: 90%;
+    }
+    
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .iframe-video{
+        min-height: 45vh;
+        width: 83%;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    .iframe-video{
+        min-height: 40vh;
+        width: 80%;
+    }
+}

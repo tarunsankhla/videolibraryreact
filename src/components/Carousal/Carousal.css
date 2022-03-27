@@ -1,0 +1,15 @@
+.carousel .thumbs-wrapper{
+    display: none;
+}
+
+.carosel-body{
+    height: 60vh;
+    width: 100%;
+}
+
+.carousel.carousel-slider {
+    height: 60vh;
+}
+img{
+    object-fit: cover;
+}
