@@ -22,13 +22,7 @@ function VideoCards({props}) {
                             <div className="card-body">
                                 <span className="text-grey elipsis">{snippet.title}</span>
                                 {snippet.channelTitle}
-                            {/* </div>
-                            <div className="card-title"> */}
-                                {/* <h2>{Number(statistics.viewCount) > 1000 ?
-                                    `${Number(statistics.viewCount) % 1000}K`
-                                    : Number(statistics.viewCount) > 1000000
-                                        ? `${Number(statistics.viewCount) % 1000000}M`
-                                        : `${Number(statistics.viewCount) % 1000000}`}views</h2> */}
+                    
                             <h2> <ViewCount viewCount={statistics.viewCount}/></h2>
                             </div>
                         </div>

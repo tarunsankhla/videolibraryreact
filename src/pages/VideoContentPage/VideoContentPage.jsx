@@ -12,8 +12,8 @@ function VideoContentPage() {
   const [VideoUrl, setVideoUrl] = useState();
     const data = location.state;
     console.log(data);
-    const videosrc = "https://www.youtube.com/watch?v=" + data.videoid;
-  const videosrc1 = `https://www.youtube.com/watch?v=${data.videoid}`;
+  //   const videosrc = "https://www.youtube.com/watch?v=" + data.videoid;
+  // const videosrc1 = `https://www.youtube.com/watch?v=${data.videoid}`;
   useEffect(() => {
     setVideoUrl(`https://www.youtube.com/embed/${data.videoid}?autoplay=1&origin=http://example.com`);
   }, [])
