@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import IcBaselineAddTask from '../../components/UI/Icons/IcBaselineAddTask';
@@ -14,9 +15,24 @@ function VideoContentPage() {
     console.log(data);
   //   const videosrc = "https://www.youtube.com/watch?v=" + data.videoid;
   // const videosrc1 = `https://www.youtube.com/watch?v=${data.videoid}`;
+
   useEffect(() => {
     setVideoUrl(`https://www.youtube.com/embed/${data.videoid}?autoplay=1&origin=http://example.com`);
-  }, [])
+  }, []);
+  
+  const AddToWatchlateHandler = async (props) => {
+        try {
+            console.log(props)
+            var res = await axios.post("/api/user/watchlater",
+                { "video": { ...props } },
+                {
+                    headers: { authorization: localStorage.getItem("jafnaToken") }
+                });
+            console.log(res)
+        } catch (err) {
+            console.log(err)
+        }
+    }
   return (
     <div className='video-content-container'>
       <iframe 
@@ -36,7 +52,7 @@ function VideoContentPage() {
             <div className='video-action'><IcOutlineThumbUp />{data.statistics.likeCount}</div>
             <div className='video-action'><IcRoundThumbDownOffAlt /></div>
             <div className='video-action'><IcRoundPlaylistAdd /> Add to Playlist</div>
-            <div className='video-action'><IcBaselineAddTask/> Add to Watch Later</div>
+            <div className='video-action' onClick={()=>AddToWatchlateHandler(data)}><IcBaselineAddTask/> Add to Watch Later</div>
           </div>
           <div>
             {/* <div>{data.contentDetails.duration}</div> */}
