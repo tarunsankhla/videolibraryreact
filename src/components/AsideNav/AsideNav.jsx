@@ -33,7 +33,7 @@ function AsideNav() {
       <NavLink to="/watchlater">
         <div className='aside-nav-row'>
           <IcTwotoneWatchLater />
-          <span className='icon-handle'>WatchLater</span>
+          <span className='icon-handle'>Watch Later</span>
         </div>
       </NavLink>
       <NavLink to="/history">

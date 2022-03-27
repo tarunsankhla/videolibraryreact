@@ -7,7 +7,7 @@ function ViewCount({viewCount}) {
       <span>{Number(viewCount) > 1000000 ?
           `${Math.floor(Number(viewCount) / 1000000)}M`
           : Number(viewCount) > 1000
-              ? `${Math.floor(Number(viewCount) / 1000)}M`
+              ? `${Math.floor(Number(viewCount) / 1000)}K`
               : `${Number(viewCount)}`} views
       </span>
   )

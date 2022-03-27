@@ -1,0 +1,16 @@
+.playlist-main-cards{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 25rem;
+    height: fit-content;
+    background-color: var(--shade-1);
+    margin: 1em;
+    padding: 0.5em;
+    /* background-color: rgba(0, 0, 0, 0.01); */
+    cursor: pointer;
+}
+
+.playlist-main-cards:hover{
+    transform: scale(1.01);
+}

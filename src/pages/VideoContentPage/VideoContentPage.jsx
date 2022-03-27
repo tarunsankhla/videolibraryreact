@@ -19,7 +19,14 @@ function VideoContentPage() {
   }, [])
   return (
     <div className='video-content-container'>
-      <iframe src={VideoUrl} className="iframe-video" frameBorder="0" type="text\html" />
+      <iframe 
+        src={VideoUrl}
+        className="iframe-video"
+        frameBorder="0" type="text\html"
+        allow={
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        }
+      />
       <div className='video-content-body'>
       
         <div className='video-content-title'>{data.snippet.title}</div>

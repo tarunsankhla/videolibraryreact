@@ -17,7 +17,7 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-span{
+AsideNav > span{
     width: 60%;
     font-size: 0.8em;
 }
@@ -26,8 +26,8 @@ span:hover{
     color: #539987;}
 
 
-    @media screen and (max-width: 660px) {
-        .icon-handle{
-            display: none;
-        }
+@media screen and (max-width: 660px) {
+    .icon-handle{
+        display: none;
     }
+}
