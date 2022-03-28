@@ -12,24 +12,24 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const onSubmitHandler = async () =>{
-    var object = {"email":email,"password":password};
-    console.log(object)
-    var res = await axios.post("/api/auth/login",object);
-    console.log(res);
-    if(res.status === 200)
-    {
-        var token = res.data.encodedToken;
-        localStorage.setItem("jafnaToken",token)
-        var user = res.data.foundUser;
-        var userId =res.data.foundUser._id;
-        localStorage.setItem("jafnaUserId",userId);
-        console.log(user,userId,token);
-        setlogin(true);
-        // navigate("/");
-        // History.push("/products");   
-    }
-    navigate("/");
-}
+      var object = {"email":email,"password":password};
+      console.log(object)
+      var res = await axios.post("/api/auth/login",object);
+      console.log(res);
+      if(res.status === 200)
+      {
+          var token = res.data.encodedToken;
+          localStorage.setItem("jafnaToken",token)
+          var user = res.data.foundUser;
+          var userId =res.data.foundUser._id;
+          localStorage.setItem("jafnaUserId",userId);
+          console.log(user,userId,token);
+          setlogin(true);
+          // navigate("/");
+          // History.push("/products");   
+      }
+      navigate("/");
+  }
   return (
     <>
       <div className='login-main-container'>
