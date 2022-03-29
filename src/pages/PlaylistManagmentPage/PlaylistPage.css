@@ -1,0 +1,28 @@
+.new-playlist-modal{
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    padding: 1em;
+    background-color: var(--shade-0);
+    border-radius: 1rem;
+}
+
+.btn-create-playlist{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+    padding: 0.5em;
+    margin: 0.5em;
+    font-weight: 500;
+    color: red;
+}
+
+.btn-create-playlist:hover{
+    transform: scale(1.01);
+}
+
+.playlist-modal-header{
+    display: flex;
+    padding: 0.5em;
+}
