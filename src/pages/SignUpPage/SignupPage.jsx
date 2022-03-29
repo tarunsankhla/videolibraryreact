@@ -110,15 +110,15 @@ function SignupPage() {
         console.log(object)
         var res = await axios.post("/api/auth/signup",object);
         console.log(res);   
-        if(res.status === 201)
+        if(res.status === 200 || res.status === 201)
         {
-            var token = res?.data?.encodedToken;
-            localStorage.setItem("feetz",token)
-            var user = res?.data?.createdUser;
-            var userId =res?.data?.createdUser._id;
-            localStorage.setItem("feetzId",userId);
-            console.log(user,userId,token);
-            setlogin(true);
+          var token = res?.data?.encodedToken;
+          localStorage.setItem("jafnaToken",token)
+          var user = res?.data?.foundUser;
+          var userId =res?.data?.foundUser?._id;
+          localStorage.setItem("jafnaUserId",userId);
+          console.log(user,userId,token);
+          setlogin(true);
             // navigate("/");
             // History.push("/products");   
         }

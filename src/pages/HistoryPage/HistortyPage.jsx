@@ -29,14 +29,14 @@ function HistortyPage() {
             authorization:localStorage.getItem("jafnaToken")}});
         console.log(res);
         // setHistoryContextArray();
-        (async() => {
-            var res = await axios.get("/api/user/history",{ headers:{
-              authorization:localStorage.getItem("jafnaToken")}});
-            console.log(res);
-            // console.log(res.data.products);
+        // (async() => {
+        //     var res = await axios.get("/api/user/history",{ headers:{
+        //       authorization:localStorage.getItem("jafnaToken")}});
+        //     console.log(res);
+        //     // console.log(res.data.products);
             setHistoryContextArray(res.data.history);
            
-        })()
+        // })()
     }
     catch (err) { 
         console.log(err)
@@ -44,14 +44,16 @@ function HistortyPage() {
 }
 
   return (
-    <>
+    <div className='history-main-container'>
       <div>
-        <button onClick={() => deleteAllHistoryHandler()}>Clear History</button>
-        </div>
-      {historyContextArray.map((item) => (
-        <HistoryVideoCards key={item.id} props={item}/>
-      ))}
-    </>
+        <button className="normal-btn" onClick={() => deleteAllHistoryHandler()}>Clear History</button>
+      </div>
+      <div className='history-container'>
+        {historyContextArray.map((item) => (
+          <HistoryVideoCards key={item.id} props={item}/>
+        ))}
+      </div>
+    </div>
   )
 }
 

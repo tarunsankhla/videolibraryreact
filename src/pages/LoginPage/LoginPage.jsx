@@ -12,7 +12,8 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const onSubmitHandler = async () =>{
-      var object = {"email":email,"password":password};
+    try {
+      var object = { "email": email, "password": password };
       console.log(object)
       var res = await axios.post("/api/auth/login",object);
       console.log(res);
@@ -25,10 +26,12 @@ function LoginPage() {
           localStorage.setItem("jafnaUserId",userId);
           console.log(user,userId,token);
           setlogin(true);
-          // navigate("/");
-          // History.push("/products");   
       }
       navigate("/");
+    }
+    catch (error) { 
+      console.log(error)
+    }  
   }
   return (
     <>
