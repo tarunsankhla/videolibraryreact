@@ -1,34 +1,32 @@
-.playlist-main-cards{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 25rem;
-    height: fit-content;
-    background-color: var(--shade-1);
-    margin: 1em;
-    padding: 0.5em;
-    /* background-color: rgba(0, 0, 0, 0.01); */
-    cursor: pointer;
-    position: relative;
+.playlist-main-cards {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 25rem;
+	height: fit-content;
+	background-color: var(--shade-1);
+	margin: 1em;
+	cursor: pointer;
+	position: relative;
 }
 
-.playlist-main-cards:hover{
-    transform: scale(1.02);
+.playlist-main-cards:hover {
+	transform: scale(1.02);
 }
 
-.playlist-whole-delete{
-    position: absolute;
-    z-index: 999;
-    right: -1em;
-    top: 0;
-    background-color:var(--shade-7);
+.playlist-whole-delete {
+	position: absolute;
+	z-index: 999;
+	right: -1em;
+	top: 0;
+	background-color: var(--shade-7);
 }
 
-.playlist-whole-delete:hover{
-    color: red;
-    transform: scale(1.02);
+.playlist-whole-delete:hover {
+	color: red;
+	transform: scale(1.02);
 }
 
-.playlist-main-card-body{
-    width: 100%;
+.playlist-main-card-body {
+	width: 100%;
 }

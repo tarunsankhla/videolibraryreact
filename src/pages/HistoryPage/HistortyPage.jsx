@@ -7,51 +7,46 @@ import HistoryVideoCards from '../../components/UI/Cards/HistoyryVideoCards/Hist
 
 function HistortyPage() {
   const { historyContextArray, setHistoryContextArray } = useHistory();
-  useEffect(()=>{
-      try{
-        (async() => {
-        var res = await axios.get("/api/user/history",{ headers:{
-          authorization:localStorage.getItem("jafnaToken")}});
-        console.log(res);
-        // console.log(res.data.products);
+  useEffect(() => {
+    try {
+      (async () => {
+        var res = await axios.get("/api/user/history", {
+          headers: {
+            authorization: localStorage.getItem("jafnaToken")
+          }
+        });
         setHistoryContextArray(res.data.history);
-      
-    })()}
-    catch(error){
-      console.log("Product list page error",error);
+
+      })()
+    }
+    catch (error) {
+      console.log("Product list page error", error);
     }
   }, []);
-  
-  const deleteAllHistoryHandler = async() => { 
+
+  const deleteAllHistoryHandler = async () => {
     try {
-        // console.log(\)
-        var res = await axios.delete(`/api/user/history/all`,{ headers:{
-            authorization:localStorage.getItem("jafnaToken")}});
-        console.log(res);
-        // setHistoryContextArray();
-        // (async() => {
-        //     var res = await axios.get("/api/user/history",{ headers:{
-        //       authorization:localStorage.getItem("jafnaToken")}});
-        //     console.log(res);
-        //     // console.log(res.data.products);
-            setHistoryContextArray(res.data.history);
-           
-        // })()
+      var res = await axios.delete(`/api/user/history/all`, {
+        headers: {
+          authorization: localStorage.getItem("jafnaToken")
+        }
+      });
+      setHistoryContextArray(res.data.history);
     }
-    catch (err) { 
-        console.log(err)
+    catch (err) {
+      console.log(err)
     }
-}
+  }
 
   return (
     <div className='history-main-container'>
       <div className='history-btn-container'>
         <button className="normal-btn" onClick={() => deleteAllHistoryHandler()}>Clear History</button>
       </div>
-      <hr/>
+      <hr />
       <div className='history-container'>
         {historyContextArray.map((item) => (
-          <HistoryVideoCards key={item.id} props={item}/>
+          <HistoryVideoCards key={item.id} props={item} />
         ))}
       </div>
     </div>
