@@ -27,7 +27,7 @@ function LoginPage() {
           console.log(user,userId,token);
           setlogin(true);
       }
-      navigate("/");
+      // navigate("/");
     }
     catch (error) { 
       console.log(error)

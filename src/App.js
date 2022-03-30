@@ -13,10 +13,11 @@ import Mockman from 'mockman-js';
 import VideoContentPage from './pages/VideoContentPage/VideoContentPage';
 import {
   ROUTE_PATH_HistoryPage, ROUTE_PATH_HomePage, ROUTE_PATH_LoginPage, ROUTE_PATH_Mockman, ROUTE_PATH_PlayListPage
-  , ROUTE_PATH_SignupPage, ROUTE_PATH_Unkown, ROUTE_PATH_VideoContentPage, ROUTE_PATH_VideoListingPage,
+  , ROUTE_PATH_PlayListPage_Individual, ROUTE_PATH_SignupPage, ROUTE_PATH_Unkown, ROUTE_PATH_VideoContentPage, ROUTE_PATH_VideoListingPage,
    ROUTE_PATH_WatchLaterPage
 } from './utils/Route'
 import { useAuth } from './context/AuthContext';
+import IndividualPlayList from './pages/PlaylistManagmentPage/IndividualPlayList/IndividualPlayList';
 
 function App() {
   const { login, setlogin } = useAuth();
@@ -40,7 +41,9 @@ function App() {
           <Route element={<Main/>}>
             <Route path={ROUTE_PATH_HomePage} element={<Homepage/>} />
             {/* <Route path={ROUTE_PATH_PlayListPage} element={<PlaylistPage />} /> */}
-            <Route path={ROUTE_PATH_PlayListPage} element={login ? <PlaylistPage/> : <Navigate to="/" replace/>} />
+            <Route path={ROUTE_PATH_PlayListPage} element={login ? <PlaylistPage /> : <Navigate to="/" replace />} />
+            <Route path={ROUTE_PATH_PlayListPage_Individual} element={login ? <IndividualPlayList /> : <Navigate to="/" replace />} />
+
             <Route path={ROUTE_PATH_WatchLaterPage} element={<WatchLater/>} />
             <Route path={ROUTE_PATH_VideoListingPage} element={<VideoListingPage/>} />
             <Route path={ROUTE_PATH_HistoryPage} element={<HistortyPage/>} />

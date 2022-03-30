@@ -45,9 +45,10 @@ function HistortyPage() {
 
   return (
     <div className='history-main-container'>
-      <div>
+      <div className='history-btn-container'>
         <button className="normal-btn" onClick={() => deleteAllHistoryHandler()}>Clear History</button>
       </div>
+      <hr/>
       <div className='history-container'>
         {historyContextArray.map((item) => (
           <HistoryVideoCards key={item.id} props={item}/>

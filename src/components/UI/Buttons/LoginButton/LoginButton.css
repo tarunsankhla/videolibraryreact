@@ -6,8 +6,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.2em;
+    padding: 0.3em;
     min-width: 10%;
     height: 10%;
     margin-right: 3em;
+    gap: 0.5em;
 }

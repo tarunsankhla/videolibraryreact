@@ -1,0 +1,11 @@
+.playlistmodal-contatiner{position: absolute;
+    background: gray;
+    padding: 1em;
+    user-select: auto;
+    min-width: 30vw;
+    position: absolute;
+}
+
+.playlist-list{
+    background-color: rgba(0, 0, 0, 0.01);
+}

@@ -37,8 +37,13 @@
     align-items: center;
     justify-content: space-between;
     display: flex;
+    cursor: pointer;
 }
 
+.video-action:hover{
+    background-color: rgba(0, 0, 0, 0.02);
+    transform: scale(1.01);
+}
 
 .video-content-channel{
     display: flex;

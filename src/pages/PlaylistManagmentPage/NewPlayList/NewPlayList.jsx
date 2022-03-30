@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
+import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
 import { usePlayList } from '../../../context/PlayListContext';
 
-function NewPlayList({props}) {
-    const { setHandleCreatePlayList } = props;
-    console.log(setHandleCreatePlayList,props)
+function NewPlayList({setHandleCreatePlayList}) {
+    // const { setHandleCreatePlayList } = props;
+    console.log(setHandleCreatePlayList)
     const [playlistName, setPlayListName] = useState("");
     const { playListContextArray, setPlayListContextArray } = usePlayList();
     const [ error, setError ] = useState(false);
@@ -22,7 +23,10 @@ function NewPlayList({props}) {
                         headers: { authorization: localStorage.getItem("jafnaToken") }
                     });
                 console.log(res);
+                setPlayListName("");
+                
                 RenderPlayListData();
+                setHandleCreatePlayList((prev) => !prev);
                 ongoingReq = true
             }
         }
@@ -45,8 +49,10 @@ function NewPlayList({props}) {
                     <h2>Create New Playlist</h2>
                     <span onClick={() => { setHandleCreatePlayList(false) }}><IcRoundCancel /></span>
                 </div>
-                <input onChange={(e) => { setPlayListName(e.target.value)}} placeholder='PlayList Name' />
-                <button className='btn-create-playlist lg-txt' onClick={()=> createPlaylistHandler()}>Create PlayList</button>
+                <input value={playlistName} className='input-playlist' onChange={(e) => { setPlayListName(e.target.value)}} placeholder='PlayList Name' />
+                <button   button className='btn-create-playlist lg-txt' onClick={() => createPlaylistHandler()}>
+                    Add PlayList
+                </button>
             </div>
         )
 }

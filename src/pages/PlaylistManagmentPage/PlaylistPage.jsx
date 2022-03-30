@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import PlayListMainCard from '../../components/UI/Cards/PlayListMainCard/PlayListMainCard';
+import PlayListMainCard from '../../components/UI/Modal/PlayListMainCard/PlayListMainCard';
+import IcRoundCreate from '../../components/UI/Icons/IcRoundCreate';
 import { usePlayList } from '../../context/PlayListContext';
 import NewPlayList from './NewPlayList/NewPlayList';
 import "./PlaylistPage.css";
@@ -26,13 +27,18 @@ function PlaylistPage() {
 
   
   return (
-    <div>
+    <div className='playlist-container'>
       <div>
-        <button onClick={() => setHandleCreatePlayList((prev)=>!prev)} className='btn'>Create PLaylist</button>
+        <button onClick={() => setHandleCreatePlayList((prev) => !prev)} className='btn btn-initial-create'>
+          Create Playlist
+          <IcRoundCreate/>
+        </button>
+      
         {
-          handleCreatePlayList && <NewPlayList props={ setHandleCreatePlayList}/>
+          handleCreatePlayList && <NewPlayList setHandleCreatePlayList={ setHandleCreatePlayList }/>
         }
       </div>
+      <hr/>
       <div>
         {
           playListContextArray.map((item) => (

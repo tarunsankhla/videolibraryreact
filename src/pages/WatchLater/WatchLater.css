@@ -1,0 +1,7 @@
+.watchlater-list-container
+{
+    display: flex;
+    padding: 1em;
+    justify-content: start;
+    flex-wrap: wrap;
+}

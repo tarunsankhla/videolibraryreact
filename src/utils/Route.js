@@ -1,5 +1,6 @@
 export const ROUTE_PATH_HomePage = "/";
 export const ROUTE_PATH_PlayListPage = "/playlist";
+export const ROUTE_PATH_PlayListPage_Individual = "/getPlaylistById";
 export const ROUTE_PATH_WatchLaterPage = "/watchlater";
 export const ROUTE_PATH_VideoListingPage = "/explore";
 export const ROUTE_PATH_HistoryPage = "/history";

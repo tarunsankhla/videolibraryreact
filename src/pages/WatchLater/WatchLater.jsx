@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
+import WatchLaterVideoCards from '../../components/UI/Cards/WatchLaterVideoCards/WatchLaterVideoCards';
 import { useWatchlater } from '../../context/WatchLaterContext';
 import "./WatchLater.css";
 
@@ -21,11 +22,11 @@ function WatchLater() {
       }
     },[]);
   return (
-    <>
+    <div className='watchlater-list-container'>
       {WatchlaterProviderContextArray?.map((item) => (
-        <VideoCards key={item.id} props={item}/>
+        <WatchLaterVideoCards key={item.id} props={item}/>
       ))}
-    </>
+    </div>
   )
 }
 export default WatchLater
