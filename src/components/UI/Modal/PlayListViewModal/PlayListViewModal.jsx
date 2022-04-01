@@ -1,38 +1,37 @@
 import axios from 'axios';
 import React from 'react'
-import { usePlayList } from '../../../../context/PlayListContext';
+import {usePlayList} from '../../../../context/PlayListContext';
 import "./PlayListViewModal.css";
 
 
-function PlayListViewModal({ data, setPlayListModal }) {
-    const { playListContextArray, setPlayListContextArray } = usePlayList();
-    const { videoDetails } = data;
+function PlayListViewModal({data, setPlayListModal}) {
+    const {playListContextArray, setPlayListContextArray} = usePlayList();
+    const {videoDetails} = data;
 
     /**
      * 
      * @param {string} name 
-     * method is to add a video in playlist
+     * method is use to add a video in playlist
      */
     const SelectedPlayListHandler = async (playlistItem) => {
         try {
-            var res = await axios.post(`/api/user/playlists/${playlistItem}`,
-                { "video": { ...data } },
-                {
-                    headers: { authorization: localStorage.getItem("jafnaToken") }
-                });
-            try {
-                (async () => {
-                    var res = await axios.get("/api/user/playlists", {
-                        headers: {
-                            authorization: localStorage.getItem("jafnaToken")
-                        }
-                    });
-                    setPlayListContextArray(res.data.playlists);
-                })()
-            }
-            catch (error) {
-                console.log("Product list page error", error);
-            }
+            var res = await axios.post(`/api/user/playlists/${playlistItem}`, {
+                "video": {
+                    ...data
+                }
+            }, {
+                headers: {
+                    authorization: localStorage.getItem("jafnaToken")
+                }
+            });
+            console.log(res);
+            const { data: { playlist }, status } = res;
+            console.log(playlist, status);
+
+            // take the response filter the playlist context and append the new video in that playlist
+            // setPlayListContextArray((prev) => prev.array.forEach(element => {
+            //     element._id === playlistItem ? playlist.video.push[res.data.playlist]
+            // });
         } catch (err) {
             console.log(err.status, err.message);
             var msg = err.message;
@@ -44,16 +43,23 @@ function PlayListViewModal({ data, setPlayListModal }) {
     }
     return (
         <div className='playlistmodal-contatiner'>
-            <div>
-                {
-                    playListContextArray?.map((item) => (
-                        <div className='playlist-list' key={item._id} >
-                            <input type="radio" name="playlist" value={item._id}
-                                onClick={(e) => SelectedPlayListHandler(e.target.value)} />
-                            {item.name}</div>
-                    ))
-                }
-            </div>
+            <div> {
+                playListContextArray ?. map((item) => (
+                    <div className='playlist-list'
+                        key={
+                            item._id
+                    }>
+                        <input type="radio" name="playlist"
+                            value={
+                                item._id
+                            }
+                            onClick={
+                                (e) => SelectedPlayListHandler(e.target.value)
+                            }/> {
+                        item.name
+                    }</div>
+                ))
+            } </div>
         </div>
     )
 }

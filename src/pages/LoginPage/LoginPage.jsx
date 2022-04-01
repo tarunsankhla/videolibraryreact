@@ -6,7 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 import "./LoginPage.css";
 
 function LoginPage() {
-  const { login, setlogin } = useAuth();
+  const { login, setlogin, userDispatch } = useAuth();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
@@ -21,14 +21,21 @@ function LoginPage() {
         var user = res.data.foundUser;
         var userId = res.data.foundUser._id;
         localStorage.setItem("jafnaUserId", userId);
+        userDispatch({email : res.data.foundUser.email, firstName :res.data.foundUser.firstName , lastName :res.data.foundUser.lastName})
         console.log(user, userId, token);
         setlogin(true);
+        navigate("/");
       }
-      // navigate("/");
+      
     }
     catch (error) {
       console.log(error)
     }
+  }
+
+  const guestUserDetais = () => { 
+    setEmail("adarshbalak@gmail.com");
+    setPassword("adarshBalaki123");
   }
   return (
     <>
@@ -66,6 +73,11 @@ function LoginPage() {
                 </div>
                 <div className="login-btn-container">
                   <div className='login-btn-container-body' onClick={onSubmitHandler}><LoginButton /></div>
+                </div>
+                <div className="login-btn-container">
+                  <div className='login-btn-container-body' onClick={guestUserDetais}>
+                    <button>Guest User</button>
+                  </div>
                 </div>
                 <Link className="login-footer md-txt" to="/signup">
                   Create New Account <span className="material-icons-round">

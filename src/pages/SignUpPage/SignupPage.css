@@ -25,7 +25,9 @@ main {
 	margin: 0 auto;
 	padding: 0 20px;
 }
-
+.signup-remember-container{
+	font-size: 1.5rem;
+}
 /* general signup */
 .signup-body-container {
 	display: flex;
@@ -49,13 +51,18 @@ main {
 	border-radius: var(--border-radius);
 	font-size: 1.5em;
 	padding: 2rem 0;
-	gap: 1em;
+	gap: 0em;
 	border-radius: 2em;
+	font-size: 3rem;
+	font-weight: 700;
+	width: 100%;
+	padding: 1em;
 }
 
 .signup-credential-container {
-	max-width: 90%;
+	min-width: 70%;
 }
+
 .signup-credential-container > input {
 	width: 100%;
 	padding: 0.5em;
@@ -63,10 +70,11 @@ main {
 	border-radius: 0.5em;
 	border: 2px solid transparent !important;
 	outline: none;
-	background-color: white !important;
+	font-size: 1.5rem;
+    background-color: #e8f0fe !important;
 }
 
-.signup-credential-container > label {
+.signup-credential-container>label {
 	font-weight: 500;
 }
 
@@ -88,8 +96,7 @@ main {
 	padding: 1em;
 }
 
-.signup-btn-container-body {
-}
+.signup-btn-container-body {}
 
 .title-header {
 	font-size: 3rem;
@@ -103,6 +110,7 @@ main {
 	align-items: center;
 	text-decoration: none;
 	justify-content: center;
+	font-size: 1.5rem;
 }
 
 .signup-footer {
@@ -117,9 +125,11 @@ main {
 	max-width: 30vw;
 	height: 50vh;
 }
+
 .error {
 	color: red;
 	font-weight: 500;
+	font-size: 0.6em;
 }
 
 .btn-link {
@@ -130,14 +140,17 @@ main {
 button:disabled {
 	cursor: not-allowed;
 }
+
 @media screen and (max-width: 800px) {
 	.signup-container {
 		width: 100vw;
 	}
+
 	.signup-logo {
 		display: none;
 	}
 }
+
 @media (min-width: 960px) {
 	.signup-main-container {
 		display: flex;
@@ -145,10 +158,12 @@ button:disabled {
 		height: 100%;
 		overflow: hidden;
 	}
+
 	.auth-sidebar {
 		flex-grow: 0;
 		width: 450px;
 	}
+
 	.auth-sidebar .auth-sidebar-content {
 		display: flex;
 		flex-direction: column;
@@ -162,6 +177,7 @@ button:disabled {
 		background: #f1cdd7;
 		color: #865c6c;
 	}
+
 	.content {
 		display: flex;
 		flex: 1;
@@ -176,12 +192,14 @@ button:disabled {
 		justify-content: flex-end;
 		padding: 30px 30px 0;
 	}
+
 	.auth-sidebar .artwork {
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
 		justify-content: flex-end;
 	}
+
 	main {
 		display: flex;
 		flex-grow: 1;

@@ -10,6 +10,8 @@
 :root {
 	--nav-color: #282c34;
 	--hover-color: #539987;
+	--shadow-box: 0 4px 2px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
+	0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
 }
 body {
 	/* background-color: var(--nav-color); */
@@ -107,4 +109,9 @@ span {
 
 span:hover {
 	color: #539987;
+}
+
+
+.stretch{
+	width: 100%;
 }

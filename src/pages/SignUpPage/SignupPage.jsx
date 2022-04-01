@@ -70,32 +70,32 @@ function SignupPage() {
     setPasswordCheckError(HasAlphabets(value) & HasNumber(value) & HasSpecialCharacter(value));
   }
 
-  const onSubmitHandler = async () => {
-    var object = {
-      "email": state.email,
-      "password": confirmPassword,
-      "firstName": state.firstName,
-      "lastName": state.lastName
-    };
-    console.log(object)
-    var res = await axios.post("/api/auth/signup", object);
-    console.log(res);
-    if (res.status === 200) {
-      var token = res.data.encodedToken;
-      localStorage.setItem("jafnaToken", token)
-      var user = res.data.foundUser;
-      var userId = res.data.foundUser._id;
-      localStorage.setItem("jafnaUserId", userId);
-      console.log(user, userId, token);
-      setlogin(true);
-    }
-    navigate("/");
-  }
+  // const onSubmitHandler = async () => {
+  //   let object = {
+  //     "email": state.email,
+  //     "password": confirmPassword,
+  //     "firstName": state.firstName,
+  //     "lastName": state.lastName
+  //   };
+  //   console.log(object)
+  //   var res = await axios.post("/api/auth/signup", object);
+  //   console.log(res);
+  //   if (res.status === 200) {
+  //     var token = res.data.encodedToken;
+  //     localStorage.setItem("jafnaToken", token)
+  //     var user = res.data.foundUser;
+  //     var userId = res.data.foundUser._id;
+  //     localStorage.setItem("jafnaUserId", userId);
+  //     console.log(user, userId, token);
+  //     setlogin(true);
+  //   }
+  //   navigate("/");
+  // }
 
 
   const onSubmittFunc = async () => {
     try {
-      var object = {
+      let object = {
         "email": state.email,
         "password": confirmPassword,
         "firstName": state.firstName,
@@ -112,7 +112,7 @@ function SignupPage() {
         localStorage.setItem("jafnaUserId", userId);
         console.log(user, userId, token);
         setlogin(true);
-        // navigate("/");
+        navigate("/");
         // History.push("/products");   
       }
       if (res.status === 422) {
@@ -122,7 +122,7 @@ function SignupPage() {
     catch (error) {
       console.log("signup ", error)
     }
-    navigate("/");
+    // navigate("/");
   }
   return (
     <>
@@ -142,9 +142,8 @@ function SignupPage() {
             <p>Not a member? Sign up now</p>
           </nav>
           <main>
-            <div className="signup  -container">
-              <div className="title-header">
-
+            <div className="signup-container">
+             
                 <div className="signup-credential-container">
                   {/* <label>Email Address</label> */}
                   <input placeholder="Email Address - xyz@gmail.com" onChange={(e) => dispatch({ email: e.target.value })} />
@@ -186,10 +185,10 @@ function SignupPage() {
                   <input type="email" placeholder="Last Name" onChange={(e) => dispatch({ lastName: e.target.value })} />
                 </div>
                 <div className="signup-remember-container">
-                  <div>
+                  
                     <input type="checkbox" name="" id="" />
                     I accept all Terms & Conditions
-                  </div>
+                  
                 </div>
                 <div className="signup-btn-container">
                   <button className="btn signup-action-btn" onClick={onSubmittFunc} >Signup</button>
@@ -198,7 +197,6 @@ function SignupPage() {
                   navigate_next
                 </span>
                 </Link>
-              </div>
             </div>
           </main>
         </section>

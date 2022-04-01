@@ -28,7 +28,7 @@ function WatchLaterVideoCards({ props }) {
     return (
         <div>
             <div className="card cart-card transparent">
-                <div>
+                <div className='watchlater-content'>
                     <Link to="/video/watch" state={props}>
                         <img className="card-img" src={snippet.thumbnails} alt={snippet.channelTitle} />
 

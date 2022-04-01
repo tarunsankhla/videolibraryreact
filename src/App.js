@@ -21,13 +21,13 @@ import IndividualPlayList from './pages/PlaylistManagmentPage/IndividualPlayList
 
 function App() {
   const { login, setlogin } = useAuth();
+  console.log(login);
   return (
     <div className="App">
       <header className="">
         <Routes >
           <Route element={<Main />}>
             <Route path={ROUTE_PATH_HomePage} element={<Homepage />} />
-            {/* <Route path={ROUTE_PATH_PlayListPage} element={<PlaylistPage />} /> */}
             <Route path={ROUTE_PATH_PlayListPage} element={login ? <PlaylistPage /> : <Navigate to="/" replace />} />
             <Route path={ROUTE_PATH_PlayListPage_Individual} element={login ? <IndividualPlayList /> : <Navigate to="/" replace />} />
 
@@ -38,8 +38,10 @@ function App() {
             <Route path={ROUTE_PATH_VideoContentPage} element={<VideoContentPage />} />
             <Route path={ROUTE_PATH_Unkown} element={<Homepage />} />
           </Route>
-          <Route path={ROUTE_PATH_LoginPage} element={<LoginPage />} />
-          <Route path={ROUTE_PATH_SignupPage} element={<SignupPage />} />
+          <Route path={ROUTE_PATH_LoginPage} 
+          element={!login ? <LoginPage /> : <Navigate to="/" replace />}/>
+          <Route path={ROUTE_PATH_SignupPage} 
+          element={!login ? <SignupPage /> : <Navigate to="/" replace />}/>
           <Route path={ROUTE_PATH_Mockman} element={<div className='MockAPI'><Mockman /></div>} />
         </Routes>
       </header>
