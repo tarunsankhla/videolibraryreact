@@ -32,4 +32,4 @@ function WatchLater() {
     </div>
   )
 }
-export default WatchLater
+export default WatchLater;

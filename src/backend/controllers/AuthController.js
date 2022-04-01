@@ -31,11 +31,10 @@ export const signupHandler = function (schema, request) {
       );
     }
     const _id = uuid();
-    const encryptedPassword = bcrypt.hashSync(password, 5);
     const newUser = {
       _id,
       email,
-      password: encryptedPassword,
+      password,
       createdAt: formatDate(),
       updatedAt: formatDate(),
       ...rest,
@@ -79,8 +78,8 @@ export const loginHandler = function (schema, request) {
         { errors: ["The email you entered is not Registered. Not Found error"] }
       );
     }
-    if (bcrypt.compareSync(password, foundUser.password)) {
-      const encodedToken = jwt.sign(
+    if (password === foundUser.password) {
+      const encodedToken = sign(
         { _id: foundUser._id, email },
         process.env.REACT_APP_JWT_SECRET
       );

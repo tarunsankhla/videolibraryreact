@@ -132,7 +132,6 @@ function SignupPage() {
             <header>
               <h3>Jaffna</h3>
               <h2>Discover the world around you</h2>
-
             </header>
             <div className='artwork'></div>
           </div>
