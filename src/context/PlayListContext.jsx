@@ -1,12 +1,11 @@
 import { createContext, useContext, useState } from "react";
 
-
 const playlistcontext = createContext([]);
 
-const PlayListProvider = ({ children }) => { 
+const PlayListProvider = ({ children }) => {
     const [playListContextArray, setPlayListContextArray] = useState([]);
     return (
-        <playlistcontext.Provider value={{playListContextArray,setPlayListContextArray}}>
+        <playlistcontext.Provider value={{ playListContextArray, setPlayListContextArray }}>
             {children}
         </playlistcontext.Provider>
     )

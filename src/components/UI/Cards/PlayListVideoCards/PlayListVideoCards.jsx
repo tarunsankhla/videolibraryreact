@@ -1,32 +1,33 @@
 import axios from 'axios';
 import React from 'react';
+import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useHistory } from '../../../../context/HistoryContext';
 import ViewCount from '../../../../utils/ViewCount';
-import IcRoundAutoModeAddWatchLater from '../../Icons/IcRoundAutoMode';
-import IcRoundCheckCircleConfirmWatchLater from '../../Icons/IcRoundCheckCircle';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
-import "./HistoryVideoCards.css";
+import "./PlayListVideoCards.css";
 
-function HistoryVideoCards({ props }) {
-    const { historyContextArray, setHistoryContextArray } = useHistory();
+function PlayListVideoCards({ props, setPlayListVideos }) {
     const { videoid, snippet, statistics } = props;
-    console.log(props, videoid, snippet, statistics)
-    const deleteHistoryHandler = async (id) => {
+    const location = useLocation();
+    const playlistId = location.search.slice(1);
+    console.log(props, videoid, snippet, statistics, playlistId)
+
+    const deletePlayListVideoFromIindividualPlayListHandler = async (id) => {
         try {
             console.log(id)
-            var res = await axios.delete(`/api/user/history/${id}`, {
+            var res = await axios.delete(`/api/user/playlists/${playlistId}/${videoid}`, {
                 headers: {
                     authorization: localStorage.getItem("jafnaToken")
                 }
             });
+            setPlayListVideos(res.data.playlist.videos);
             (async () => {
-                var res = await axios.get("/api/user/history", {
+                var res = await axios.get(`/api/user/playlists/${playlistId}`, {
                     headers: {
                         authorization: localStorage.getItem("jafnaToken")
                     }
                 });
-                setHistoryContextArray(res.data.history);
+                console.log(res);
             })()
         }
         catch (err) {
@@ -49,15 +50,14 @@ function HistoryVideoCards({ props }) {
                         </div>
                     </div>
                 </Link>
-                <span className="material-icons-round badge topright-badge " onClick={() => { deleteHistoryHandler(props._id) }}>
+                <span className="material-icons-round badge topright-badge " onClick={() => { deletePlayListVideoFromIindividualPlayListHandler(props._id) }}>
                     <IcTwotoneDelete />
                     {/* <IcRoundAutoModeAddWatchLater />
-                      <IcRoundCheckCircleConfirmWatchLater/> */}
+                    <IcRoundCheckCircleConfirmWatchLater/> */}
                 </span>
             </div>
-
         </div>
     )
 }
 
-export default HistoryVideoCards
+export default PlayListVideoCards

@@ -1,7 +1,10 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils";
+import bcrypt from "bcryptjs";
+const jwt = require("jsonwebtoken");
 const sign = require("jwt-encode");
+
 /**
  * All the routes related to Auth are present here.
  * These are Publicly accessible routes.
@@ -41,7 +44,11 @@ export const signupHandler = function (schema, request) {
       watchlater: [],
     };
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
+    // const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
+    const encodedToken = jwt.sign(
+      { _id, email },
+      process.env.REACT_APP_JWT_SECRET
+    );
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(

@@ -1,12 +1,11 @@
 import { createContext, useContext, useState } from "react";
 
-
 const watchlatercontext = createContext([]);
 
-const WatchlaterProvider = ({ children }) => { 
+const WatchlaterProvider = ({ children }) => {
     const [WatchlaterProviderContextArray, setWatchlaterProviderContextArray] = useState([]);
     return (
-        <watchlatercontext.Provider value={{WatchlaterProviderContextArray,setWatchlaterProviderContextArray}}>
+        <watchlatercontext.Provider value={{ WatchlaterProviderContextArray, setWatchlaterProviderContextArray }}>
             {children}
         </watchlatercontext.Provider>
     )

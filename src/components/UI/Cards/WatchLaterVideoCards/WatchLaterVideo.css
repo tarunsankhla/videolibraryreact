@@ -1,0 +1,20 @@
+.watchlater-delete {
+	position: absolute;
+	z-index: 999;
+	right: 1em;
+    top: 1em;
+	background-color: var(--shade-7);
+}
+
+.watchlater-delete:hover {
+	color: red;
+	transform: scale(1.02);
+}
+
+.transparent {
+	background: transparent;
+}
+
+.watchlater-content{
+	width: 100%;
+}

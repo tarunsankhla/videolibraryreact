@@ -1,5 +1,5 @@
-.videolist-container{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
+.videolist-container {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1rem;
 }
