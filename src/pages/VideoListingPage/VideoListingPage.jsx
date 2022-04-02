@@ -15,6 +15,8 @@ import {
   HolderImg9
 } from "../../assets/Holders/holder";
 import "./VideoListingPage.css";
+import { category as CategoryList } from '../../data/category.data';
+import { URL } from 'uuid/dist/v35';
 
 function VideoListingPage() {
   const [videoLib, setVideoLib] = useState([]);
@@ -70,13 +72,21 @@ function VideoListingPage() {
   }
   return (
     <div className='full-width'>
-      <div className='categories-batch-container'>
+      {/* <div className='categories-batch-container'>
         {
           categories.map((item) => (
             <span className='categories-batch' onClick={()=>filterHandler(item)}> {item}</span>
           ))
         }
-        </div>
+      </div> */}
+      <ul className='icons-cateogry-layer'>
+      {CategoryList.map((item) => (
+        <li className='cateogory-container-batch-icons' onClick={()=>filterHandler(item.type)} key={item.name}>
+          <img src={item.icon} alt="category "/>
+          { item.name}
+        </li>
+      ))}
+      </ul>
       <div className='videolist-container'>
         {
         videoLib.length !== 0 ?  videoLib.map((item) => (

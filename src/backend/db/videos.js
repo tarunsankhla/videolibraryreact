@@ -90,9 +90,9 @@ export const videos = [
             description: "Soy El Unico by Yahritza Martinez y su esencia \nsubscribe / suscribete\nhttps://www.youtube.com/c/lumbremusic?sub_confirmation=1\n\nEscucha Soy el Unico en tu plataforma favorita \n\nhttps://Lumbre.lnk.to/SoyElUnico\n\nsigue a Yahritza y su Esencia en sus socials :\nhttps://www.instagram.com/yahritzaysuesencia/\nhttps://twitter.com/officialyahri14\n\n#soyelunico #yahritzaysuesencia #lumbremusic lumbremusic",
             thumbnails: "https://i.ytimg.com/vi/kdFBxerg7jc/maxresdefault.jpg",
             channelTitle: "Lumbre Music",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -221,9 +221,9 @@ export const videos = [
 
             thumbnails: "https://i.ytimg.com/vi/1KbxOjnmvjI/hqdefault.jpg",
             channelTitle: "YoungBoy Never Broke Again",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -958,9 +958,9 @@ export const videos = [
             description: "Soy El Unico by Yahritza Martinez y su esencia \nsubscribe / suscribete\nhttps://www.youtube.com/c/lumbremusic?sub_confirmation=1\n\nEscucha Soy el Unico en tu plataforma favorita \n\nhttps://Lumbre.lnk.to/SoyElUnico\n\nsigue a Yahritza y su Esencia en sus socials :\nhttps://www.instagram.com/yahritzaysuesencia/\nhttps://twitter.com/officialyahri14\n\n#soyelunico #yahritzaysuesencia #lumbremusic lumbremusic",
             thumbnails: "https://i.ytimg.com/vi/kdFBxerg7jc/maxresdefault.jpg",
             channelTitle: "Lumbre Music",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -1089,9 +1089,9 @@ export const videos = [
 
             thumbnails: "https://i.ytimg.com/vi/1KbxOjnmvjI/hqdefault.jpg",
             channelTitle: "YoungBoy Never Broke Again",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -1824,9 +1824,9 @@ export const videos = [
             description: "Soy El Unico by Yahritza Martinez y su esencia \nsubscribe / suscribete\nhttps://www.youtube.com/c/lumbremusic?sub_confirmation=1\n\nEscucha Soy el Unico en tu plataforma favorita \n\nhttps://Lumbre.lnk.to/SoyElUnico\n\nsigue a Yahritza y su Esencia en sus socials :\nhttps://www.instagram.com/yahritzaysuesencia/\nhttps://twitter.com/officialyahri14\n\n#soyelunico #yahritzaysuesencia #lumbremusic lumbremusic",
             thumbnails: "https://i.ytimg.com/vi/kdFBxerg7jc/maxresdefault.jpg",
             channelTitle: "Lumbre Music",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -1955,9 +1955,9 @@ export const videos = [
 
             thumbnails: "https://i.ytimg.com/vi/1KbxOjnmvjI/hqdefault.jpg",
             channelTitle: "YoungBoy Never Broke Again",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -2690,9 +2690,9 @@ export const videos = [
             description: "Soy El Unico by Yahritza Martinez y su esencia \nsubscribe / suscribete\nhttps://www.youtube.com/c/lumbremusic?sub_confirmation=1\n\nEscucha Soy el Unico en tu plataforma favorita \n\nhttps://Lumbre.lnk.to/SoyElUnico\n\nsigue a Yahritza y su Esencia en sus socials :\nhttps://www.instagram.com/yahritzaysuesencia/\nhttps://twitter.com/officialyahri14\n\n#soyelunico #yahritzaysuesencia #lumbremusic lumbremusic",
             thumbnails: "https://i.ytimg.com/vi/kdFBxerg7jc/maxresdefault.jpg",
             channelTitle: "Lumbre Music",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {
@@ -2821,9 +2821,9 @@ export const videos = [
 
             thumbnails: "https://i.ytimg.com/vi/1KbxOjnmvjI/hqdefault.jpg",
             channelTitle: "YoungBoy Never Broke Again",
-            tags: [
+            tags: 
                 "music"
-            ],
+            ,
             categoryId: 10,
         },
         statistics: {

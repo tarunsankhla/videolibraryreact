@@ -12,7 +12,7 @@ export const category = [
     {
         name: "Technology",
         icon: "https://youtube.com/img/explore/destinations/icons/learning_color_32_v1.png",
-        type: "technology"
+        type: "React"
     },
     {
         name: "Entertainment",
