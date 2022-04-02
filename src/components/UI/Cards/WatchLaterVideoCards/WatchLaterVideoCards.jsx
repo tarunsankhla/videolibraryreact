@@ -14,7 +14,7 @@ function WatchLaterVideoCards({ props }) {
         try {
             var res = await axios.delete(`/api/user/watchlater/${videoid}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);

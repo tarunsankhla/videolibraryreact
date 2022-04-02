@@ -18,6 +18,7 @@ import {
 } from './utils/Route'
 import { useAuth } from './context/AuthContext';
 import IndividualPlayList from './pages/PlaylistManagmentPage/IndividualPlayList/IndividualPlayList';
+import PageNotFound404 from './pages/404/PageNotFound404';
 
 function App() {
   const { login, setlogin } = useAuth();
@@ -36,7 +37,7 @@ function App() {
             <Route path={ROUTE_PATH_HistoryPage} element={<HistortyPage />} />
 
             <Route path={ROUTE_PATH_VideoContentPage} element={<VideoContentPage />} />
-            <Route path={ROUTE_PATH_Unkown} element={<Homepage />} />
+            <Route path={ROUTE_PATH_Unkown} element={<PageNotFound404 />} />
           </Route>
           <Route path={ROUTE_PATH_LoginPage} 
           element={!login ? <LoginPage /> : <Navigate to="/" replace />}/>

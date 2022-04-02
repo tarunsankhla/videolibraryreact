@@ -5,7 +5,7 @@ const AuthContext = createContext();
 function userCredentialHandler(state, action) {
     console.log(state, action);
     if (action.email || action.firstName || action.lastName) {
-        localStorage.setItem("JafnaUserDetails", JSON.stringify({
+        localStorage.setItem("FleetsUserDetails", JSON.stringify({
             ...state,
             email: action.email,
             firstName: action.firstName,
@@ -24,8 +24,8 @@ function userCredentialHandler(state, action) {
 }
 
 const AuthProvider = ({ children }) => {
-    const [login, setlogin] = useState(!!localStorage.getItem("jafnaToken") && !!localStorage.getItem("jafnaUserId"));
-    const [userState, userDispatch] = useReducer(userCredentialHandler, localStorage.getItem("JafnaUserDetails") ? JSON.parse(localStorage.getItem("JafnaUserDetails")) : {
+    const [login, setlogin] = useState(!!localStorage.getItem("FleetsToken") && !!localStorage.getItem("FleetsUserId"));
+    const [userState, userDispatch] = useReducer(userCredentialHandler, localStorage.getItem("FleetsUserDetails") ? JSON.parse(localStorage.getItem("FleetsUserDetails")) : {
         firstName: "",
         lastName: "",
         email: ""

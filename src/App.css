@@ -80,7 +80,7 @@ body {
 .AsideNav {
 	display: flex;
 	/* flex-basis: 15%; */
-	min-width: 20%;
+	min-width: fit-content;
 	background-color: rgba(0, 0, 0, 0.1);
 	flex-direction: column;
 	padding-top: 1em;
@@ -115,3 +115,20 @@ span:hover {
 .stretch{
 	width: 100%;
 }
+
+.title-name{
+	color: red;
+}
+
+.page-title{
+	font-size: 1.5em;
+	color: var(--hover-color);
+	font-weight: 800;
+	padding-left: 1em;
+}
+
+.nocontent{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+	flex-direction: column;}

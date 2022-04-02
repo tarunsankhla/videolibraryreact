@@ -10,6 +10,12 @@
 	overflow: hidden;
 	white-space: nowrap;
 	display: inline-block;
+	color: var(--bold-blue-color);
+    font-weight: 800;
+}
+
+.elipsis:hover{
+	color: var(--boldy-dark-purple);
 }
 .cart-card {
 	box-shadow: none;
@@ -21,9 +27,17 @@
 }
 .cart-card > .card-img {
 	height: 19rem;
+	object-fit: contain;
 }
 .card-content {
 	padding: 1rem;
+	background: linear-gradient(12deg, #64797e 20%, #d8b681);
+	color: var(--bold-blue-color);
+    font-weight: 600;
+}
+
+.card-content:hover{
+	color :var(--boldy-dark-purple);
 }
 .card-body {
 	display: flex;
@@ -74,7 +88,7 @@ a{
 @media screen and (max-width: 1030px) {
 	.cart-card {
 		height: fit-content;
-		width: 21rem;
+		width: 18rem;
 	}
 	.elipsis {
 		width: 15rem;
@@ -83,11 +97,11 @@ a{
 
 @media screen and (max-width: 780px) {
 	.cart-card {
-		width: 20rem;
+		width: 14rem;
 		font-size: 1rem;
 	}
 	.cart-card > .card-img {
-		height: 17rem;
+		height: 12rem;
 	}
 	.card-title span,
 	h2 {
@@ -107,7 +121,7 @@ a{
 		font-size: 0.85rem;
 	}
 	.cart-card > .card-img {
-		height: 15rem;
+		height: 13rem;
 	}
 	.card-title span,
 	h2 {
@@ -127,7 +141,7 @@ a{
 		font-size: 0.75rem;
 	}
 	.cart-card > .card-img {
-		height: 13rem;
+		height: 11rem;
 	}
 	.card-title span,
 	h2 {
@@ -143,11 +157,11 @@ a{
 
 @media screen and (max-width: 360px) {
 	.cart-card {
-		width: 10rem;
+		width: 10rem !important;
 		font-size: 0.65rem;
 	}
 	.cart-card > .card-img {
-		height: 10rem;
+		height: 8rem;
 	}
 	.card-title span,
 	h2 {

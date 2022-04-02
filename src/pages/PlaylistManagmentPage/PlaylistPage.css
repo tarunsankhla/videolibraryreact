@@ -5,13 +5,15 @@
 	padding: 1em;
 	background-color: var(--shade-0);
 	border-radius: 1rem;
+	position: fixed;	
+	width: fit-content;
 }
 
 .btn-create-playlist {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.2);
 	padding: 0.5em;
 	margin: 0.5em;
 	color: red;
@@ -19,6 +21,8 @@
 	margin-left: auto;
 	font-weight: 600;
 	cursor: pointer;
+
+    font-weight: 700;
 }
 
 .btn-create-playlist:hover {
@@ -47,17 +51,28 @@
 }
 
 .btn-initial-create {
-	padding: 0.5rem 1rem;
-	margin: 0.5rem;
-	font-size: 0.8em;
-	font-weight: 500;
-	background-color: var(--primary-color);
-	color: white;
-	border-radius: var(--border-radius);
-	cursor: pointer;
-	text-align: center;
-	min-width: 30%;
+	font-weight: 700;
+    padding: 0.5rem 2rem;
+    margin: 0.5rem;
+    font-size: 0.8em;
+    font-weight: 500;
+    background-color: red;
+    color: white;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: center;
+    min-width: 20%;
+    display: flex;
+    justify-content: center;
+    grid-gap: 0.5em;
+    gap: 0.5em;
+    float: right;
+    outline: nonw;
+    border: none;
+}
+
+
+.playlist-container-list{
 	display: flex;
-	justify-content: center;
-	gap: 0.5em;
+    flex-wrap: wrap;
 }

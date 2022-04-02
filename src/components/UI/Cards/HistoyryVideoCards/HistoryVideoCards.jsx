@@ -17,13 +17,13 @@ function HistoryVideoCards({ props }) {
             console.log(id)
             var res = await axios.delete(`/api/user/history/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             (async () => {
                 var res = await axios.get("/api/user/history", {
                     headers: {
-                        authorization: localStorage.getItem("jafnaToken")
+                        authorization: localStorage.getItem("FleetsToken")
                     }
                 });
                 setHistoryContextArray(res.data.history);

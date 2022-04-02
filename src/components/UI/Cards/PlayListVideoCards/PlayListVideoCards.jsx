@@ -17,14 +17,14 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
             console.log(id)
             var res = await axios.delete(`/api/user/playlists/${playlistId}/${videoid}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             setPlayListVideos(res.data.playlist.videos);
             (async () => {
                 var res = await axios.get(`/api/user/playlists/${playlistId}`, {
                     headers: {
-                        authorization: localStorage.getItem("jafnaToken")
+                        authorization: localStorage.getItem("FleetsToken")
                     }
                 });
                 console.log(res);

@@ -11,6 +11,7 @@
 	align-items: center;
 	gap: 1em;
 	font-size: 0.7em;
+	background: red;
 }
 
 
@@ -20,7 +21,11 @@
     justify-content: center;
     align-items: center;
     background-color: antiquewhite;
-    padding: 0.5em;
+    padding: 0.3em;
     color: rgba(0,0,0,0.5);
     font-weight: 800;
+}
+.navbar-container{
+	display: flex;
+	gap: 1em;
 }

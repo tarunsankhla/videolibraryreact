@@ -6,10 +6,14 @@ import {useLikes} from "../../../../context/LikesContext";
 import ViewCount from "../../../../utils/ViewCount";
 import IcOutlineWatchLater from "../../Icons/IcOutlineWatchLater";
 import IcRoundCheckCircleConfirmWatchLater from "../../Icons/IcRoundCheckCircle";
+import IcBaselineAddTask from "../../Icons/IcBaselineAddTask";
 import "./VideoCards.css";
+import {useWatchlater} from "../../../../context/WatchLaterContext";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
+
+    const {WatchlaterProviderContextArray, setWatchlaterProviderContextArray} = useWatchlater();
     const {videoid, snippet, statistics} = props;
     const WatchVideoHandler = (props) => {
         console.log(props);
@@ -23,10 +27,17 @@ function VideoCards({props}) {
                 }
             }, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);
+            const {data: {
+                    watchlater
+                }, status} = res;
+            console.log(watchlater, status);
+            if (status === 201) {
+                setWatchlaterProviderContextArray(watchlater);
+            }
         } catch (err) {
             console.log(err);
         }
@@ -40,7 +51,7 @@ function VideoCards({props}) {
                 }
             }, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);
@@ -70,9 +81,10 @@ function VideoCards({props}) {
                                     {
                                     snippet.title
                                 }</span>
-                                {
+                               
+                               <span className="elipsis"> {
                                 snippet.channelTitle
-                            }
+                            }</span>
 
                                 <h2> {" "}
                                     <ViewCount viewCount={
@@ -94,8 +106,9 @@ function VideoCards({props}) {
                             AddVideoToFavourite(props);
                         }
                 }>
-                    <IcOutlineWatchLater/>
-                </span>
+                    {
+                    WatchlaterProviderContextArray?.some((item) => item._id === videoid) ? <IcBaselineAddTask/>: <IcOutlineWatchLater/>
+                } </span>
             </div>
         </div>
     );

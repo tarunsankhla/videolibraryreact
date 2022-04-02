@@ -3,7 +3,19 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoginButton from '../../components/UI/Buttons/LoginButton/LoginButton';
 import { useAuth } from '../../context/AuthContext';
+import {
+  HolderImg1,
+  HolderImg2,
+  HolderImg3,
+  HolderImg4,
+  HolderImg5,
+  HolderImg6,
+  HolderImg7,
+  HolderImg8,
+  HolderImg9
+} from "../../assets/Holders/holder";
 import "./LoginPage.css";
+import Button from '../../components/UI/Buttons/Button/Button';
 
 function LoginPage() {
   const { login, setlogin, userDispatch } = useAuth();
@@ -14,13 +26,14 @@ function LoginPage() {
   const onSubmitHandler = async () => {
     try {
       var object = { "email": email, "password": password };
+      console.log(object);
       var res = await axios.post("/api/auth/login", object);
       if (res.status === 200) {
         var token = res.data.encodedToken;
-        localStorage.setItem("jafnaToken", token)
+        localStorage.setItem("FleetsToken", token)
         var user = res.data.foundUser;
         var userId = res.data.foundUser._id;
-        localStorage.setItem("jafnaUserId", userId);
+        localStorage.setItem("FleetsUserId", userId);
         userDispatch({email : res.data.foundUser.email, firstName :res.data.foundUser.firstName , lastName :res.data.foundUser.lastName})
         console.log(user, userId, token);
         setlogin(true);
@@ -42,16 +55,18 @@ function LoginPage() {
       <div className='login-main-container'>
         <section className='auth-sidebar'>
           <div className='auth-sidebar-content'>
-            <header>
-              <h3>Jaffna</h3>
-              <h2>Discover the world around you</h2>
+            <header className='header'>
+              <div className='title-name page-title'> <Link to="/">Fleets</Link></div>
+              <div>Discover the world around you</div>
             </header>
-            <div className='artwork'></div>
+            <div className='artwork'>
+            <img src={HolderImg2} className="holders"/>
+            </div>
           </div>
         </section>
         <section className='content'>
           <nav className='auth-nav'>
-            <p>Not a member? Sign up now</p>
+          <Link className="login-footer lg-txt" to="/signup">Not a member? Sign up now</Link>
           </nav>
           <main>
             <div className="login-container">
@@ -64,7 +79,7 @@ function LoginPage() {
                   <input type="password" onChange={(e) => setPassword(e.target.value)} name="" placeholder="Password" id="" />
                 </div>
                 <div className="login-rem-forgetpass-container">
-                  <div className='md-txt'>
+                  <div className='login-action-container md-txt'>
                     <input type="checkbox" name="" id="" />
                     Remember me
                   </div>
@@ -75,14 +90,14 @@ function LoginPage() {
                 </div>
                 <div className="login-btn-container">
                   <div className='login-btn-container-body' onClick={guestUserDetais}>
-                    <button>Guest User</button>
+                    <Button name={"Guest User"} />
                   </div>
                 </div>
-                <Link className="login-footer md-txt" to="/signup">
+                {/* <Link className="login-footer md-txt" to="/signup">
                   Create New Account <span className="material-icons-round">
                     navigate_next
                   </span>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </main>

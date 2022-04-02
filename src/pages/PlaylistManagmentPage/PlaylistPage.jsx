@@ -4,6 +4,17 @@ import PlayListMainCard from '../../components/UI/Modal/PlayListMainCard/PlayLis
 import IcRoundCreate from '../../components/UI/Icons/IcRoundCreate';
 import { usePlayList } from '../../context/PlayListContext';
 import NewPlayList from './NewPlayList/NewPlayList';
+import {
+  HolderImg1,
+  HolderImg2,
+  HolderImg3,
+  HolderImg4,
+  HolderImg5,
+  HolderImg6,
+  HolderImg7,
+  HolderImg8,
+  HolderImg9
+} from "../../assets/Holders/holder";
 import "./PlaylistPage.css";
 
 function PlaylistPage() {
@@ -15,7 +26,7 @@ function PlaylistPage() {
       (async () => {
         var res = await axios.get("/api/user/playlists", {
           headers: {
-            authorization: localStorage.getItem("jafnaToken")
+            authorization: localStorage.getItem("FleetsToken")
           }
         });
         console.log(res);
@@ -32,19 +43,25 @@ function PlaylistPage() {
 
   return (
     <div className='playlist-container'>
+      <div className="page-title">My Playlist</div>
       <div>
         <button onClick={() => setHandleCreatePlayList((prev) => !prev)} className='btn btn-initial-create'>
           Create Playlist
           <IcRoundCreate />
         </button>
 
+        <div>
         {
           handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
-        }
+        }</div>
       </div>
       <hr />
-      <div>
+      <div className='playlist-container-list'>
         {
+          playListContextArray.length === 0 ? 
+          <div className='nocontent'>
+          <div className='page-title md-txt' >Currently No PlayList exist </div> <img src={HolderImg1} className="holders"/></div>
+          :
           playListContextArray.map((item) => (
             <PlayListMainCard key={item._id} props={item} />
           ))

@@ -17,7 +17,7 @@ function PlayListMainCard({ props }) {
             console.log(id)
             var res = await axios.delete(`/api/user/playlists/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);
@@ -35,7 +35,7 @@ function PlayListMainCard({ props }) {
         (async () => {
             var res = await axios.get("/api/user/playlists", {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);

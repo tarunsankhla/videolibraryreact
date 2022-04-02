@@ -1,5 +1,40 @@
 .videolist-container {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 1rem;
+	padding: 1rem 0;
+}
+
+.category-title{
+	font-size: 1em;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: aliceblue;
+	display: flex;
+    padding-left: 1em;
+    /* background: linear-gradient(12deg, #3b5258 20%, #899ca8);
+    margin: 1em 1em 0; */
+	background-color: rgba(0,0,0,0.2);
+    /* border-radius: 0.5em 0.5em 0 0;*/
+}
+
+
+/* //linear-gradient(12deg, #64797e 20%, #d8b681) */
+/* linear-gradient(12deg, #3b5258 20%, #899ca8) */
+
+.category-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 1em;
+}
+.cateogory-container-item{
+	padding: 0.5em;
+	margin: 0.3em;
+	background: linear-gradient(12deg, #3b5258 20%, #899ca8);
+	min-width: 30%;
+	color:white;
+	border-radius: 0.3em;
+	cursor: pointer;
+}
+.cateogory-container-item:hover{
+	transform: scale(1.05);
 }

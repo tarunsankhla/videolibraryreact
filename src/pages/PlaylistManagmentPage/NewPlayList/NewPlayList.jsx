@@ -20,7 +20,7 @@ function NewPlayList({ setHandleCreatePlayList }) {
                 var res = await axios.post("/api/user/playlists",
                     { "playlist": { "name": playlistName } },
                     {
-                        headers: { authorization: localStorage.getItem("jafnaToken") }
+                        headers: { authorization: localStorage.getItem("FleetsToken") }
                     });
                 setPlayListName("");
                 RenderPlayListData();
@@ -37,7 +37,7 @@ function NewPlayList({ setHandleCreatePlayList }) {
         (async () => {
             var res = await axios.get("/api/user/playlists", {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem("FleetsToken")
                 }
             });
             console.log(res);
@@ -45,13 +45,14 @@ function NewPlayList({ setHandleCreatePlayList }) {
         })()
     }
     return (
-        <div className='new-playlist-modal lg-txt'>
-            <div className='playlist-modal-header'>
+        <div className=' new-playlist-modal lg-txt dialog'>
+            <div className='playlist-modal-header dailog-header'>
                 <h2>Create New Playlist</h2>
                 <span onClick={() => { setHandleCreatePlayList(false) }}><IcRoundCancel /></span>
             </div>
+            <div className='dailog-body confirmation-body'>
             <input value={playlistName} className='input-playlist' onChange={(e) => { setPlayListName(e.target.value) }} placeholder='PlayList Name' />
-            <button button className='btn-create-playlist lg-txt' onClick={() => createPlaylistHandler()}>
+            </div><button button className='btn-create-playlist lg-txt' onClick={() => createPlaylistHandler()}>
                 Add PlayList
             </button>
         </div>
