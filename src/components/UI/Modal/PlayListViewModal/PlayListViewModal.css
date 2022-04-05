@@ -29,3 +29,13 @@
 	height: fit-content;
 	max-width: 70%;
 }
+
+.dailog-footer > button{
+	background: rgb(189, 189, 189);
+}
+
+.dailog-footer > button:hover {
+	transform: scale(1.01);
+	background: var(--shade-9);
+	color: white;
+}

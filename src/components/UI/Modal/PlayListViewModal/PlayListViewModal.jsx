@@ -1,16 +1,20 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect, useState }  from 'react'
 import { Link } from 'react-router-dom';
 import {usePlayList} from '../../../../context/PlayListContext';
 import { ROUTE_PATH_PlayListPage } from '../../../../utils/Route';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import { Toast } from '../../Toast/toast';
+import NewPlayList from '../../../../pages/PlaylistManagmentPage/NewPlayList/NewPlayList';
 import "./PlayListViewModal.css";
+import { IcRoundCancel } from '../../Icons';
 
 
 function PlayListViewModal({data, setPlayListModal}) {
     const {playListContextArray, setPlayListContextArray} = usePlayList();
-    const {videoDetails} = data;
+    const { videoDetails } = data;
+    const [handleCreatePlayList, setHandleCreatePlayList] = useState(false);
+ 
     console.log("playlit modal", data);
     /**
      * 
@@ -53,23 +57,34 @@ function PlayListViewModal({data, setPlayListModal}) {
     }
     return (
         <div className="dialog playlistmodal-contatiner">
-            <h3 className="dailog-header">My PlayList</h3>
+            <div className="dailog-header"><span style={{fontWeight:700}}>My PlayList</span>
+                <span className="dailog-header" onClick={() => { setPlayListModal((prev) => !prev) }}><IcRoundCancel /></span>
+            </div>
             <div className="dailog-body confirmation-body">
                 <ul>
 
                     {playListContextArray.length === 0
                         
                         ? <><li className="dialog-body-item">No Playlist exist</li>
-                            <li className="dialog-body-item"><Link to={ROUTE_PATH_PlayListPage} >Create Playlist +</Link></li></>
+                            {/* <li className="dialog-body-item"><Link to={ROUTE_PATH_PlayListPage} >Create Playlist +</Link></li> */}
+                        </>
                      : playListContextArray?.map((item) => (
                         <li key={item._id}>
-                            <input type="radio" name="playlist"  value={ item._id } checked={item.some((playlistvideo)=> playlistvideo.id === data._id)}
+                             <input type="radio" name="playlist" value={item._id}
+                                //  checked={item.some((playlistvideo) => playlistvideo.id === data._id)}
                                 onClick={(e) => SelectedPlayListHandler(e.target.value) }/>
                             <span className="dialog-body-item"> {item.name}</span>
                         </li>))
                     }
                 </ul>
-                </div>
+            </div>
+            <div class="dailog-footer">
+                <button  onClick={() => setHandleCreatePlayList((prev) => !prev)}>Create Playlist +</button>
+                <div>
+        {
+          handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
+        }</div>
+            </div>
             </div>
         )
     }

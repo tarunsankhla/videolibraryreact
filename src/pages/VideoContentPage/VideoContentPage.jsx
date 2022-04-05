@@ -100,7 +100,7 @@ function VideoContentPage() {
         allow={
           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         }
-        title="video"
+        title="video" id='ytplayer'
       />
       <div className='video-content-body'>
 

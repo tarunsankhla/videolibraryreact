@@ -84,6 +84,21 @@ a{
 	width: 100%;
 }
 
+.video-badge-container{
+	height: fit-content !important;
+	width: fit-content !important;
+	border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-badge-container span:hover{
+	color: black;
+}
+
+.like-badge{
+	color: #27474e;
+}
 
 @media screen and (max-width: 1030px) {
 	.cart-card {

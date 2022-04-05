@@ -12,11 +12,13 @@ import { useWatchlater } from "../../../../context/WatchLaterContext";
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import { Toast } from "../../Toast/toast";
 import { useAuth } from "../../../../context/AuthContext";
+import { IcOutlineThumbUp, IcRoundThumbDownOffAlt } from "../../Icons";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
     const { login, setlogin } = useAuth();
-    const {WatchlaterProviderContextArray, setWatchlaterProviderContextArray} = useWatchlater();
+    const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
+    const { likesContextArray, setLikesContextArray } = useLikes();
     const {videoid, snippet, statistics} = props;
     const WatchVideoHandler = (props) => {
         console.log(props);
@@ -75,6 +77,39 @@ function VideoCards({props}) {
             console.log(err);
         }
     };
+
+     // This method is to add likes of video in array
+  const LikeHandler = async (props) => {
+    try {
+      console.log(props, likesContextArray);
+      if(login){
+        if (likesContextArray?.some((item) => item._id === videoid)) {
+          console.log(" there removing itt");
+          var res = await axios.delete(`/api/user/likes/${props._id}`,
+            {
+              headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+              });
+            Toast("success", "DisLiked!");
+        }
+        else {
+            console.log("not there adding it");
+            var res = await axios.post("/api/user/likes",
+              { "video": { ...props } },
+              {
+                headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+                });
+                Toast("success", "Liked!");
+        }
+        setLikesContextArray(res.data.likes);
+          console.log(res)
+      } else {
+        Toast("error", "You need to Login!!");
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
     return (
         <div onClick={
             () => AddToHistoryHandler(props)
@@ -111,20 +146,23 @@ function VideoCards({props}) {
                         </div>
                     </div>
                 </Link>
-                {/* <div className="card-footer">
-                            <div className="card-footer-view">
-                                <button onClick={()=>{WatchVideoHandler(props)}}>Add to Cart</button>
-                            </div>
-                        </div> */}
-                <span className=" badge topright-badge "
-                    onClick={
+                <span className=" badge topright-badge video-badge-container">
+                 <span   onClick={
                         () => {
                             AddVideoToFavourite(props);
                         }
                 }>
                     {
                     WatchlaterProviderContextArray?.some((item) => item._id === videoid) ? <IcBaselineAddTask/>: <IcOutlineWatchLater/>
-                } </span>
+                        }</span>
+                 <span className="like-badge"  onClick={
+                        () => {
+                            LikeHandler(props);
+                        }}>
+                   
+                        {likesContextArray?.some((item) => item._id === videoid) ? <IcRoundThumbDownOffAlt color={"#27474e"} /> : <IcOutlineThumbUp /> }
+                    </span>
+                </span>
             </div>
         </div>
     );
