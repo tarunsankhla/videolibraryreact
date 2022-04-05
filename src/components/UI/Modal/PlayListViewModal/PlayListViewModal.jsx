@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import {usePlayList} from '../../../../context/PlayListContext';
 import { ROUTE_PATH_PlayListPage } from '../../../../utils/Route';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
+import { Toast } from '../../Toast/toast';
 import "./PlayListViewModal.css";
 
 
 function PlayListViewModal({data, setPlayListModal}) {
     const {playListContextArray, setPlayListContextArray} = usePlayList();
     const {videoDetails} = data;
-
+    console.log("playlit modal", data);
     /**
      * 
      * @param {string} name 
@@ -28,6 +29,9 @@ function PlayListViewModal({data, setPlayListModal}) {
                 }
             });
             console.log(res);
+            if (res.status === 201) {
+                Toast("success", "Added to Playlist!!");
+            }
             const {data: {
                     playlist
                 }, status} = res;
@@ -42,35 +46,16 @@ function PlayListViewModal({data, setPlayListModal}) {
             var msg = err.message;
             if (Number(msg.slice(msg.length - 3, msg.length)) === 409) {
                 console.log("already added in playlist");
+                Toast("error", "Already Exist in Playlist!!");
             }
         }
         setPlayListModal((prev) => !prev);
     }
     return (
-    //<div className='playlistmodal-contatiner'>
-    //     <div> {
-    //         playListContextArray ?. map((item) => (<div className='playlist-list'
-    //             key={
-    //                 item._id
-    //         }>
-    //             <input type="radio" name="playlist"
-    //                 value={
-    //                     item._id
-    //                 }
-    //                 onClick={
-    //                     (e) => SelectedPlayListHandler(e.target.value)
-    //                 }/> {
-    //             item.name
-    //         }</div>))
-    //     } </div>
-        <div class="dialog playlistmodal-contatiner">
-            <h3 class="dailog-header">My PlayList</h3>
-            <div class="dailog-body confirmation-body">
+        <div className="dialog playlistmodal-contatiner">
+            <h3 className="dailog-header">My PlayList</h3>
+            <div className="dailog-body confirmation-body">
                 <ul>
-                    {/* <li>
-                        <input type="radio" id="html" name="fav_language" value="HTML">
-                            <span class="dialog-body-item">item 1</span>
-                        </li> */}
 
                     {playListContextArray.length === 0
                         
@@ -78,7 +63,7 @@ function PlayListViewModal({data, setPlayListModal}) {
                             <li className="dialog-body-item"><Link to={ROUTE_PATH_PlayListPage} >Create Playlist +</Link></li></>
                      : playListContextArray?.map((item) => (
                         <li key={item._id}>
-                            <input type="radio" name="playlist"  value={ item._id }
+                            <input type="radio" name="playlist"  value={ item._id } checked={item.some((playlistvideo)=> playlistvideo.id === data._id)}
                                 onClick={(e) => SelectedPlayListHandler(e.target.value) }/>
                             <span className="dialog-body-item"> {item.name}</span>
                         </li>))
@@ -86,7 +71,6 @@ function PlayListViewModal({data, setPlayListModal}) {
                 </ul>
                 </div>
             </div>
-        // </div>
         )
     }
                                     

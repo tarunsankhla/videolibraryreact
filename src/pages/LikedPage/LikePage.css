@@ -1,4 +1,4 @@
-.watchlater-list-container {
+.liked-list-container {
 	display: flex;
 	padding: 1em;
 	justify-content: start;
@@ -11,7 +11,7 @@
 	height: auto;
 	margin: auto;
 }
-.watchlater-container{
+.liked-container{
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;

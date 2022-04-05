@@ -10,10 +10,12 @@ import IcBaselineAddTask from "../../Icons/IcBaselineAddTask";
 import "./VideoCards.css";
 import { useWatchlater } from "../../../../context/WatchLaterContext";
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
+import { Toast } from "../../Toast/toast";
+import { useAuth } from "../../../../context/AuthContext";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
-
+    const { login, setlogin } = useAuth();
     const {WatchlaterProviderContextArray, setWatchlaterProviderContextArray} = useWatchlater();
     const {videoid, snippet, statistics} = props;
     const WatchVideoHandler = (props) => {
@@ -21,6 +23,7 @@ function VideoCards({props}) {
     };
     const AddVideoToFavourite = async (props) => {
         try {
+            if(login){
             console.log(props);
             var res = await axios.post("/api/user/watchlater", {
                 video: {
@@ -38,9 +41,21 @@ function VideoCards({props}) {
             console.log(watchlater, status);
             if (status === 201) {
                 setWatchlaterProviderContextArray(watchlater);
+                Toast("success","Added to WatchLater")
             }
-        } catch (err) {
-            console.log(err);
+        } else {
+            Toast("error", "You need to Login!!");
+          }
+        } catch (error) {
+            console.log(error);
+            if(error.message.slice(error.message.length-3,error.message.length) === "409")
+            {
+                Toast("error", "Something suspicious!! The Video Already Exist in WatchLater");
+                console.log("Use exist")
+            }else{
+                Toast("error", "Something went wrong!! try again.");
+                console.log("signup ", error, error.status);
+          }
         }
     };
     const AddToHistoryHandler = async (props) => {

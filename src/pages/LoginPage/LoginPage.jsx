@@ -17,6 +17,7 @@ import {
 import "./LoginPage.css";
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
+import { Toast } from '../../components/UI/Toast/toast';
 
 function LoginPage() {
   const { login, setlogin, userDispatch } = useAuth();
@@ -40,12 +41,15 @@ function LoginPage() {
         userDispatch(userDetails)
         console.log(user, userId, token);
         setlogin(true);
+        Toast("success","logged in successfully!!")
         navigate("/");
       }
       
     }
     catch (error) {
-      console.log(error)
+      console.log(error);
+      Toast("error", "Check you Credentials!! try again.");
+      console.log("signup ", error, error.status);
     }
   }
 

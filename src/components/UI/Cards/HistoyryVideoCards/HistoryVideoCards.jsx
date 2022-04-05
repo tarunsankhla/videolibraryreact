@@ -8,6 +8,7 @@ import IcRoundCheckCircleConfirmWatchLater from '../../Icons/IcRoundCheckCircle'
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route"
 import "./HistoryVideoCards.css";
+import { Toast } from '../../Toast/toast';
 
 function HistoryVideoCards({ props }) {
     const { historyContextArray, setHistoryContextArray } = useHistory();
@@ -21,6 +22,9 @@ function HistoryVideoCards({ props }) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
+            if (res.status === 200) {
+                Toast("success","Removed from History!!")
+            }
             (async () => {
                 var res = await axios.get("/api/user/history", {
                     headers: {
@@ -31,7 +35,8 @@ function HistoryVideoCards({ props }) {
             })()
         }
         catch (err) {
-            console.log(err)
+            console.log(err);
+            Toast("error","Failed to remove from history")
         }
     }
     return (

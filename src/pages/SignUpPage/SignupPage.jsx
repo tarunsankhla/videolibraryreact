@@ -18,6 +18,7 @@ import {
 } from "../../assets/Holders/holder";
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
+import { Toast } from '../../components/UI/Toast/toast';
 
 const SignUpDetails = (state, action) => {
     console.log(state, action);
@@ -102,29 +103,37 @@ function SignupPage() {
                 "firstName": state.firstName,
                 "lastName": state.lastName
             };
-            console.log(object)
-            var res = await axios.post("/api/auth/signup", object);
-            console.log(res);
-            if (res.status === 201) {
-                var token = res?.data?.encodedToken;
-                localStorage.setItem(VAR_ENCODE_TOKEN, token)
-                var user = res?.data?.createdUser;
-                var userId = res?.data?.createdUser?._id;
-                localStorage.setItem(VAR_USER_ID, userId);
-                let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
-                localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
-                userDispatch(userDetails)
-                console.log(user, userId, token);
-                setlogin(true);
-                
-                // History.push("/products");
+            console.log(VerifyCredentials())
+           
+                console.log(object)
+                var res = await axios.post("/api/auth/signup", object);
+                console.log(res);
+                if (res.status === 201) {
+                    var token = res?.data?.encodedToken;
+                    localStorage.setItem(VAR_ENCODE_TOKEN, token)
+                    var user = res?.data?.createdUser;
+                    var userId = res?.data?.createdUser?._id;
+                    localStorage.setItem(VAR_USER_ID, userId);
+                    let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
+                    localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
+                    userDispatch(userDetails)
+                    console.log(user, userId, token);
+                    setlogin(true);
+                    Toast("success", "Sign Up Done!!");
+                    navigate("/");
+                    // History.push("/products");
+                }
+                if (res.status === 422) {
+                    console.log("Use exist")
+                }
+            
+            else {
+                Toast("error","Check you password I hope it meets all conditions")
             }
-            if (res.status === 422) {
-                console.log("Use exist")
-            }
-            navigate("/");
+            
         } catch (error) {
-            console.log("signup ", error)
+            console.log("signup ", error);
+            Toast("error", "The User Exist or check you credentials!!");
         }
         // navigate("/");
     }
@@ -144,8 +153,18 @@ function SignupPage() {
     }
 
     const CompareBothPassword = (e) => { 
-        setPasswordCheckError(e.target.value !== confirmPassword ? "red" : "black");
+        return e.target.value !== confirmPassword ? "red" : "black";
     }
+
+
+    const VerifyCredentials = () =>
+    {
+        console.log(CheckMinimalCharInPassword(), VerifyPasswordChar(), passwordCheckError);
+        if (CheckMinimalCharInPassword() === "" && VerifyPasswordChar() === "Password should contain a number, alphabet & special character" && passwordCheckError === "red") { 
+            return true;
+        }
+        return false;
+     }
     return (<>
         <div className='signup-main-container'>
             <section className='auth-sidebar'>
@@ -189,10 +208,10 @@ function SignupPage() {
                                 placeholder="Password"
                                 id=""/>{
                                     passwordType === "password" ?
-                                        <span class="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
+                                        <span className="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
                                             visibility
                                         </span>
-                                        : <span class="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                                        : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
                                             visibility_off
                                         </span>}
                                         </div>

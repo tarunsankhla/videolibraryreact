@@ -18,8 +18,7 @@ import "./WatchLater.css";
 import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 
 function WatchLater() {
-	const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } =
-		useWatchlater();
+	const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } =useWatchlater();
 	useEffect(() => {
 		try {
 			(async () => {

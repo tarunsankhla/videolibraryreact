@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { HolderImg6 } from '../../../assets/Holders/holder';
 import PlayListVideoCards from '../../../components/UI/Cards/PlayListVideoCards/PlayListVideoCards';
+import { Toast } from '../../../components/UI/Toast/toast';
 import { VAR_ENCODE_TOKEN } from "../../../utils/Route";
 import "./IndividualPlayList.css";
 
@@ -24,6 +25,7 @@ function IndividualPlayList() {
     }
     catch (error) {
       console.log("Product list page error", error);
+      Toast("error", "Some Internal Issue!!");
     }
   }, [])
 

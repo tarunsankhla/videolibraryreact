@@ -6,6 +6,7 @@ import ViewCount from '../../../../utils/ViewCount';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListVideoCards.css";
+import { Toast } from '../../Toast/toast';
 
 function PlayListVideoCards({ props, setPlayListVideos }) {
     const { videoid, snippet, statistics } = props;
@@ -22,6 +23,9 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                 }
             });
             setPlayListVideos(res.data.playlist.videos);
+            if (res.status === 200) {
+                Toast("success", "Removed from PlayList!!");
+            }
             (async () => {
                 var res = await axios.get(`/api/user/playlists/${playlistId}`, {
                     headers: {
@@ -32,7 +36,8 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
             })()
         }
         catch (err) {
-            console.log(err)
+            console.log(err);
+            Toast("error", "Failed to Remove From Playlist!!");
         }
     }
     return (

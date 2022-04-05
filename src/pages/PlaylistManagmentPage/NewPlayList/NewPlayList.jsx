@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
 import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
+import { Toast } from '../../../components/UI/Toast/toast';
 import { usePlayList } from '../../../context/PlayListContext';
 import { VAR_ENCODE_TOKEN } from "../../../utils/Route";
 function NewPlayList({ setHandleCreatePlayList }) {
@@ -15,21 +16,26 @@ function NewPlayList({ setHandleCreatePlayList }) {
         try {
             console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
 
-            if (ongoingReq) {
+            // if (ongoingReq) {
                 ongoingReq = false;
                 var res = await axios.post("/api/user/playlists",
                     { "playlist": { "name": playlistName } },
                     {
                         headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
                     });
-                setPlayListName("");
-                RenderPlayListData();
-                setHandleCreatePlayList((prev) => !prev);
-                ongoingReq = true
-            }
+            console.log(res);
+                if (res.status === 201) {
+                    Toast("success", "Adedd New Playlist!!");
+                    setPlayListName("");
+                    RenderPlayListData();
+                    setHandleCreatePlayList((prev) => !prev);
+                    ongoingReq = true
+                }
+            // }
         }
         catch (error) {
             console.log("Product list page error", error);
+            Toast("error", "Failed to Added a Playlist!!");
         }
     }
 

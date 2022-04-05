@@ -28,7 +28,7 @@ function VideoListingPage() {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("in use set", category, videoContextList)
+      console.log("in use set", category, videoContextList);
       if (category === undefined) {
         if (!!location.search.split("=")[1]) {
           console.log([...videoContextList?.filter((videoObj) => videoObj.snippet.tags === location.search.split("=")[1])]);
@@ -91,7 +91,7 @@ function VideoListingPage() {
         {
         videoLib.length !== 0 ?  videoLib.map((item) => (
             <VideoCards key={item.id} props={item} />
-        )) : <div>  "Loading ......"
+        )) : <div className='nocontent'> <div className='page-title md-txt'>Loading ...</div>
             <img src={HolderImg8} className="holders" alt='lodderLogo' /></div>
         }
       </div>

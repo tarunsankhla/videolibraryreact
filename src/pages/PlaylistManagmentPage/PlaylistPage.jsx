@@ -17,6 +17,7 @@ import {
   HolderImg9
 } from "../../assets/Holders/holder";
 import "./PlaylistPage.css";
+import { Toast } from '../../components/UI/Toast/toast';
 
 function PlaylistPage() {
   const { playListContextArray, setPlayListContextArray } = usePlayList();
@@ -37,6 +38,7 @@ function PlaylistPage() {
     }
     catch (error) {
       console.log("Product list page error", error);
+      Toast("error", "Some Internal Server Issue!!");
     }
   }, [])
 

@@ -13,6 +13,8 @@ import { useWatchlater } from '../../context/WatchLaterContext';
 import ViewCount from '../../utils/ViewCount.jsx';
 import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import './VideoContent.css';
+import { useAuth } from '../../context/AuthContext';
+import { Toast } from '../../components/UI/Toast/toast';
 
 function VideoContentPage() {
   const location = useLocation();
@@ -20,6 +22,7 @@ function VideoContentPage() {
   const [showPlayListModal, setShowPlayListModal] = useState(false);
   const { likesContextArray, setLikesContextArray } = useLikes();
   const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
+  const { login, setlogin } = useAuth();
   const data = location.state;
 
   useEffect(() => {
@@ -29,16 +32,20 @@ function VideoContentPage() {
   const AddToWatchlateHandler = async (props) => {
     try {
       console.log(props)
-      var res = await axios.post("/api/user/watchlater",
-        { "video": { ...props } },
-        {
-          headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
-        });
-      console.log(res);
-      const { data: { watchlater }, status } = res;
-      console.log(watchlater, status);
-      if (status === 201) {
-        setWatchlaterProviderContextArray(watchlater);
+      if (login) {
+        var res = await axios.post("/api/user/watchlater",
+          { "video": { ...props } },
+          {
+            headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+          });
+        console.log(res);
+        const { data: { watchlater }, status } = res;
+        console.log(watchlater, status);
+        if (status === 201) {
+          setWatchlaterProviderContextArray(watchlater);
+        }
+      } else {
+        Toast("error", "You need to Login!!");
       }
 
     } catch (err) {
@@ -52,26 +59,28 @@ function VideoContentPage() {
   // This method is to add likes of video in array
   const LikeHandler = async (props) => {
     try {
-      console.log(props,likesContextArray)
-      if (likesContextArray?.some((item) => item._id === data._id)) {
-        console.log(" there removing itt");
-        var res = await axios.delete(`/api/user/likes/${props._id}`,
-          {
-            headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
-          });
-      }
-      else {
-        
-        
-          console.log("not there adding it");
-          var res = await axios.post("/api/user/likes",
-            { "video": { ...props } },
+      console.log(props, likesContextArray);
+      if(login){
+        if (likesContextArray?.some((item) => item._id === data._id)) {
+          console.log(" there removing itt");
+          var res = await axios.delete(`/api/user/likes/${props._id}`,
             {
               headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
             });
+        }
+        else {
+            console.log("not there adding it");
+            var res = await axios.post("/api/user/likes",
+              { "video": { ...props } },
+              {
+                headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+              });
+        }
+        setLikesContextArray(res.data.likes);
+          console.log(res)
+      } else {
+        Toast("error", "You need to Login!!");
       }
-      setLikesContextArray(res.data.likes);
-      console.log(res)
     }
     catch (err) {
       console.log(err)
@@ -91,6 +100,7 @@ function VideoContentPage() {
         allow={
           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         }
+        title="video"
       />
       <div className='video-content-body'>
 
