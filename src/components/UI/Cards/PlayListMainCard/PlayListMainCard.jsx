@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { usePlayList } from '../../../../context/PlayListContext';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListMainCard.css";
 
 function PlayListMainCard({ props }) {
@@ -11,7 +12,7 @@ function PlayListMainCard({ props }) {
         try {
             console.log(id)
             var res = await axios.delete(`/api/user/playlists/${id}`,{ headers:{
-                authorization:localStorage.getItem("jafnaToken")}});
+                authorization:localStorage.getItem(VAR_ENCODE_TOKEN)}});
             console.log(res);
             setPlaylistDateAfterDelete();
         }
@@ -22,7 +23,7 @@ function PlayListMainCard({ props }) {
     const setPlaylistDateAfterDelete = () => { 
         (async() => {
             var res = await axios.get("/api/user/playlists",{ headers:{
-              authorization:localStorage.getItem("jafnaToken")}});
+              authorization:localStorage.getItem(VAR_ENCODE_TOKEN)}});
               console.log(res);
               setPlayListContextArray(res.data.playlists);
         })()

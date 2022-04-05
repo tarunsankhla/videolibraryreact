@@ -16,7 +16,7 @@
 
 .playlist-whole-delete {
 	position: absolute;
-	z-index: 999;
+	/* z-index: 999; */
 	right: -1em;
 	top: 0;
 	background-color: var(--shade-7);

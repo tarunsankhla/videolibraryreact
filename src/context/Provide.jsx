@@ -3,6 +3,7 @@ import { AuthProvider } from './AuthContext';
 import { HistoryProvider } from "./HistoryContext";
 import { LikesProvider } from "./LikesContext";
 import { PlayListProvider } from "./PlayListContext";
+import { VideoProvider } from './VideoContext';
 import { WatchlaterProvider } from "./WatchLaterContext";
 
 const Provider = props => {
@@ -13,7 +14,9 @@ const Provider = props => {
                     <WatchlaterProvider>
                         <HistoryProvider>
                             <LikesProvider>
-                                {props.children}
+                                <VideoProvider>
+                                    {props.children}
+                                </VideoProvider>
                             </LikesProvider>
                         </HistoryProvider>
                     </WatchlaterProvider>

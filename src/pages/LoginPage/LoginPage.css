@@ -2,17 +2,32 @@
 	position: relative;
 	color: #000;
 	background: #f1cdd7;
-	color: #865c6c;
+	/* color: #865c6c; */
+	color: white;
 }
 
 .content {
 	width: 100%;
+	min-height: 100vh;
 }
 
-.auth-nav p {
+.auth-nav {
 	flex-grow: 1;
-	margin: 0;
 	text-align: right;
+	padding-top: 1em;
+}
+
+ /* h1, h2 {
+	color: wheat;
+} */
+.header{
+	margin: auto;
+	padding: 1em;
+	color: white;
+}
+
+.header > div{
+	color: white;
 }
 
 .auth-sidebar .artwork {
@@ -43,13 +58,14 @@ main {
 	justify-content: space-evenly;
 	align-items: center;
 	background-color: transparent;
-	max-width: 60vw;
+	/* max-width: 60vw; */
 	height: fit-content;
 	border-radius: var(--border-radius);
 	font-size: 1.5em;
 	padding: 2rem 0;
 	gap: 1em;
 	border-radius: 2em;
+	width: 80%;
 }
 
 .login-credential-container {
@@ -75,6 +91,8 @@ main {
 	/* width: 70%; */
 	font-size: 0.7em;
 	gap: 1em;
+
+	padding: 0 1em;
 }
 
 .login-action-btn {
@@ -84,10 +102,15 @@ main {
 
 .login-btn-container {
 	/* width:70%    */
-	padding: 1em;
+	padding:1em	 1em 0;
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 1em 1em 0;
 }
 
 .login-btn-container-body {
+	width: 50%;
 }
 
 .title-header {
@@ -129,6 +152,12 @@ main {
 button:disabled {
 	cursor: not-allowed;
 }
+
+.login-action-container{
+	display: flex;
+    width: 50%;
+    align-items: center;
+}
 @media screen and (max-width: 800px) {
 	.login-container {
 		width: 100vw;
@@ -159,7 +188,8 @@ button:disabled {
 	.forgot-password .auth-sidebar,
 	.reset-password .auth-sidebar {
 		background: #f1cdd7;
-		color: #865c6c;
+		/* color: #865c6c; */
+		color: white;
 	}
 	.content {
 		display: flex;

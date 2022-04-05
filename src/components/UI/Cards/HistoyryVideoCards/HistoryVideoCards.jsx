@@ -6,6 +6,7 @@ import ViewCount from '../../../../utils/ViewCount';
 import IcRoundAutoModeAddWatchLater from '../../Icons/IcRoundAutoMode';
 import IcRoundCheckCircleConfirmWatchLater from '../../Icons/IcRoundCheckCircle';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route"
 import "./HistoryVideoCards.css";
 
 function HistoryVideoCards({ props }) {
@@ -17,13 +18,13 @@ function HistoryVideoCards({ props }) {
             console.log(id)
             var res = await axios.delete(`/api/user/history/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             (async () => {
                 var res = await axios.get("/api/user/history", {
                     headers: {
-                        authorization: localStorage.getItem("jafnaToken")
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
                 });
                 setHistoryContextArray(res.data.history);

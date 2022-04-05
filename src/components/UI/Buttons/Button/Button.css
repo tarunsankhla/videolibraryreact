@@ -1,4 +1,4 @@
-.login-button {
+.normal-button {
 	background: red;
 	font-weight: 700;
 	font-size: 0.8em;
@@ -11,5 +11,5 @@
 	/* height: 10%; */
 	margin-right: 3em;
 	gap: 0.5em;
-	width: 100%;
+    width: 100%;
 }

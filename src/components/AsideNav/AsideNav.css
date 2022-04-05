@@ -4,8 +4,10 @@
 	/* font-size: 0.5em; */
 	font-weight: 400;
 	display: flex;
-	justify-content: space-evenly;
+	/* justify-content: space-evenly; */
 	color: white;
+	
+    gap: 0.5em;
 }
 
 .aside-nav-row:hover {

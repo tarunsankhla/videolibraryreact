@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { IcOutlineWatchLater, IcTwotoneWatchLater } from '../../components/UI/Icons';
 import IcBaselineAddTask from '../../components/UI/Icons/IcBaselineAddTask';
 import IcOutlineThumbUp from '../../components/UI/Icons/IcOutlineThumbUp';
 import IcRoundPlaylistAdd from '../../components/UI/Icons/IcRoundPlaylistAdd';
@@ -8,7 +9,9 @@ import IcRoundThumbDownOffAlt from '../../components/UI/Icons/IcRoundThumbDownOf
 import IcRoundThumbUp from '../../components/UI/Icons/IcRoundThumbUp';
 import PlayListViewModal from '../../components/UI/Modal/PlayListViewModal/PlayListViewModal';
 import { useLikes } from '../../context/LikesContext';
+import { useWatchlater } from '../../context/WatchLaterContext';
 import ViewCount from '../../utils/ViewCount.jsx';
+import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import './VideoContent.css';
 
 function VideoContentPage() {
@@ -16,6 +19,7 @@ function VideoContentPage() {
   const [VideoUrl, setVideoUrl] = useState();
   const [showPlayListModal, setShowPlayListModal] = useState(false);
   const { likesContextArray, setLikesContextArray } = useLikes();
+  const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
   const data = location.state;
 
   useEffect(() => {
@@ -28,9 +32,14 @@ function VideoContentPage() {
       var res = await axios.post("/api/user/watchlater",
         { "video": { ...props } },
         {
-          headers: { authorization: localStorage.getItem("jafnaToken") }
+          headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
         });
       console.log(res);
+      const { data: { watchlater }, status } = res;
+      console.log(watchlater, status);
+      if (status === 201) {
+        setWatchlaterProviderContextArray(watchlater);
+      }
 
     } catch (err) {
       console.log(err)
@@ -43,21 +52,23 @@ function VideoContentPage() {
   // This method is to add likes of video in array
   const LikeHandler = async (props) => {
     try {
-      console.log(props)
-      if (likesContextArray?.some((item) => item._id !== data._id)) {
-        console.log("not there adding it");
-        var res = await axios.post("/api/user/likes",
-          { "video": { ...props } },
-          {
-            headers: { authorization: localStorage.getItem("jafnaToken") }
-          });
-      }
-      else {
+      console.log(props,likesContextArray)
+      if (likesContextArray?.some((item) => item._id === data._id)) {
         console.log(" there removing itt");
         var res = await axios.delete(`/api/user/likes/${props._id}`,
           {
-            headers: { authorization: localStorage.getItem("jafnaToken") }
+            headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
           });
+      }
+      else {
+        
+        
+          console.log("not there adding it");
+          var res = await axios.post("/api/user/likes",
+            { "video": { ...props } },
+            {
+              headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+            });
       }
       setLikesContextArray(res.data.likes);
       console.log(res)
@@ -88,7 +99,7 @@ function VideoContentPage() {
         <div className='video-content-header'>
           <div className='video-content-action'>
             <div className='video-action' onClick={() => LikeHandler(data)}>
-              {likesContextArray?.some((item) => item._id === data._id) ? <IcOutlineThumbUp /> : <IcRoundThumbUp />}
+              {likesContextArray?.some((item) => item._id === data._id) ?<IcRoundThumbDownOffAlt /> : <IcOutlineThumbUp /> }
               {data.statistics.likeCount}
             </div>
             <div className='video-action' onClick={() => setShowPlayListModal((prev) => !prev)}><IcRoundPlaylistAdd />
@@ -102,7 +113,10 @@ function VideoContentPage() {
                 />}
             </div>
             <div className='video-action' onClick={() => AddToWatchlateHandler(data)}>
-              <IcBaselineAddTask /> Add to Watch Later
+              {/* <IcBaselineAddTask />
+              <IcOutlineWatchLater />
+              <IcTwotoneWatchLater /> */}
+              { WatchlaterProviderContextArray?.some((item) => item._id === data._id) ?    <IcBaselineAddTask /> :<IcOutlineWatchLater /> }Add to Watch Later
             </div>
           </div>
           <div>

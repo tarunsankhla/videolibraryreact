@@ -3,10 +3,13 @@
 	color: #000;
 	background: #f1cdd7;
 	color: #865c6c;
+	background: linear-gradient(12deg, #3b5258 20%, #899ca8);
+	color: white;
 }
 
 .content {
 	width: 100%;
+	background: #d2c9ff;
 }
 
 .auth-nav p {
@@ -41,7 +44,7 @@ main {
 }
 
 .signup-container {
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
@@ -56,7 +59,32 @@ main {
 	font-size: 3rem;
 	font-weight: 700;
 	width: 100%;
+	padding: 1em; */
+
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+    /* max-width: 60vw; */
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: var(--border-radius);
+    font-size: 1.5em;
+    padding: 2rem 0;
+    grid-gap: 1em;
+	gap: 0.5em;
+    border-radius: 2em;
+	width: 80%;
+}
+.header{
+	margin: auto;
 	padding: 1em;
+	color: white;
+}
+
+.header > div{
+	color: white;
 }
 
 .signup-credential-container {
@@ -72,6 +100,28 @@ main {
 	outline: none;
 	font-size: 1.5rem;
     background-color: #e8f0fe !important;
+}
+
+.password-holder > input{
+	width: 80%;
+	padding: 0.5em;
+	/* margin: 1em; */
+	margin: 0 0 0 0.5em;
+	border: 2px solid transparent !important;
+	outline: none;
+	font-size: 1.5rem;
+    background-color: #e8f0fe !important;
+
+}
+
+.password-holder{
+	align-items: center;
+    display: flex;
+    margin: 0.5em;
+    background: #e8f0fe;
+    justify-content: space-around;
+	border-radius: 0.5em;
+	width: 100%;
 }
 
 .signup-credential-container>label {

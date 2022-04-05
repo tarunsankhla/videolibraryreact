@@ -1,12 +1,31 @@
 .playlistmodal-contatiner {
-	position: absolute;
-	background: gray;
-	padding: 1em;
+	position: fixed;
+	top: 25%;
+    left: 25%;
+	/* background: gray; */
+	/* padding: 1em;
 	user-select: auto;
 	min-width: 30vw;
-	position: absolute;
+	position: absolute; */
 }
 
 .playlist-list {
 	background-color: rgba(0, 0, 0, 0.01);
+}
+
+.dialog-body-item{
+	color :var(--shade-9)
+}
+
+.confirmation-body{
+	max-height: 15rem;
+	height: fit-content;
+}
+.dailog-header{
+	color :var(--shade-9)
+}
+
+.dialog{
+	height: fit-content;
+	max-width: 70%;
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useWatchlater } from '../../../../context/WatchLaterContext';
 import ViewCount from '../../../../utils/ViewCount'
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./WatchLaterVideo.css";
 
 
@@ -14,7 +15,7 @@ function WatchLaterVideoCards({ props }) {
         try {
             var res = await axios.delete(`/api/user/watchlater/${videoid}`, {
                 headers: {
-                    authorization: localStorage.getItem("jafnaToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);

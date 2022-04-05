@@ -10,3 +10,6 @@ export const ROUTE_PATH_LoginPage = "/login";
 export const ROUTE_PATH_SignupPage = "/signup";
 export const ROUTE_PATH_Mockman = "/mockman";
 
+export const VAR_ENCODE_TOKEN = "FleetsToken";
+export const VAR_USER_ID = "FleetsUserId";
+export const VAR_USER_DETAILS = "FleetsUserDetails";  
