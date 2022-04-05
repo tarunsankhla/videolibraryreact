@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useReducer, useState} from 'react';
-import {useNavigate} from 'react-router';
+import { useNavigate as navigate } from 'react-router';
 import {Link} from 'react-router-dom';
 import LoginButton from '../../components/UI/Buttons/LoginButton/LoginButton';
 import {useAuth} from '../../context/AuthContext';
@@ -17,6 +17,7 @@ import {
     HolderImg9
 } from "../../assets/Holders/holder";
 import Button from '../../components/UI/Buttons/Button/Button';
+import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
 
 const SignUpDetails = (state, action) => {
     console.log(state, action);
@@ -47,7 +48,6 @@ const SignUpDetails = (state, action) => {
 
 function SignupPage() {
     const {login, setlogin, userDispatch} = useAuth();
-    const navigate = useNavigate();
     const [passwordType, setPasswordType] = useState("password");
 
     const [passwordCheckError, setPasswordCheckError] = useState(false);
@@ -94,29 +94,6 @@ function SignupPage() {
         setPasswordCheckError(HasAlphabets(value) & HasNumber(value) & HasSpecialCharacter(value));
     }
 
-    // const onSubmitHandler = async () => {
-    // let object = {
-    //     "email": state.email,
-    //     "password": confirmPassword,
-    //     "firstName": state.firstName,
-    //     "lastName": state.lastName
-    // };
-    // console.log(object)
-    // var res = await axios.post("/api/auth/signup", object);
-    // console.log(res);
-    // if (res.status === 200) {
-    //     var token = res.data.encodedToken;
-    //     localStorage.setItem("FleetsToken", token)
-    //     var user = res.data.foundUser;
-    //     var userId = res.data.foundUser._id;
-    //     localStorage.setItem("FleetsUserId", userId);
-    //     console.log(user, userId, token);
-    //     setlogin(true);
-    // }
-    // navigate("/");
-    // }
-
-
     const onSubmittFunc = async () => {
         try {
             let object = {
@@ -128,21 +105,24 @@ function SignupPage() {
             console.log(object)
             var res = await axios.post("/api/auth/signup", object);
             console.log(res);
-            if (res.status === 200 || res.status === 201) {
+            if (res.status === 201) {
                 var token = res?.data?.encodedToken;
-                localStorage.setItem("FleetsToken", token)
+                localStorage.setItem(VAR_ENCODE_TOKEN, token)
                 var user = res?.data?.createdUser;
                 var userId = res?.data?.createdUser?._id;
-                localStorage.setItem("FleetsUserId", userId);
-                userDispatch({email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName})
+                localStorage.setItem(VAR_USER_ID, userId);
+                let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
+                localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
+                userDispatch(userDetails)
                 console.log(user, userId, token);
                 setlogin(true);
-                navigate("/");
+                
                 // History.push("/products");
             }
             if (res.status === 422) {
                 console.log("Use exist")
             }
+            navigate("/");
         } catch (error) {
             console.log("signup ", error)
         }
@@ -154,6 +134,18 @@ function SignupPage() {
         setPasswordType((prev) => prev === "password" ? "text" : "password")
         
     }
+
+    const CheckMinimalCharInPassword = () => { 
+        return confirmPassword.length > 0 && confirmPassword.length < 7 ? "password should be minimum 7 letter" : "";
+    }
+
+    const VerifyPasswordChar = () => { 
+        return confirmPassword.length > 0 && !passwordCheckError && "Password should contain a number, alphabet & special character";
+    }
+
+    const CompareBothPassword = (e) => { 
+        setPasswordCheckError(e.target.value !== confirmPassword ? "red" : "black");
+    }
     return (<>
         <div className='signup-main-container'>
             <section className='auth-sidebar'>
@@ -164,15 +156,12 @@ function SignupPage() {
                         <div>Discover the world around you</div>
                     </div>
                     <div className='artwork'>
-                        <img src={HolderImg7}
+                        <img src={HolderImg7} alt="signuplogo"
                             className="holders"/>
                     </div>
                 </div>
             </section>
             <section className='content'>
-                {/* <nav className='auth-nav'>
-                    <p>Not a member? Sign up now</p>
-                </nav> */}
                 <main>
                     <div className="signup-container">
 
@@ -201,18 +190,17 @@ function SignupPage() {
                                 id=""/>{
                                     passwordType === "password" ?
                                         <span class="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
-                                    visibility
-                                    </span>:<span class="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
-                                visibility_off
+                                            visibility
+                                        </span>
+                                        : <span class="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                                            visibility_off
                                         </span>}
                                         </div>
                             
-                            <p className='error'> {
-                                confirmPassword.length > 0 && confirmPassword.length < 7 ? "password should be minimum 7 letter" : ""
-                            } </p>
-                            <p className='error'> {
-                                confirmPassword.length > 0 && !passwordCheckError && "Password should contain a number, alphabet & special character"
-                            } </p>
+                            <p className='error'>
+                            {CheckMinimalCharInPassword()}
+                            </p>
+                            <p className='error'>{ VerifyPasswordChar()}</p>
                         </div>
                         <div className="signup-credential-container"> {/* <label>Confirm Password</label> */}
                             <input type="password" placeholder="Confirm Password" name="" id=""

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import ViewCount from '../../../../utils/ViewCount';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListVideoCards.css";
 
 function PlayListVideoCards({ props, setPlayListVideos }) {
@@ -17,14 +18,14 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
             console.log(id)
             var res = await axios.delete(`/api/user/playlists/${playlistId}/${videoid}`, {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             setPlayListVideos(res.data.playlist.videos);
             (async () => {
                 var res = await axios.get(`/api/user/playlists/${playlistId}`, {
                     headers: {
-                        authorization: localStorage.getItem("FleetsToken")
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
                 });
                 console.log(res);

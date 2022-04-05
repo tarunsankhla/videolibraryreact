@@ -75,6 +75,7 @@ main {
     grid-gap: 1em;
 	gap: 0.5em;
     border-radius: 2em;
+	width: 80%;
 }
 .header{
 	margin: auto;

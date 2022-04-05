@@ -15,6 +15,7 @@ import {
 	HolderImg9,
 } from "../../assets/Holders/holder";
 import "./WatchLater.css";
+import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 
 function WatchLater() {
 	const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } =
@@ -24,7 +25,7 @@ function WatchLater() {
 			(async () => {
 				var res = await axios.get("/api/user/watchlater", {
 					headers: {
-						authorization: localStorage.getItem("FleetsToken"),
+						authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
 					},
 				});
 				console.log(res);

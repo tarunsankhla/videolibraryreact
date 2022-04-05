@@ -65,6 +65,7 @@ main {
 	padding: 2rem 0;
 	gap: 1em;
 	border-radius: 2em;
+	width: 80%;
 }
 
 .login-credential-container {
@@ -90,6 +91,8 @@ main {
 	/* width: 70%; */
 	font-size: 0.7em;
 	gap: 1em;
+
+	padding: 0 1em;
 }
 
 .login-action-btn {
@@ -100,10 +103,14 @@ main {
 .login-btn-container {
 	/* width:70%    */
 	padding:1em	 1em 0;
-	
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 1em 1em 0;
 }
 
 .login-btn-container-body {
+	width: 50%;
 }
 
 .title-header {

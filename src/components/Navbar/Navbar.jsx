@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext";
-import {ROUTE_PATH_LoginPage} from "../../utils/Route";
+import {ROUTE_PATH_LoginPage, VAR_ENCODE_TOKEN} from "../../utils/Route";
 import LoginButton from "../UI/Buttons/LoginButton/LoginButton";
 import IcOutlineLogout from "../UI/Icons/IcOutlineLogout";
 import "./Navbar.css";
@@ -13,7 +13,7 @@ function Navbar() {
 
     const OnSignOut = () => {
         setlogin(false);
-        localStorage.removeItem("FleetsToken");
+        localStorage.removeItem(VAR_ENCODE_TOKEN);
 		localStorage.removeItem("FleetsUserId");
 		localStorage.removeItem("FleetsUserDetails");
         navigate("/login");

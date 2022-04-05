@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router';
 import { HolderImg6 } from '../../../assets/Holders/holder';
 import PlayListVideoCards from '../../../components/UI/Cards/PlayListVideoCards/PlayListVideoCards';
+import { VAR_ENCODE_TOKEN } from "../../../utils/Route";
 import "./IndividualPlayList.css";
 
 function IndividualPlayList() {
@@ -15,7 +16,7 @@ function IndividualPlayList() {
       (async () => {
         var res = await axios.get(`/api/user/playlists/${PlayListId}`, {
           headers: {
-            authorization: localStorage.getItem("FleetsToken")
+            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
         });
         setPlayListVideos(res.data.playlist.videos)
@@ -31,7 +32,7 @@ function IndividualPlayList() {
       <div className='playlist-individual-container'>
         {PlayListVideos.length === 0 
           ? <div className='nocontent'>
-            <div className='page-title md-txt' >The Playlist Contains No Video </div><img src={HolderImg6} className="holders" /></div>
+            <div className='page-title md-txt' >The Playlist Contains No Video </div><img src={HolderImg6} className="holders" alt='no video'/></div>
         :  PlayListVideos?.map((item) => (
           <PlayListVideoCards key={item.id} props={item} setPlayListVideos={setPlayListVideos} />
         ))}

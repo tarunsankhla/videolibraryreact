@@ -3,7 +3,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { usePlayList } from '../../../../context/PlayListContext';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
-
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListMainCard.css";
 
 function PlayListMainCard({ props }) {
@@ -17,7 +17,7 @@ function PlayListMainCard({ props }) {
             console.log(id)
             var res = await axios.delete(`/api/user/playlists/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);
@@ -35,7 +35,7 @@ function PlayListMainCard({ props }) {
         (async () => {
             var res = await axios.get("/api/user/playlists", {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);

@@ -11,6 +11,7 @@ import PlayListViewModal from '../../components/UI/Modal/PlayListViewModal/PlayL
 import { useLikes } from '../../context/LikesContext';
 import { useWatchlater } from '../../context/WatchLaterContext';
 import ViewCount from '../../utils/ViewCount.jsx';
+import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import './VideoContent.css';
 
 function VideoContentPage() {
@@ -31,7 +32,7 @@ function VideoContentPage() {
       var res = await axios.post("/api/user/watchlater",
         { "video": { ...props } },
         {
-          headers: { authorization: localStorage.getItem("FleetsToken") }
+          headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
         });
       console.log(res);
       const { data: { watchlater }, status } = res;
@@ -56,7 +57,7 @@ function VideoContentPage() {
         console.log(" there removing itt");
         var res = await axios.delete(`/api/user/likes/${props._id}`,
           {
-            headers: { authorization: localStorage.getItem("FleetsToken") }
+            headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
           });
       }
       else {
@@ -66,7 +67,7 @@ function VideoContentPage() {
           var res = await axios.post("/api/user/likes",
             { "video": { ...props } },
             {
-              headers: { authorization: localStorage.getItem("FleetsToken") }
+              headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
             });
       }
       setLikesContextArray(res.data.likes);

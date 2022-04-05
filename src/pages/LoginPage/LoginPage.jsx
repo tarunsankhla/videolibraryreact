@@ -16,6 +16,7 @@ import {
 } from "../../assets/Holders/holder";
 import "./LoginPage.css";
 import Button from '../../components/UI/Buttons/Button/Button';
+import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
 
 function LoginPage() {
   const { login, setlogin, userDispatch } = useAuth();
@@ -30,11 +31,13 @@ function LoginPage() {
       var res = await axios.post("/api/auth/login", object);
       if (res.status === 200) {
         var token = res.data.encodedToken;
-        localStorage.setItem("FleetsToken", token)
+        localStorage.setItem(VAR_ENCODE_TOKEN, token)
         var user = res.data.foundUser;
         var userId = res.data.foundUser._id;
-        localStorage.setItem("FleetsUserId", userId);
-        userDispatch({email : res.data.foundUser.email, firstName :res.data.foundUser.firstName , lastName :res.data.foundUser.lastName})
+        localStorage.setItem(VAR_USER_ID, userId);
+        let userDetails = { email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName };
+        localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
+        userDispatch(userDetails)
         console.log(user, userId, token);
         setlogin(true);
         navigate("/");

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
 import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
 import { usePlayList } from '../../../context/PlayListContext';
-
+import { VAR_ENCODE_TOKEN } from "../../../utils/Route";
 function NewPlayList({ setHandleCreatePlayList }) {
     // const { setHandleCreatePlayList } = props;
     console.log(setHandleCreatePlayList)
@@ -20,7 +20,7 @@ function NewPlayList({ setHandleCreatePlayList }) {
                 var res = await axios.post("/api/user/playlists",
                     { "playlist": { "name": playlistName } },
                     {
-                        headers: { authorization: localStorage.getItem("FleetsToken") }
+                        headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
                     });
                 setPlayListName("");
                 RenderPlayListData();
@@ -37,7 +37,7 @@ function NewPlayList({ setHandleCreatePlayList }) {
         (async () => {
             var res = await axios.get("/api/user/playlists", {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);

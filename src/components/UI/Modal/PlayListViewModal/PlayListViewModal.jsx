@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import {usePlayList} from '../../../../context/PlayListContext';
 import { ROUTE_PATH_PlayListPage } from '../../../../utils/Route';
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListViewModal.css";
 
 
@@ -23,7 +24,7 @@ function PlayListViewModal({data, setPlayListModal}) {
                 }
             }, {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);

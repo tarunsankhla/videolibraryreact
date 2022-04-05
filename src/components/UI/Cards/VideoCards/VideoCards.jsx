@@ -8,7 +8,8 @@ import IcOutlineWatchLater from "../../Icons/IcOutlineWatchLater";
 import IcRoundCheckCircleConfirmWatchLater from "../../Icons/IcRoundCheckCircle";
 import IcBaselineAddTask from "../../Icons/IcBaselineAddTask";
 import "./VideoCards.css";
-import {useWatchlater} from "../../../../context/WatchLaterContext";
+import { useWatchlater } from "../../../../context/WatchLaterContext";
+import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
@@ -27,7 +28,7 @@ function VideoCards({props}) {
                 }
             }, {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);
@@ -51,7 +52,7 @@ function VideoCards({props}) {
                 }
             }, {
                 headers: {
-                    authorization: localStorage.getItem("FleetsToken")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
             console.log(res);

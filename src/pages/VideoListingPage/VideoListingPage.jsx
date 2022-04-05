@@ -80,19 +80,19 @@ function VideoListingPage() {
         }
       </div> */}
       <ul className='icons-cateogry-layer'>
-      {CategoryList.map((item) => (
-        <li className='cateogory-container-batch-icons' onClick={()=>filterHandler(item.type)} key={item.name}>
-          <img src={item.icon} alt="category "/>
-          { item.name}
-        </li>
-      ))}
+        {CategoryList.map((item) => (
+          <li className='cateogory-container-batch-icons' onClick={()=>filterHandler(item.type)} key={item.name}>
+            <img src={item.icon} alt="category "/>
+            { item.name}
+          </li>
+        ))}
       </ul>
       <div className='videolist-container'>
         {
         videoLib.length !== 0 ?  videoLib.map((item) => (
             <VideoCards key={item.id} props={item} />
         )) : <div>  "Loading ......"
-            <img src={HolderImg8} className="holders" /></div>
+            <img src={HolderImg8} className="holders" alt='lodderLogo' /></div>
         }
       </div>
     </div>

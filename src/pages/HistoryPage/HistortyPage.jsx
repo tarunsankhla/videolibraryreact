@@ -15,6 +15,7 @@ import {
   HolderImg8,
   HolderImg9
 } from "../../assets/Holders/holder";
+import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 
 function HistortyPage() {
   const { historyContextArray, setHistoryContextArray } = useHistory();
@@ -23,7 +24,7 @@ function HistortyPage() {
       (async () => {
         var res = await axios.get("/api/user/history", {
           headers: {
-            authorization: localStorage.getItem("FleetsToken")
+            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
         });
         setHistoryContextArray(res.data.history);
@@ -39,7 +40,7 @@ function HistortyPage() {
     try {
       var res = await axios.delete(`/api/user/history/all`, {
         headers: {
-          authorization: localStorage.getItem("FleetsToken")
+          authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
         }
       });
       setHistoryContextArray(res.data.history);

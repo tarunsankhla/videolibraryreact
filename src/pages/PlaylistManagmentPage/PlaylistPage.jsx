@@ -4,6 +4,7 @@ import PlayListMainCard from '../../components/UI/Modal/PlayListMainCard/PlayLis
 import IcRoundCreate from '../../components/UI/Icons/IcRoundCreate';
 import { usePlayList } from '../../context/PlayListContext';
 import NewPlayList from './NewPlayList/NewPlayList';
+import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import {
   HolderImg1,
   HolderImg2,
@@ -26,7 +27,7 @@ function PlaylistPage() {
       (async () => {
         var res = await axios.get("/api/user/playlists", {
           headers: {
-            authorization: localStorage.getItem("FleetsToken")
+            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
         });
         console.log(res);
