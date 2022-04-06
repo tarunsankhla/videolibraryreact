@@ -2,9 +2,86 @@
 
  <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logo.png" alt="logoImage" width="200px" height="200px" /></p>
  
- 
+ ---
+
+## 📕 Table of Contents
+
+- [About](#-about)
+- [Features It has](#-features-it-has)
+- [Features You will See in Future](#-features-you-will-see-in-future)
+- [Getting Started](#-getting-started)
+- [Connect with me](#-connect-with-me)
+
+---
  
  <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logobanner.png" alt="logoImage" width="100%" height="auto" /></p>
+## Feature
+
+
+
+1. Home Page
+  -  page with a list of few categories.
+  - If  click on any one of the categories I will be redirected to the video list page with the selected category.
+
+2. Video Listing Page
+ - All videos are listed.
+ - On click of video card navigate to Single Video content page
+ - on vidoe listing page you can Like, Dislike and Add and remover Video from Watch Later
+
+3. playlist Management
+ - Create a PLaylist
+ - View All playlist
+ - On Clicking on individual playlist navigate to  a page containing video in that playlist and on that page can remove video from playlist
+ - can delete entire playlist
+
+4. Like/Dislike
+ - You can like or dislike a particular video from both video listing page or from a single video page which will add or remove the video from the Liked Videos List.
+ - Can also navigate to LikedPage from nav to See all like video and remove video from likes from there.
+
+5. Watch Later
+ - can add or remove a particular video to watch later from both video listing page or from a single video page
+ - can naivgate to wath later page via Aside Nav and can see AL watchLater videos and remove videos if needed.
+ 
+ 6. History Page
+ - When you click on video card it gets add in history.
+ - you delete a particular video from the history
+ - Clear full history which will clear all the history.
+
+7. Single Video Page
+ -  click on video card you will ber redirected to single video page where I can,
+ - Save video to multiple Playlist and also remove and can also Add ne playlist
+  - like and dislike a video
+  -Add and remove video from watch later
+
+8. Filter Videos with Category
+ -  videos by Category from the video listing page.
+
+
+9.  Loading & Alerts
+ -  alerts whenever I,
+ - Add video to the Liked Videos List
+ - Remove video from the Liked Videos List
+ - Add video to the Watch Later list
+ - Remove video from the Watch Later List
+ - Add video to the Custom Playlist List
+ - Remove video from the Custom Playlist List
+ - Create a new playlist 
+ - Delete the whole playlist
+
+
+10. User Profile
+ - user profile with details containing this email Id, First Name and Last Name and Can edit and update
+11. Sign-up Page
+- email, first name, last name, password & confirm password.
+-  hide-show icon button that shows or hides my password.
+
+12. Login Page
+ - login email & password.
+ - guest user
+ 13. Logout
+ - logoutbutton Nav
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
