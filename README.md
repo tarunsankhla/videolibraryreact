@@ -1,3 +1,10 @@
+
+
+ <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logo.png" alt="logoImage" width="200px" height="200px" /></p>
+ 
+ 
+ 
+ <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logobanner.png" alt="logoImage" width="100%" height="auto" /></p>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
