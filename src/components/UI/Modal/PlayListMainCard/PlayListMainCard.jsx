@@ -5,6 +5,7 @@ import { usePlayList } from '../../../../context/PlayListContext';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListMainCard.css";
+import { Toast } from '../../Toast/toast';
 
 function PlayListMainCard({ props }) {
     const { playListContextArray, setPlayListContextArray } = usePlayList();
@@ -22,9 +23,13 @@ function PlayListMainCard({ props }) {
             });
             console.log(res);
             setPlaylistDateAfterDelete();
+            if (res.status === 200) {
+                Toast("succes", "PlayList Deleted");
+            }
         }
         catch (err) {
             console.log(err)
+            Toast("error","Failed to remove Playlist!!")
         }
     }
 

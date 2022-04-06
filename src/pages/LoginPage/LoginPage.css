@@ -2,7 +2,6 @@
 	position: relative;
 	color: #000;
 	background: #f1cdd7;
-	/* color: #865c6c; */
 	color: white;
 }
 
@@ -17,9 +16,7 @@
 	padding-top: 1em;
 }
 
- /* h1, h2 {
-	color: wheat;
-} */
+ 
 .header{
 	margin: auto;
 	padding: 1em;
@@ -88,10 +85,8 @@ main {
 .login-rem-forgetpass-container {
 	display: flex;
 	justify-content: space-between;
-	/* width: 70%; */
 	font-size: 0.7em;
 	gap: 1em;
-
 	padding: 0 1em;
 }
 

@@ -10,39 +10,80 @@ import IcBaselineAddTask from "../../Icons/IcBaselineAddTask";
 import "./VideoCards.css";
 import { useWatchlater } from "../../../../context/WatchLaterContext";
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
+import { Toast } from "../../Toast/toast";
+import { useAuth } from "../../../../context/AuthContext";
+import { IcOutlineThumbUp, IcRoundThumbDownOffAlt } from "../../Icons";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
-
-    const {WatchlaterProviderContextArray, setWatchlaterProviderContextArray} = useWatchlater();
+    const { login, setlogin } = useAuth();
+    const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
+    const { likesContextArray, setLikesContextArray } = useLikes();
     const {videoid, snippet, statistics} = props;
-    const WatchVideoHandler = (props) => {
-        console.log(props);
-    };
-    const AddVideoToFavourite = async (props) => {
+
+     /**
+     * The Methdod is to Add video in
+     *  watch later
+    */
+    const AddVideoToWatchLater = async (props) => {
         try {
-            console.log(props);
-            var res = await axios.post("/api/user/watchlater", {
-                video: {
-                    ...props
+            if(login){
+                console.log(props);
+                if (WatchlaterProviderContextArray?.some((item) => item._id === videoid)) {
+                    try {
+                        var res = await axios.delete(`/api/user/watchlater/${videoid}`, {
+                            headers: {
+                                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                            }
+                        });
+                        console.log(res);
+                        setWatchlaterProviderContextArray(res.data.watchlater);
+                        Toast("success", " Removed !!");
+                    }
+                    catch (err) {
+                        console.log(err);
+                        Toast("error", "Failed to Remove !!");
+                    }
                 }
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                else {
+                    var res = await axios.post("/api/user/watchlater", {
+                        video: {
+                            ...props
+                        }
+                    }, {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                    console.log(res);
+                    const { data: {
+                        watchlater
+                    }, status } = res;
+                    console.log(watchlater, status);
+                    if (status === 201) {
+                        setWatchlaterProviderContextArray(watchlater);
+                        Toast("success", "Added to WatchLater")
+                    }
                 }
-            });
-            console.log(res);
-            const {data: {
-                    watchlater
-                }, status} = res;
-            console.log(watchlater, status);
-            if (status === 201) {
-                setWatchlaterProviderContextArray(watchlater);
+            } else {
+                Toast("error", "You need to Login!!");
             }
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error);
+            if(error.message.slice(error.message.length-3,error.message.length) === "409")
+            {
+                Toast("error", "Something suspicious!! The Video Already Exist in WatchLater");
+                console.log("Use exist")
+            }else{
+                Toast("error", "Something went wrong!! try again.");
+                console.log("signup ", error, error.status);
+          }
         }
     };
+
+    /**
+     * The Methdod is to Add video in history
+    */
     const AddToHistoryHandler = async (props) => {
         try {
             console.log(props);
@@ -60,6 +101,39 @@ function VideoCards({props}) {
             console.log(err);
         }
     };
+
+     // This method is to add likes of video in array
+    const LikeHandler = async (props) => {
+        try {
+        console.log(props, likesContextArray);
+        if(login){
+            if (likesContextArray?.some((item) => item._id === videoid)) {
+            console.log(" there removing itt");
+            var res = await axios.delete(`/api/user/likes/${props._id}`,
+                {
+                headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+                });
+                Toast("success", "DisLiked!");
+            }
+            else {
+                console.log("not there adding it");
+                var res = await axios.post("/api/user/likes",
+                { "video": { ...props } },
+                {
+                    headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+                    });
+                    Toast("success", "Liked!");
+            }
+            setLikesContextArray(res.data.likes);
+            console.log(res)
+        } else {
+            Toast("error", "You need to Login!!");
+        }
+    }
+    catch (err) {
+      console.log(err)
+    }
+    }
     return (
         <div onClick={
             () => AddToHistoryHandler(props)
@@ -78,15 +152,16 @@ function VideoCards({props}) {
 
                         <div className="card-content">
                             <div className="card-body">
-                                <span className="text-grey elipsis">
-                                    {
-                                    snippet.title
+                                <span className="text-grey elipsis pd-btm">
+                                    {snippet.title
                                 }</span>
                                
-                               <span className="elipsis"> {
-                                snippet.channelTitle
-                            }</span>
-
+                                <div className="card-body-channel ">
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <span className="elipsis md-txt elipsis-md"> {
+                                        snippet.channelTitle
+                                    }</span>
+                                </div>
                                 <h2> {" "}
                                     <ViewCount viewCount={
                                         statistics.viewCount
@@ -96,20 +171,22 @@ function VideoCards({props}) {
                         </div>
                     </div>
                 </Link>
-                {/* <div className="card-footer">
-                            <div className="card-footer-view">
-                                <button onClick={()=>{WatchVideoHandler(props)}}>Add to Cart</button>
-                            </div>
-                        </div> */}
-                <span className=" badge topright-badge "
-                    onClick={
-                        () => {
-                            AddVideoToFavourite(props);
-                        }
-                }>
-                    {
-                    WatchlaterProviderContextArray?.some((item) => item._id === videoid) ? <IcBaselineAddTask/>: <IcOutlineWatchLater/>
-                } </span>
+                <span className=" badge topright-badge video-badge-container">
+                    <span   onClick={() => {
+                            AddVideoToWatchLater(props);
+                        }}>
+                        {WatchlaterProviderContextArray?.some((item) => item._id === videoid)
+                            ? <IcBaselineAddTask />
+                            : <IcOutlineWatchLater />}
+                    </span>
+                    <span className="like-badge"  onClick={() => {
+                            LikeHandler(props);
+                        }}>
+                        {likesContextArray?.some((item) => item._id === videoid)
+                            ? <IcRoundThumbDownOffAlt color={"#27474e"} />
+                            : <IcOutlineThumbUp />}
+                    </span>
+                </span>
             </div>
         </div>
     );

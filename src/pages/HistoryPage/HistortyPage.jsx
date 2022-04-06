@@ -16,6 +16,7 @@ import {
   HolderImg9
 } from "../../assets/Holders/holder";
 import { VAR_ENCODE_TOKEN } from "../../utils/Route";
+import { Toast } from '../../components/UI/Toast/toast';
 
 function HistortyPage() {
   const { historyContextArray, setHistoryContextArray } = useHistory();
@@ -44,9 +45,12 @@ function HistortyPage() {
         }
       });
       setHistoryContextArray(res.data.history);
+      if (res.status === 200) { 
+        Toast("success", "Cleared History!");
+      }
     }
     catch (err) {
-      console.log(err)
+      Toast("erro", "Couldn't Clear History! Try again Later");
     }
   }
 

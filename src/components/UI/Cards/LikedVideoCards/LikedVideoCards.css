@@ -1,11 +1,11 @@
-.watchlater-delete {
+.liked-delete {
 	position: absolute;
 	z-index: 999;
 	right: 1em;
     top: 1em;
 }
 
-.watchlater-delete:hover {
+.liked-delete:hover {
 	color: red;
 	transform: scale(1.02);
 }
@@ -14,6 +14,6 @@
 	background: transparent;
 }
 
-.watchlater-content{
+.liked-content{
 	width: 100%;
 }

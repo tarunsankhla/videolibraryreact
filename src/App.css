@@ -25,6 +25,23 @@ body {
 	pointer-events: none;
 }
 
+body::-webkit-scrollbar {
+	width: 1rem;
+}
+body::-webkit-scrollbar-track {
+	background-color: var(--shade-1);
+}
+body::-webkit-scrollbar-thumb {
+	background-color: var(--btn-text-color-2);
+	border-radius: 1rem;
+	border: 3px solid var(--shade-1);
+}
+
+body::-webkit-scrollbar:hover {
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.App-logo {
 		animation: App-logo-spin infinite 20s linear;
@@ -87,6 +104,10 @@ body {
 	padding: 0.5em;
 }
 
+.sm-txt {
+	font-size: 0.4em;
+}
+
 .md-txt {
 	font-size: 0.6em;
 }
@@ -124,11 +145,29 @@ span:hover {
 	font-size: 1.5em;
 	color: var(--hover-color);
 	font-weight: 800;
-	padding-left: 1em;
 }
 
 .nocontent{
 	display: flex;
 	flex-wrap: wrap;
 	padding: 1em;
-	flex-direction: column;}
+	flex-direction: column;
+	width: 100%;
+}
+
+.channel-img{
+	height: 1.5em;
+	width: 1.5em;
+	border-radius: 50%;
+}
+
+.card-body-channel{
+	display: flex;
+    justify-content: flex-start;
+    font-size: 1.2em;
+	align-items: center;
+}
+
+.pd-btm{
+	padding-bottom: 2px;
+}

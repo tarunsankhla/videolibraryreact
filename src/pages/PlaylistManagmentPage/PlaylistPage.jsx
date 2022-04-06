@@ -17,11 +17,15 @@ import {
   HolderImg9
 } from "../../assets/Holders/holder";
 import "./PlaylistPage.css";
+import { Toast } from '../../components/UI/Toast/toast';
+import { useAuth } from '../../context/AuthContext';
 
 function PlaylistPage() {
   const { playListContextArray, setPlayListContextArray } = usePlayList();
   const [handleCreatePlayList, setHandleCreatePlayList] = useState(false);
   const [playlist, setPlaylist] = useState([]);
+  const { login, setlogin } = useAuth();
+
   useEffect(() => {
     try {
       (async () => {
@@ -30,30 +34,36 @@ function PlaylistPage() {
             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
         });
-        console.log(res);
         setPlayListContextArray(res.data.playlists);
         setPlaylist(res.data.playlists);
       })()
     }
     catch (error) {
-      console.log("Product list page error", error);
+      Toast("error", "Some Internal Server Issue!!");
     }
   }, [])
 
-
+  const NotLoginErrorHandler = () => { 
+    if (login) {
+      setHandleCreatePlayList((prev) => !prev)
+    }
+    else {
+      Toast("error", "You need to login!!")
+    }
+  }
 
   return (
     <div className='playlist-container'>
       <div className="page-title">My Playlist</div>
       <div>
-        <button onClick={() => setHandleCreatePlayList((prev) => !prev)} className='btn btn-initial-create'>
+        <button onClick={() => NotLoginErrorHandler()} className='btn btn-initial-create'>
           Create Playlist
           <IcRoundCreate />
         </button>
 
         <div>
         {
-          handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
+            handleCreatePlayList && login && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} /> 
         }</div>
       </div>
       <hr />

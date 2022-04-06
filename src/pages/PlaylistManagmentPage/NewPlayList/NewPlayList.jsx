@@ -1,35 +1,46 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
 import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
-import { usePlayList } from '../../../context/PlayListContext';
-import { VAR_ENCODE_TOKEN } from "../../../utils/Route";
-function NewPlayList({ setHandleCreatePlayList }) {
-    // const { setHandleCreatePlayList } = props;
+import {Toast} from '../../../components/UI/Toast/toast';
+import { useAuth } from '../../../context/AuthContext';
+import {usePlayList} from '../../../context/PlayListContext';
+import {VAR_ENCODE_TOKEN} from "../../../utils/Route";
+function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlayList } = props;
     console.log(setHandleCreatePlayList)
     const [playlistName, setPlayListName] = useState("");
-    const { playListContextArray, setPlayListContextArray } = usePlayList();
+    const {playListContextArray, setPlayListContextArray} = usePlayList();
     const [error, setError] = useState(false);
+    const { login, setlogin } = useAuth();
     var ongoingReq = true;
     const createPlaylistHandler = async () => {
         try {
-            console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
+            if (login) {
+                console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
 
-            if (ongoingReq) {
+                
                 ongoingReq = false;
-                var res = await axios.post("/api/user/playlists",
-                    { "playlist": { "name": playlistName } },
-                    {
-                        headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
-                    });
-                setPlayListName("");
-                RenderPlayListData();
-                setHandleCreatePlayList((prev) => !prev);
-                ongoingReq = true
+                var res = await axios.post("/api/user/playlists", {
+                    "playlist": {
+                        "name": playlistName
+                    }
+                }, {
+                    headers: {
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                    }
+                });
+                if (res.status === 201) {
+                    Toast("success", "Adedd New Playlist!!");
+                    setPlayListName("");
+                    RenderPlayListData();
+                    setHandleCreatePlayList((prev) => !prev);
+                    ongoingReq = true
+                }
+            } else {
+                Toast("error", "you need to login!!");
             }
-        }
-        catch (error) {
-            console.log("Product list page error", error);
+        } catch (error) {
+            Toast("error", "Failed to Added a Playlist!!");
         }
     }
 
@@ -48,14 +59,31 @@ function NewPlayList({ setHandleCreatePlayList }) {
         <div className=' new-playlist-modal lg-txt dialog'>
             <div className='playlist-modal-header dailog-header'>
                 <h2>Create New Playlist</h2>
-                <span onClick={() => { setHandleCreatePlayList(false) }}><IcRoundCancel /></span>
+                <span onClick={
+                    () => {
+                        setHandleCreatePlayList(false)
+                    }
+                }><IcRoundCancel/></span>
             </div>
             <div className='dailog-body confirmation-body'>
-            <input value={playlistName} className='input-playlist' onChange={(e) => { setPlayListName(e.target.value) }} placeholder='PlayList Name' />
-            </div><button button className='btn-create-playlist lg-txt' onClick={() => createPlaylistHandler()}>
+                <input value={playlistName}
+                    className='input-playlist'
+                    onChange={
+                        (e) => {
+                            setPlayListName(e.target.value)
+                        }
+                    }
+                    placeholder='PlayList Name'/>
+            </div>
+        <div class="dailog-footer">
+            <button button className='btn-create-playlist lg-txt'
+                onClick={
+                    () => createPlaylistHandler()
+            }>
                 Add PlayList
             </button>
         </div>
+    </div>
     )
 }
 

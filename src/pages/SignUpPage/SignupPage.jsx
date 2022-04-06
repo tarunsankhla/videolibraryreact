@@ -18,6 +18,7 @@ import {
 } from "../../assets/Holders/holder";
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
+import { Toast } from '../../components/UI/Toast/toast';
 
 const SignUpDetails = (state, action) => {
     console.log(state, action);
@@ -102,7 +103,6 @@ function SignupPage() {
                 "firstName": state.firstName,
                 "lastName": state.lastName
             };
-            console.log(object)
             var res = await axios.post("/api/auth/signup", object);
             console.log(res);
             if (res.status === 201) {
@@ -114,19 +114,20 @@ function SignupPage() {
                 let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
                 localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
                 userDispatch(userDetails)
-                console.log(user, userId, token);
                 setlogin(true);
-                
-                // History.push("/products");
+                Toast("success", "Sign Up Done!!");
+                navigate(-1);
             }
             if (res.status === 422) {
                 console.log("Use exist")
             }
-            navigate("/");
+            else {
+                Toast("error","Check you password I hope it meets all conditions")
+            }
+            
         } catch (error) {
-            console.log("signup ", error)
+            Toast("error", "The User Exist or check you credentials!!");
         }
-        // navigate("/");
     }
 
 
@@ -143,9 +144,6 @@ function SignupPage() {
         return confirmPassword.length > 0 && !passwordCheckError && "Password should contain a number, alphabet & special character";
     }
 
-    const CompareBothPassword = (e) => { 
-        setPasswordCheckError(e.target.value !== confirmPassword ? "red" : "black");
-    }
     return (<>
         <div className='signup-main-container'>
             <section className='auth-sidebar'>
@@ -165,13 +163,13 @@ function SignupPage() {
                 <main>
                     <div className="signup-container">
 
-                        <div className="signup-credential-container"> {/* <label>Email Address</label> */}
+                        <div className="signup-credential-container"> 
                             <input placeholder="Email Address - xyz@gmail.com"
                                 onChange={
                                     (e) => dispatch({email: e.target.value})
                                 }/>
                         </div>
-                        <div className="signup-credential-container"> {/* <label>Password</label> */}
+                        <div className="signup-credential-container"> 
                             <div className='password-holder'>
                             <input type={passwordType}
                                 style={
@@ -189,10 +187,10 @@ function SignupPage() {
                                 placeholder="Password"
                                 id=""/>{
                                     passwordType === "password" ?
-                                        <span class="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
+                                        <span className="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
                                             visibility
                                         </span>
-                                        : <span class="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                                        : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
                                             visibility_off
                                         </span>}
                                         </div>

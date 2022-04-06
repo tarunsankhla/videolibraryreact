@@ -13,3 +13,26 @@
 img {
 	object-fit: cover;
 }
+
+
+
+@media screen and (max-width: 1030px) {
+
+}
+
+@media screen and (max-width: 780px) {
+
+}
+
+@media screen and (max-width: 660px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 360px) {
+
+}
+

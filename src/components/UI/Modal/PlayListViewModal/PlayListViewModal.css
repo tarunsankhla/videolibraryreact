@@ -2,11 +2,6 @@
 	position: fixed;
 	top: 25%;
     left: 25%;
-	/* background: gray; */
-	/* padding: 1em;
-	user-select: auto;
-	min-width: 30vw;
-	position: absolute; */
 }
 
 .playlist-list {
@@ -22,10 +17,24 @@
 	height: fit-content;
 }
 .dailog-header{
-	color :var(--shade-9)
+	color :var(--shade-9);
+	justify-content: space-between;
+    align-items: center;
 }
 
 .dialog{
 	height: fit-content;
 	max-width: 70%;
+	left: 25%;
+    bottom: 10%;
+}
+
+.dailog-footer > button{
+	background: rgb(189, 189, 189);
+}
+
+.dailog-footer > button:hover {
+	transform: scale(1.01);
+	background: var(--shade-9);
+	color: white;
 }

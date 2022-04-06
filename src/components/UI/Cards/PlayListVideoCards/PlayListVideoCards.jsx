@@ -6,6 +6,7 @@ import ViewCount from '../../../../utils/ViewCount';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListVideoCards.css";
+import { Toast } from '../../Toast/toast';
 
 function PlayListVideoCards({ props, setPlayListVideos }) {
     const { videoid, snippet, statistics } = props;
@@ -22,17 +23,19 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                 }
             });
             setPlayListVideos(res.data.playlist.videos);
+            if (res.status === 200) {
+                Toast("success", "Removed from PlayList!!");
+            }
             (async () => {
                 var res = await axios.get(`/api/user/playlists/${playlistId}`, {
                     headers: {
                         authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
                 });
-                console.log(res);
             })()
         }
         catch (err) {
-            console.log(err)
+            Toast("error", "Failed to Remove From Playlist!!");
         }
     }
     return (
@@ -44,8 +47,16 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
 
                     <div className="card-content">
                         <div className="card-body">
-                            <span className="text-grey elipsis">{snippet.title}</span>
-                            {snippet.channelTitle}
+                        <span className="text-grey elipsis pd-btm">
+                                    {snippet.title
+                                }</span>
+                               
+                                <div className="card-body-channel ">
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <span className="elipsis md-txt elipsis-md"> {
+                                        snippet.channelTitle
+                                    }</span>
+                                </div>
 
                             <h2> <ViewCount viewCount={statistics.viewCount} /></h2>
                         </div>
@@ -53,8 +64,6 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                 </Link>
                 <span className="material-icons-round badge topright-badge " onClick={() => { deletePlayListVideoFromIindividualPlayListHandler(props._id) }}>
                     <IcTwotoneDelete />
-                    {/* <IcRoundAutoModeAddWatchLater />
-                    <IcRoundCheckCircleConfirmWatchLater/> */}
                 </span>
             </div>
         </div>

@@ -17,11 +17,12 @@ import {
 import "./LoginPage.css";
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
+import { Toast } from '../../components/UI/Toast/toast';
 
 function LoginPage() {
   const { login, setlogin, userDispatch } = useAuth();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const onSubmitHandler = async () => {
@@ -40,12 +41,15 @@ function LoginPage() {
         userDispatch(userDetails)
         console.log(user, userId, token);
         setlogin(true);
-        navigate("/");
+        Toast("success","logged in successfully!!")
+        navigate(-1);
       }
       
     }
     catch (error) {
-      console.log(error)
+      console.log(error);
+      Toast("error", "Check you Credentials!! try again.");
+      console.log("signup ", error, error.status);
     }
   }
 
@@ -76,17 +80,17 @@ function LoginPage() {
               <div className="title-header">
 
                 <div className="login-credential-container">
-                  <input placeholder="Email Address - xyz@gmail.com" onChange={(e) => setEmail(e.target.value)} />
+                  <input placeholder="Email Address - xyz@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="login-credential-container">
-                  <input type="password" onChange={(e) => setPassword(e.target.value)} name="" placeholder="Password" id="" />
+                  <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="" placeholder="Password" id="" />
                 </div>
                 <div className="login-rem-forgetpass-container">
                   <div className='login-action-container md-txt'>
                     <input type="checkbox" name="" id="" />
                     Remember me
                   </div>
-                  <a className="btn-link md-txt">Forgot your password?</a>
+                  <div className="btn-link md-txt">Forgot your password?</div>
                 </div>
                 <div className="login-btn-container">
                   <div className='login-btn-container-body' onClick={onSubmitHandler}><LoginButton /></div>
@@ -96,11 +100,6 @@ function LoginPage() {
                     <Button name={"Guest User"} />
                   </div>
                 </div>
-                {/* <Link className="login-footer md-txt" to="/signup">
-                  Create New Account <span className="material-icons-round">
-                    navigate_next
-                  </span>
-                </Link> */}
               </div>
             </div>
           </main>

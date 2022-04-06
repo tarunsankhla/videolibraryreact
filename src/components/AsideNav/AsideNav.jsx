@@ -1,12 +1,12 @@
 import React from "react";
 import "./AsideNav.css";
-import IcRoundPlaylistPlay from "../UI/Icons/IcRoundPlaylistPlay";
 import IcTwotoneWatchLater from "../UI/Icons/IcTwotoneWatchLater";
 import IcTwotoneManageHistory from "../UI/Icons/IcTwotoneManageHistory";
 import IcTwotoneHome from "../UI/Icons/IcTwotoneHome";
 import IcTwotoneVideoLibrary from "../UI/Icons/IcTwotoneVideoLibrary";
 import IcTwotonePlaylistPlay from "../UI/Icons/IcTwotonePlaylistPlay";
 import { NavLink } from "react-router-dom";
+import { IcOutlineThumbUp } from "../UI/Icons";
 
 function AsideNav() {
   return (
@@ -28,6 +28,12 @@ function AsideNav() {
         <div className="aside-nav-row">
           <IcTwotonePlaylistPlay />
           <span className="icon-handle">PlayList</span>
+        </div>
+      </NavLink>
+      <NavLink to="/likes">
+        <div className="aside-nav-row">
+          <IcOutlineThumbUp />
+          <span className="icon-handle">Likes</span>
         </div>
       </NavLink>
       <NavLink to="/watchlater">
