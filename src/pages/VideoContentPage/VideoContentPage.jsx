@@ -24,7 +24,7 @@ function VideoContentPage() {
   const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
   const { login, setlogin } = useAuth();
   const data = location.state;
-
+  console.log(data);
   useEffect(() => {
     setVideoUrl(`https://www.youtube.com/embed/${data.videoid}?autoplay=1&origin=http://example.com`);
   }, []);
@@ -87,9 +87,16 @@ function VideoContentPage() {
     }
   }
 
-  const AdVideoToPlaylistHAndler = () => {
 
-    // 409 video already there
+    const NotLoginErrorHandler = () => { 
+    if (login) {
+      console.log("show")
+      setShowPlayListModal((prev) => !prev)
+    }
+    else {
+      console.log("show error")
+      Toast("error", "You need to login!!")
+    }
   }
   return (
     <div className='video-content-container'>
@@ -112,7 +119,7 @@ function VideoContentPage() {
               {likesContextArray?.some((item) => item._id === data._id) ?<IcRoundThumbDownOffAlt /> : <IcOutlineThumbUp /> }
               {data.statistics.likeCount}
             </div>
-            <div className='video-action' onClick={() => setShowPlayListModal((prev) => !prev)}><IcRoundPlaylistAdd />
+            <div className='video-action' onClick={() => NotLoginErrorHandler()}><IcRoundPlaylistAdd />
               Add to Playlist
             </div>
             <div>

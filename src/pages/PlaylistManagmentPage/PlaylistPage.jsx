@@ -18,11 +18,14 @@ import {
 } from "../../assets/Holders/holder";
 import "./PlaylistPage.css";
 import { Toast } from '../../components/UI/Toast/toast';
+import { useAuth } from '../../context/AuthContext';
 
 function PlaylistPage() {
   const { playListContextArray, setPlayListContextArray } = usePlayList();
   const [handleCreatePlayList, setHandleCreatePlayList] = useState(false);
   const [playlist, setPlaylist] = useState([]);
+  const { login, setlogin } = useAuth();
+
   useEffect(() => {
     try {
       (async () => {
@@ -42,20 +45,29 @@ function PlaylistPage() {
     }
   }, [])
 
-
+  const NotLoginErrorHandler = () => { 
+    if (login) {
+      console.log("show")
+      setHandleCreatePlayList((prev) => !prev)
+    }
+    else {
+      console.log("show error")
+      Toast("error", "You need to login!!")
+    }
+  }
 
   return (
     <div className='playlist-container'>
       <div className="page-title">My Playlist</div>
       <div>
-        <button onClick={() => setHandleCreatePlayList((prev) => !prev)} className='btn btn-initial-create'>
+        <button onClick={() => NotLoginErrorHandler()} className='btn btn-initial-create'>
           Create Playlist
           <IcRoundCreate />
         </button>
 
         <div>
         {
-          handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
+            handleCreatePlayList && login && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} /> 
         }</div>
       </div>
       <hr />

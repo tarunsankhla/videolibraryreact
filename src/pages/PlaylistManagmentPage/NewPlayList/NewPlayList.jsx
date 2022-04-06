@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
 import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
 import {Toast} from '../../../components/UI/Toast/toast';
+import { useAuth } from '../../../context/AuthContext';
 import {usePlayList} from '../../../context/PlayListContext';
 import {VAR_ENCODE_TOKEN} from "../../../utils/Route";
 function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlayList } = props;
@@ -10,29 +11,34 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
     const [playlistName, setPlayListName] = useState("");
     const {playListContextArray, setPlayListContextArray} = usePlayList();
     const [error, setError] = useState(false);
+    const { login, setlogin } = useAuth();
     var ongoingReq = true;
     const createPlaylistHandler = async () => {
         try {
-            console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
+            if (login) {
+                console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
 
-            // if (ongoingReq) {
-            ongoingReq = false;
-            var res = await axios.post("/api/user/playlists", {
-                "playlist": {
-                    "name": playlistName
+                // if (ongoingReq) {
+                ongoingReq = false;
+                var res = await axios.post("/api/user/playlists", {
+                    "playlist": {
+                        "name": playlistName
+                    }
+                }, {
+                    headers: {
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                    }
+                });
+                console.log(res);
+                if (res.status === 201) {
+                    Toast("success", "Adedd New Playlist!!");
+                    setPlayListName("");
+                    RenderPlayListData();
+                    setHandleCreatePlayList((prev) => !prev);
+                    ongoingReq = true
                 }
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
-                }
-            });
-            console.log(res);
-            if (res.status === 201) {
-                Toast("success", "Adedd New Playlist!!");
-                setPlayListName("");
-                RenderPlayListData();
-                setHandleCreatePlayList((prev) => !prev);
-                ongoingReq = true
+            } else {
+                Toast("error", "you need to login!!");
             }
             // }
         } catch (error) {

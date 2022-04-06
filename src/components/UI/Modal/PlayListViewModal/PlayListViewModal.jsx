@@ -11,40 +11,102 @@ import { IcRoundCancel } from '../../Icons';
 
 
 function PlayListViewModal({data, setPlayListModal}) {
-    const {playListContextArray, setPlayListContextArray} = usePlayList();
+    const { playListContextArray, setPlayListContextArray } = usePlayList();
+    const [playlist, setPlaylist] = useState([]);
     const { videoDetails } = data;
     const [handleCreatePlayList, setHandleCreatePlayList] = useState(false);
  
     console.log("playlit modal", data);
+    useEffect(() => {
+        try {
+          (async () => {
+            var res = await axios.get("/api/user/playlists", {
+              headers: {
+                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+              }
+            });
+            console.log(res);
+            setPlayListContextArray(res.data.playlists);
+            setPlaylist(res.data.playlists);
+          })()
+        }
+        catch (error) {
+          console.log("Product list page error", error);
+          Toast("error", "Some Internal Server Issue!!");
+        }
+      }, [])
+
+    
     /**
      * 
      * @param {string} name 
      * method is use to add a video in playlist
      */
-    const SelectedPlayListHandler = async (playlistItem) => {
+    const SelectedPlayListHandler = async (playlistItem,Playlist) => {
         try {
-            var res = await axios.post(`/api/user/playlists/${playlistItem}`, {
-                "video": {
-                    ...data
+            if (Playlist.videos.some((i) => i._id === data._id)) {
+                try {
+                    var res = await axios.delete(`/api/user/playlists/${Playlist._id}/${data._id}`, {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                    if (res.status === 200) {
+                        Toast("success", "Removed from PlayList!!");
+                    }
+
                 }
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                catch (err) {
+                    console.log(err);
+                    Toast("error", "Failed to Remove From Playlist!!");
                 }
-            });
-            console.log(res);
-            if (res.status === 201) {
-                Toast("success", "Added to Playlist!!");
+
             }
-            const {data: {
+            else {
+                var res = await axios.post(`/api/user/playlists/${playlistItem}`, {
+                    "video": {
+                        ...data
+                    }
+                }, {
+                    headers: {
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                    }
+                });
+                console.log("response", res);
+                const {data: {
                     playlist
                 }, status} = res;
-            console.log(playlist, status);
+                console.log(playlist, status);
+            }
+                if (res.status === 201) {
+                    // take the response filter the playlist context and append the new video in that playlist
+                    // console.log("playlist context aray",playListContextArray)
+                    // console.log(playListContextArray.map((playlistItem) => {
+                    //     console.log(playlistItem._id, res.data.playlist._id, playlistItem.videos, res.data.playlist.videos);
+                    //     if (playlistItem._id === res.data.playlist._id) {
+                    //         playlistItem.videos = res.data.playlist.videos.slice();
+                    //         console.log(playlistItem.videos);
+                    //     }
+                    // }));
+                    Toast("success", "Added to Playlist!!");
+                }
+            try {
+                        (async () => {
+                            var res = await axios.get("/api/user/playlists", {
+                                headers: {
+                                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                                }
+                            });
+                            console.log(res);
+                            setPlayListContextArray(res.data.playlists);
+                        })()
+                    }
+                    catch (error) {
+                        console.log("Product list page error", error);
+                    }
+            
 
-            // take the response filter the playlist context and append the new video in that playlist
-            // setPlayListContextArray((prev) => prev.array.forEach(element => {
-            //     element._id === playlistItem ? playlist.video.push[res.data.playlist]
-            // });
+           
         } catch (err) {
             console.log(err.status, err.message);
             var msg = err.message;
@@ -55,6 +117,12 @@ function PlayListViewModal({data, setPlayListModal}) {
         }
         setPlayListModal((prev) => !prev);
     }
+
+    const checkVideoExistInPlaylistHandler = (playlist) => { 
+        console.log(playlist, data._id)
+        console.log("playlistcontext ARrray",playListContextArray)
+        return playlist.videos.some((videoItem) => videoItem._id === data._id);
+    }
     return (
         <div className="dialog playlistmodal-contatiner">
             <div className="dailog-header"><span style={{fontWeight:700}}>My PlayList</span>
@@ -62,30 +130,30 @@ function PlayListViewModal({data, setPlayListModal}) {
             </div>
             <div className="dailog-body confirmation-body">
                 <ul>
-
                     {playListContextArray.length === 0
-                        
                         ? <><li className="dialog-body-item">No Playlist exist</li>
                             {/* <li className="dialog-body-item"><Link to={ROUTE_PATH_PlayListPage} >Create Playlist +</Link></li> */}
                         </>
-                     : playListContextArray?.map((item) => (
-                        <li key={item._id}>
-                             <input type="radio" name="playlist" value={item._id}
-                                //  checked={item.some((playlistvideo) => playlistvideo.id === data._id)}
-                                onClick={(e) => SelectedPlayListHandler(e.target.value) }/>
-                            <span className="dialog-body-item"> {item.name}</span>
-                        </li>))
+                        : playListContextArray?.map((item) => (
+                            <li key={item._id}>
+                                <input type="checkbox" name="playlist" value={item._id}
+                                    //  checked={item.some((playlistvideo) => playlistvideo.id === data._id)}
+                                    checked={item.videos.some((i)=> i._id === data._id)}
+                                    onClick={(e) => SelectedPlayListHandler(e.target.value,item) }/>
+                                <span className="dialog-body-item"> {item.name}</span>
+                            </li>))
                     }
                 </ul>
             </div>
-            <div class="dailog-footer">
+            <div className="dailog-footer">
                 <button  onClick={() => setHandleCreatePlayList((prev) => !prev)}>Create Playlist +</button>
                 <div>
-        {
-          handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
-        }</div>
+                    {
+                    handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
+                    }
+                </div>
             </div>
-            </div>
+        </div>
         )
     }
                                     
