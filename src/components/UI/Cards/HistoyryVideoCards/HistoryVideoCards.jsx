@@ -42,15 +42,22 @@ function HistoryVideoCards({ props }) {
     return (
         <div>
 
-            <div className="card cart-card">
+            <div className="card cart-card history-card">
                 <Link to="/video/watch" state={props}>
                     <img className="card-img" src={snippet.thumbnails} alt={snippet.channelTitle} />
 
-                    <div className="card-content">
+                    <div className="card-content history-card-content">
                         <div className="card-body">
-                            <span className="text-grey elipsis">{snippet.title}</span>
-                            {snippet.channelTitle}
-
+                                                      <span className="text-grey elipsis pd-btm">
+                                    {snippet.title
+                                }</span>
+                               
+                                <div className="card-body-channel ">
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <span className="elipsis md-txt elipsis-md"> {
+                                        snippet.channelTitle
+                                    }</span>
+                                </div>
                             <h2> <ViewCount viewCount={statistics.viewCount} /></h2>
                         </div>
                     </div>

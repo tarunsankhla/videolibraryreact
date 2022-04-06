@@ -46,8 +46,6 @@ function VideoListingPage() {
     try {
       (async () => {
         var res = await axios.get("/api/videos");
-        console.log(res);
-        // console.log(res.data.products);
         setVideoLib(res.data.videos);
         setVideoContextList(res.data.videos);
       })()
@@ -67,6 +65,9 @@ function VideoListingPage() {
   }, []);
 
   const filterHandler = (item) => { 
+    console.log(category === item
+      ? "linear-gradient(192deg, #3b5258 20%, #899ca8)"
+    :"linear-gradient(12deg, #3b5258 20%, #899ca8)")
     setCategory((prev)=> prev === item ? "" : item);
     // setVideoLib([...videoContextList?.filter((videoObj) =>   videoObj.snippet.tags === item)])
   }
@@ -81,7 +82,11 @@ function VideoListingPage() {
       </div> */}
       <ul className='icons-cateogry-layer'>
         {CategoryList.map((item) => (
-          <li className='cateogory-container-batch-icons' onClick={()=>filterHandler(item.type)} key={item.name}>
+          <li className='cateogory-container-batch-icons' style={{
+            background: category === item.type
+              ? "linear-gradient(192deg, rgb(176 215 255) 20%, rgb(40 44 52))"
+            :"linear-gradient(12deg, #3b5258 20%, #899ca8)" }} onClick={() => filterHandler(item.type)}
+            key={item.name}>
             <img src={item.icon} alt="category "/>
             { item.name}
           </li>

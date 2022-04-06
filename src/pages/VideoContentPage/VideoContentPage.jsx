@@ -14,7 +14,21 @@ import ViewCount from '../../utils/ViewCount.jsx';
 import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import './VideoContent.css';
 import { useAuth } from '../../context/AuthContext';
+import {
+	HolderImg1,
+	HolderImg2,
+	HolderImg3,
+	HolderImg4,
+	HolderImg5,
+	HolderImg6,
+	HolderImg7,
+	HolderImg8,
+	HolderImg9,
+} from "../../assets/Holders/holder";
 import { Toast } from '../../components/UI/Toast/toast';
+import { useVideo } from '../../context/VideoContext';
+import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
+import { Link } from 'react-router-dom';
 
 function VideoContentPage() {
   const location = useLocation();
@@ -23,6 +37,7 @@ function VideoContentPage() {
   const { likesContextArray, setLikesContextArray } = useLikes();
   const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
   const { login, setlogin } = useAuth();
+  const { videoContextList, setVideoContextList } = useVideo();
   const data = location.state;
   console.log(data);
   useEffect(() => {
@@ -51,9 +66,6 @@ function VideoContentPage() {
     } catch (err) {
       console.log(err)
     }
-  }
-  const LikeClickedCheck = (id) => {
-    console.log(likesContextArray?.some((item) => item._id === id));
   }
 
   // This method is to add likes of video in array
@@ -87,8 +99,7 @@ function VideoContentPage() {
     }
   }
 
-
-    const NotLoginErrorHandler = () => { 
+  const NotLoginErrorHandler = () => { 
     if (login) {
       console.log("show")
       setShowPlayListModal((prev) => !prev)
@@ -99,60 +110,92 @@ function VideoContentPage() {
     }
   }
   return (
-    <div className='video-content-container'>
-      <iframe
-        src={VideoUrl}
-        className="iframe-video"
-        frameBorder="0" type="text\html"
-        allow={
-          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    <div>
+      <div>
+        {
+          data ?
+            <div className='video-content-container'>
+              <iframe
+                src={VideoUrl}
+                className="iframe-video"
+                frameBorder="0" type="text\html"
+                allow={
+                  "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                }
+                title="video" id='ytplayer'
+              />
+              <div className='video-content-body'>
+
+                <div className='video-content-title'>{data.snippet.title}</div>
+                <hr />
+                <div className='video-content-header'>
+                  <div className='video-content-action'>
+                    <div className='video-action' onClick={() => LikeHandler(data)}>
+                      {likesContextArray?.some((item) => item._id === data._id) ? <IcRoundThumbDownOffAlt /> : <IcOutlineThumbUp />}
+                      {data.statistics.likeCount}
+                    </div>
+                    <div className='video-action' onClick={() => NotLoginErrorHandler()}><IcRoundPlaylistAdd />
+                      Add to Playlist
+                    </div>
+                    <div>
+                      {showPlayListModal &&
+                        <PlayListViewModal
+                          data={data}
+                          setPlayListModal={setShowPlayListModal}
+                        />}
+                    </div>
+                    <div className='video-action' onClick={() => AddToWatchlateHandler(data)}>
+                      {/* <IcBaselineAddTask />
+                <IcOutlineWatchLater />
+                <IcTwotoneWatchLater /> */}
+                      {WatchlaterProviderContextArray?.some((item) => item._id === data._id) ? <IcBaselineAddTask /> : <IcOutlineWatchLater />}Add to Watch Later
+                    </div>
+                  </div>
+                  <div>
+                    {/* <div>{data.contentDetails.duration}</div> */}
+
+                    <div> <ViewCount viewCount={data.statistics.viewCount} /></div>
+                  </div>
+                  {/* toggle of playlist modal */}
+                </div>
+                <hr />
+                <div className='video-content-channel'>
+                  <div className='channel-title'>{data.snippet.channelTitle}</div>
+                  <div className='video-description-container'>Description :
+                    <div className='video-description'>{data.snippet.description}</div>
+                  </div>
+                  <div>published on : {data.snippet.publishedAt}</div>
+                  <div>comments : {data.statistics.commentCount}.</div>
+                </div>
+
+              </div>
+            </div>
+            :
+            <div className='nocontent'>
+              <div className='page-title md-txt' >No Items in Watch Later Explore the App and Comeback here.</div>
+              <img src={HolderImg3} className="holders" alt="watchleterlogo" />
+            </div>
         }
-        title="video" id='ytplayer'
-      />
-      <div className='video-content-body'>
-
-        <div className='video-content-title'>{data.snippet.title}</div>
-        <hr />
-        <div className='video-content-header'>
-          <div className='video-content-action'>
-            <div className='video-action' onClick={() => LikeHandler(data)}>
-              {likesContextArray?.some((item) => item._id === data._id) ?<IcRoundThumbDownOffAlt /> : <IcOutlineThumbUp /> }
-              {data.statistics.likeCount}
-            </div>
-            <div className='video-action' onClick={() => NotLoginErrorHandler()}><IcRoundPlaylistAdd />
-              Add to Playlist
-            </div>
-            <div>
-              {showPlayListModal &&
-                <PlayListViewModal
-                  data={data}
-                  setPlayListModal={setShowPlayListModal}
-                />}
-            </div>
-            <div className='video-action' onClick={() => AddToWatchlateHandler(data)}>
-              {/* <IcBaselineAddTask />
-              <IcOutlineWatchLater />
-              <IcTwotoneWatchLater /> */}
-              { WatchlaterProviderContextArray?.some((item) => item._id === data._id) ?    <IcBaselineAddTask /> :<IcOutlineWatchLater /> }Add to Watch Later
-            </div>
-          </div>
-          <div>
-            {/* <div>{data.contentDetails.duration}</div> */}
-
-            <div> <ViewCount viewCount={data.statistics.viewCount} /></div>
-          </div>
-          {/* toggle of playlist modal */}
+      </div>
+      <div className='videolist-container'>
+        <div className="page-title md-txt">
+          Explore More
         </div>
-        <hr />
-        <div className='video-content-channel'>
-          <div className='channel-title'>{data.snippet.channelTitle}</div>
-          <div className='video-description-container'>Description :
-            <div className='video-description'>{data.snippet.description}</div>
+        <div className='videolist-container'>
+        {
+          videoContextList.length !== 0
+              ? videoContextList.map((item) => (
+                <p onClick={() => { 
+                  document.body.scrollTop =0;
+                  document.documentElement.scrollTop =0;
+                }}>
+              <VideoCards key={item.id} props={item} /></p>))
+            : <div className='nocontent'>
+                <div className='page-title md-txt'>Loading ...</div>
+              <img src={HolderImg8} className="holders" alt='lodderLogo' />
+            </div>
+          }
           </div>
-          <div>published on : {data.snippet.publishedAt}</div>
-          <div>comments : {data.statistics.commentCount}.</div>
-        </div>
-
       </div>
     </div>
   )

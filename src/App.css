@@ -104,6 +104,10 @@ body::-webkit-scrollbar:hover {
 	padding: 0.5em;
 }
 
+.sm-txt {
+	font-size: 0.4em;
+}
+
 .md-txt {
 	font-size: 0.6em;
 }
@@ -149,4 +153,21 @@ span:hover {
 	padding: 1em;
 	flex-direction: column;
 	width: 100%;
+}
+
+.channel-img{
+	height: 1.5em;
+	width: 1.5em;
+	border-radius: 50%;
+}
+
+.card-body-channel{
+	display: flex;
+    justify-content: flex-start;
+    font-size: 1.2em;
+	align-items: center;
+}
+
+.pd-btm{
+	padding-bottom: 2px;
 }

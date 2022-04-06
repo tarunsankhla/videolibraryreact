@@ -120,7 +120,7 @@ function SignupPage() {
                     console.log(user, userId, token);
                     setlogin(true);
                     Toast("success", "Sign Up Done!!");
-                    navigate("/");
+                    navigate(-1);
                     // History.push("/products");
                 }
                 if (res.status === 422) {

@@ -20,34 +20,50 @@ function VideoCards({props}) {
     const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
     const { likesContextArray, setLikesContextArray } = useLikes();
     const {videoid, snippet, statistics} = props;
-    const WatchVideoHandler = (props) => {
-        console.log(props);
-    };
-    const AddVideoToFavourite = async (props) => {
+
+    const AddVideoToWatchLater = async (props) => {
         try {
             if(login){
-            console.log(props);
-            var res = await axios.post("/api/user/watchlater", {
-                video: {
-                    ...props
+                console.log(props);
+                if (WatchlaterProviderContextArray?.some((item) => item._id === videoid)) {
+                    try {
+                        var res = await axios.delete(`/api/user/watchlater/${videoid}`, {
+                            headers: {
+                                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                            }
+                        });
+                        console.log(res);
+                        setWatchlaterProviderContextArray(res.data.watchlater);
+                        Toast("success", " Removed !!");
+                    }
+                    catch (err) {
+                        console.log(err);
+                        Toast("error", "Failed to Remove !!");
+                    }
                 }
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                else {
+                    var res = await axios.post("/api/user/watchlater", {
+                        video: {
+                            ...props
+                        }
+                    }, {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                    console.log(res);
+                    const { data: {
+                        watchlater
+                    }, status } = res;
+                    console.log(watchlater, status);
+                    if (status === 201) {
+                        setWatchlaterProviderContextArray(watchlater);
+                        Toast("success", "Added to WatchLater")
+                    }
                 }
-            });
-            console.log(res);
-            const {data: {
-                    watchlater
-                }, status} = res;
-            console.log(watchlater, status);
-            if (status === 201) {
-                setWatchlaterProviderContextArray(watchlater);
-                Toast("success","Added to WatchLater")
+            } else {
+                Toast("error", "You need to Login!!");
             }
-        } else {
-            Toast("error", "You need to Login!!");
-          }
         } catch (error) {
             console.log(error);
             if(error.message.slice(error.message.length-3,error.message.length) === "409")
@@ -128,15 +144,16 @@ function VideoCards({props}) {
 
                         <div className="card-content">
                             <div className="card-body">
-                                <span className="text-grey elipsis">
-                                    {
-                                    snippet.title
+                                <span className="text-grey elipsis pd-btm">
+                                    {snippet.title
                                 }</span>
                                
-                               <span className="elipsis"> {
-                                snippet.channelTitle
-                            }</span>
-
+                                <div className="card-body-channel ">
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <span className="elipsis md-txt elipsis-md"> {
+                                        snippet.channelTitle
+                                    }</span>
+                                </div>
                                 <h2> {" "}
                                     <ViewCount viewCount={
                                         statistics.viewCount
@@ -147,20 +164,19 @@ function VideoCards({props}) {
                     </div>
                 </Link>
                 <span className=" badge topright-badge video-badge-container">
-                 <span   onClick={
-                        () => {
-                            AddVideoToFavourite(props);
-                        }
-                }>
-                    {
-                    WatchlaterProviderContextArray?.some((item) => item._id === videoid) ? <IcBaselineAddTask/>: <IcOutlineWatchLater/>
-                        }</span>
-                 <span className="like-badge"  onClick={
-                        () => {
+                    <span   onClick={() => {
+                            AddVideoToWatchLater(props);
+                        }}>
+                        {WatchlaterProviderContextArray?.some((item) => item._id === videoid)
+                            ? <IcBaselineAddTask />
+                            : <IcOutlineWatchLater />}
+                    </span>
+                    <span className="like-badge"  onClick={() => {
                             LikeHandler(props);
                         }}>
-                   
-                        {likesContextArray?.some((item) => item._id === videoid) ? <IcRoundThumbDownOffAlt color={"#27474e"} /> : <IcOutlineThumbUp /> }
+                        {likesContextArray?.some((item) => item._id === videoid)
+                            ? <IcRoundThumbDownOffAlt color={"#27474e"} />
+                            : <IcOutlineThumbUp />}
                     </span>
                 </span>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext";
-import {ROUTE_PATH_LoginPage, VAR_ENCODE_TOKEN} from "../../utils/Route";
+import {ROUTE_PATH_LoginPage, ROUTE_PATH_ProfilePage, VAR_ENCODE_TOKEN} from "../../utils/Route";
 import LoginButton from "../UI/Buttons/LoginButton/LoginButton";
 import IcOutlineLogout from "../UI/Icons/IcOutlineLogout";
 import "./Navbar.css";
@@ -31,7 +31,7 @@ function Navbar() {
                 <LoginButton/>
             </NavLink>)
         }
-            <div> {" "}
+            <div onClick={() => { navigate(ROUTE_PATH_ProfilePage)}} style={{cursor:"pointer"}}> {" "}
                 {
                 login && (<div className="profile-initials"> {
                     userState?.firstName[0]?.toString().toUpperCase() || ""

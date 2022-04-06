@@ -42,7 +42,7 @@ function LoginPage() {
         console.log(user, userId, token);
         setlogin(true);
         Toast("success","logged in successfully!!")
-        navigate("/");
+        navigate(-1);
       }
       
     }

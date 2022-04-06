@@ -3,18 +3,22 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router';
 import Carousal from '../../components/Carousal/Carousal';
 import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
+import { useVideo } from '../../context/VideoContext';
 import { category as CategoryList} from '../../data/category.data';
 import "./Homepage.css";
 
 
 function Homepage() {
   const [videoLib, setVideoLib] = useState([]);
+  const { videoContextList, setVideoContextList } = useVideo();
   const navigate = useNavigate();
     useEffect(() => {
         try {
             (async () => {
-                var res = await axios.get("/api/videos");
-                setVideoLib(res.data.videos);
+              var res = await axios.get("/api/videos");
+              console.log(res.data.videos)
+              setVideoLib(res.data.videos);
+              setVideoContextList(res.data.videos);
             })()
         } catch (error) {
             console.log("Product list page error", error);

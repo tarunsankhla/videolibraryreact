@@ -32,11 +32,9 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                         authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
                 });
-                console.log(res);
             })()
         }
         catch (err) {
-            console.log(err);
             Toast("error", "Failed to Remove From Playlist!!");
         }
     }
@@ -49,8 +47,16 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
 
                     <div className="card-content">
                         <div className="card-body">
-                            <span className="text-grey elipsis">{snippet.title}</span>
-                            {snippet.channelTitle}
+                        <span className="text-grey elipsis pd-btm">
+                                    {snippet.title
+                                }</span>
+                               
+                                <div className="card-body-channel ">
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <span className="elipsis md-txt elipsis-md"> {
+                                        snippet.channelTitle
+                                    }</span>
+                                </div>
 
                             <h2> <ViewCount viewCount={statistics.viewCount} /></h2>
                         </div>

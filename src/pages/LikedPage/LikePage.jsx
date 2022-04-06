@@ -30,8 +30,6 @@ const LikePage = () => {
 						authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
 					},
 				});
-				console.log(res);
-				// console.log(res.data.products);
 				setLikesContextArray(res.data.likes);
 			})();
 		} catch (error) {

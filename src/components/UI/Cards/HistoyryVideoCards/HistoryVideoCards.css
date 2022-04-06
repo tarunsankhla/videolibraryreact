@@ -62,6 +62,10 @@ h2 {
 	font-size: 0.8em;
 }
 
+.history-card-content{
+	height: fit-content !important;
+}
+
 @media screen and (max-width: 1030px) {
 	.cart-card {
 		height: fit-content;
