@@ -103,39 +103,31 @@ function SignupPage() {
                 "firstName": state.firstName,
                 "lastName": state.lastName
             };
-            console.log(VerifyCredentials())
-           
-                console.log(object)
-                var res = await axios.post("/api/auth/signup", object);
-                console.log(res);
-                if (res.status === 201) {
-                    var token = res?.data?.encodedToken;
-                    localStorage.setItem(VAR_ENCODE_TOKEN, token)
-                    var user = res?.data?.createdUser;
-                    var userId = res?.data?.createdUser?._id;
-                    localStorage.setItem(VAR_USER_ID, userId);
-                    let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
-                    localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
-                    userDispatch(userDetails)
-                    console.log(user, userId, token);
-                    setlogin(true);
-                    Toast("success", "Sign Up Done!!");
-                    navigate(-1);
-                    // History.push("/products");
-                }
-                if (res.status === 422) {
-                    console.log("Use exist")
-                }
-            
+            var res = await axios.post("/api/auth/signup", object);
+            console.log(res);
+            if (res.status === 201) {
+                var token = res?.data?.encodedToken;
+                localStorage.setItem(VAR_ENCODE_TOKEN, token)
+                var user = res?.data?.createdUser;
+                var userId = res?.data?.createdUser?._id;
+                localStorage.setItem(VAR_USER_ID, userId);
+                let userDetails = { email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName };
+                localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
+                userDispatch(userDetails)
+                setlogin(true);
+                Toast("success", "Sign Up Done!!");
+                navigate(-1);
+            }
+            if (res.status === 422) {
+                console.log("Use exist")
+            }
             else {
                 Toast("error","Check you password I hope it meets all conditions")
             }
             
         } catch (error) {
-            console.log("signup ", error);
             Toast("error", "The User Exist or check you credentials!!");
         }
-        // navigate("/");
     }
 
 
@@ -152,19 +144,6 @@ function SignupPage() {
         return confirmPassword.length > 0 && !passwordCheckError && "Password should contain a number, alphabet & special character";
     }
 
-    const CompareBothPassword = (e) => { 
-        return e.target.value !== confirmPassword ? "red" : "black";
-    }
-
-
-    const VerifyCredentials = () =>
-    {
-        console.log(CheckMinimalCharInPassword(), VerifyPasswordChar(), passwordCheckError);
-        if (CheckMinimalCharInPassword() === "" && VerifyPasswordChar() === "Password should contain a number, alphabet & special character" && passwordCheckError === "red") { 
-            return true;
-        }
-        return false;
-     }
     return (<>
         <div className='signup-main-container'>
             <section className='auth-sidebar'>
@@ -184,13 +163,13 @@ function SignupPage() {
                 <main>
                     <div className="signup-container">
 
-                        <div className="signup-credential-container"> {/* <label>Email Address</label> */}
+                        <div className="signup-credential-container"> 
                             <input placeholder="Email Address - xyz@gmail.com"
                                 onChange={
                                     (e) => dispatch({email: e.target.value})
                                 }/>
                         </div>
-                        <div className="signup-credential-container"> {/* <label>Password</label> */}
+                        <div className="signup-credential-container"> 
                             <div className='password-holder'>
                             <input type={passwordType}
                                 style={

@@ -34,24 +34,20 @@ function PlaylistPage() {
             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
         });
-        console.log(res);
         setPlayListContextArray(res.data.playlists);
         setPlaylist(res.data.playlists);
       })()
     }
     catch (error) {
-      console.log("Product list page error", error);
       Toast("error", "Some Internal Server Issue!!");
     }
   }, [])
 
   const NotLoginErrorHandler = () => { 
     if (login) {
-      console.log("show")
       setHandleCreatePlayList((prev) => !prev)
     }
     else {
-      console.log("show error")
       Toast("error", "You need to login!!")
     }
   }

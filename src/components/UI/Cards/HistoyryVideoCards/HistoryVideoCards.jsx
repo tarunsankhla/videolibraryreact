@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from '../../../../context/HistoryContext';
 import ViewCount from '../../../../utils/ViewCount';
-import IcRoundAutoModeAddWatchLater from '../../Icons/IcRoundAutoMode';
 import IcRoundCheckCircleConfirmWatchLater from '../../Icons/IcRoundCheckCircle';
 import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route"
@@ -64,8 +63,6 @@ function HistoryVideoCards({ props }) {
                 </Link>
                 <span className="material-icons-round badge topright-badge " onClick={() => { deleteHistoryHandler(props._id) }}>
                     <IcTwotoneDelete />
-                    {/* <IcRoundAutoModeAddWatchLater />
-                      <IcRoundCheckCircleConfirmWatchLater/> */}
                 </span>
             </div>
 

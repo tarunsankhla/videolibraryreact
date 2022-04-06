@@ -21,6 +21,10 @@ function VideoCards({props}) {
     const { likesContextArray, setLikesContextArray } = useLikes();
     const {videoid, snippet, statistics} = props;
 
+     /**
+     * The Methdod is to Add video in
+     *  watch later
+    */
     const AddVideoToWatchLater = async (props) => {
         try {
             if(login){
@@ -76,6 +80,10 @@ function VideoCards({props}) {
           }
         }
     };
+
+    /**
+     * The Methdod is to Add video in history
+    */
     const AddToHistoryHandler = async (props) => {
         try {
             console.log(props);
@@ -95,37 +103,37 @@ function VideoCards({props}) {
     };
 
      // This method is to add likes of video in array
-  const LikeHandler = async (props) => {
-    try {
-      console.log(props, likesContextArray);
-      if(login){
-        if (likesContextArray?.some((item) => item._id === videoid)) {
-          console.log(" there removing itt");
-          var res = await axios.delete(`/api/user/likes/${props._id}`,
-            {
-              headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
-              });
-            Toast("success", "DisLiked!");
-        }
-        else {
-            console.log("not there adding it");
-            var res = await axios.post("/api/user/likes",
-              { "video": { ...props } },
-              {
+    const LikeHandler = async (props) => {
+        try {
+        console.log(props, likesContextArray);
+        if(login){
+            if (likesContextArray?.some((item) => item._id === videoid)) {
+            console.log(" there removing itt");
+            var res = await axios.delete(`/api/user/likes/${props._id}`,
+                {
                 headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
                 });
-                Toast("success", "Liked!");
+                Toast("success", "DisLiked!");
+            }
+            else {
+                console.log("not there adding it");
+                var res = await axios.post("/api/user/likes",
+                { "video": { ...props } },
+                {
+                    headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+                    });
+                    Toast("success", "Liked!");
+            }
+            setLikesContextArray(res.data.likes);
+            console.log(res)
+        } else {
+            Toast("error", "You need to Login!!");
         }
-        setLikesContextArray(res.data.likes);
-          console.log(res)
-      } else {
-        Toast("error", "You need to Login!!");
-      }
     }
     catch (err) {
       console.log(err)
     }
-  }
+    }
     return (
         <div onClick={
             () => AddToHistoryHandler(props)

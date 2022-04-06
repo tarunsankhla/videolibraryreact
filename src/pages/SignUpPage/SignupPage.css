@@ -44,23 +44,6 @@ main {
 }
 
 .signup-container {
-	/* display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	background-color: transparent;
-	max-width: 60vw;
-	height: fit-content;
-	border-radius: var(--border-radius);
-	font-size: 1.5em;
-	padding: 2rem 0;
-	gap: 0em;
-	border-radius: 2em;
-	font-size: 3rem;
-	font-weight: 700;
-	width: 100%;
-	padding: 1em; */
-
 	display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -105,7 +88,6 @@ main {
 .password-holder > input{
 	width: 80%;
 	padding: 0.5em;
-	/* margin: 1em; */
 	margin: 0 0 0 0.5em;
 	border: 2px solid transparent !important;
 	outline: none;
@@ -131,7 +113,6 @@ main {
 .signup-rem-forgetpass-container {
 	display: flex;
 	justify-content: space-between;
-	/* width: 70%; */
 	font-size: 0.7em;
 	gap: 1em;
 }

@@ -18,7 +18,7 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
             if (login) {
                 console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
 
-                // if (ongoingReq) {
+                
                 ongoingReq = false;
                 var res = await axios.post("/api/user/playlists", {
                     "playlist": {
@@ -29,7 +29,6 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
                         authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
                 });
-                console.log(res);
                 if (res.status === 201) {
                     Toast("success", "Adedd New Playlist!!");
                     setPlayListName("");
@@ -40,9 +39,7 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
             } else {
                 Toast("error", "you need to login!!");
             }
-            // }
         } catch (error) {
-            console.log("Product list page error", error);
             Toast("error", "Failed to Added a Playlist!!");
         }
     }

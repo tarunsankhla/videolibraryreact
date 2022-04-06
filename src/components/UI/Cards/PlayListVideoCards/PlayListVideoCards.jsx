@@ -64,8 +64,6 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                 </Link>
                 <span className="material-icons-round badge topright-badge " onClick={() => { deletePlayListVideoFromIindividualPlayListHandler(props._id) }}>
                     <IcTwotoneDelete />
-                    {/* <IcRoundAutoModeAddWatchLater />
-                    <IcRoundCheckCircleConfirmWatchLater/> */}
                 </span>
             </div>
         </div>

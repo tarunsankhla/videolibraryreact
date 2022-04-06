@@ -55,7 +55,7 @@ function App() {
           <Route path={ROUTE_PATH_Mockman} element={<div className='MockAPI'><Mockman /></div>} />
         </Routes>
       </header>
-      <ToastContainer style={{fontSize:"1.5em"}} />
+      <ToastContainer style={{ fontSize: "1.5em" }} />
     </div>
   );
 }

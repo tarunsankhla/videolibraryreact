@@ -48,25 +48,20 @@
 	background-color: var(--bg-color);
 	display: flex;
 	align-items: center;
-	/* flex-direction: column; */
 	flex-wrap: wrap;
 }
 
 .cateogory-container-batch-icons {
 	padding: 0.5em;
 	margin: 0.3em;
-	/* background: linear-gradient(12deg, #3b5258 20%, #899ca8); */
-	/* min-width: 30%; */
 	color: white;
 	border-radius: 0.3em;
 	cursor: pointer;
 	display: flex;
-	/* color: lightgray; */
 }
 
 .icons-cateogry-layer {
 	display: flex;
-	/* width: 100%; */
 	width: 80vw;
 
 	overflow-x: scroll;
@@ -91,7 +86,6 @@
 
 .icons-cateogry-layer {
 	display: flex;
-	/* width: 100%; */
 	width: 80vw;
 
 	overflow-x: scroll;
@@ -113,10 +107,6 @@
 	transform: scale(1.2);
 	cursor: pointer;
 }
-/* ::-webkit-scrollbar-button:hover{
-	transform: scale(1.2);
-	cursor: pointer;
-} */
 
 @media screen and (max-width: 1030px) {
 	.icons-cateogry-layer {

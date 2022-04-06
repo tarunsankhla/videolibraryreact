@@ -46,16 +46,13 @@ function VideoContentPage() {
 
   const AddToWatchlateHandler = async (props) => {
     try {
-      console.log(props)
       if (login) {
         var res = await axios.post("/api/user/watchlater",
           { "video": { ...props } },
           {
             headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
           });
-        console.log(res);
         const { data: { watchlater }, status } = res;
-        console.log(watchlater, status);
         if (status === 201) {
           setWatchlaterProviderContextArray(watchlater);
         }
@@ -71,17 +68,14 @@ function VideoContentPage() {
   // This method is to add likes of video in array
   const LikeHandler = async (props) => {
     try {
-      console.log(props, likesContextArray);
       if(login){
         if (likesContextArray?.some((item) => item._id === data._id)) {
-          console.log(" there removing itt");
           var res = await axios.delete(`/api/user/likes/${props._id}`,
             {
               headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
             });
         }
         else {
-            console.log("not there adding it");
             var res = await axios.post("/api/user/likes",
               { "video": { ...props } },
               {
@@ -89,7 +83,6 @@ function VideoContentPage() {
               });
         }
         setLikesContextArray(res.data.likes);
-          console.log(res)
       } else {
         Toast("error", "You need to Login!!");
       }
@@ -101,12 +94,10 @@ function VideoContentPage() {
 
   const NotLoginErrorHandler = () => { 
     if (login) {
-      console.log("show")
-      setShowPlayListModal((prev) => !prev)
+      setShowPlayListModal((prev) => !prev);
     }
     else {
-      console.log("show error")
-      Toast("error", "You need to login!!")
+      Toast("error", "You need to login!!");
     }
   }
   return (

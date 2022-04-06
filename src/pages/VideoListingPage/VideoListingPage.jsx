@@ -69,17 +69,9 @@ function VideoListingPage() {
       ? "linear-gradient(192deg, #3b5258 20%, #899ca8)"
     :"linear-gradient(12deg, #3b5258 20%, #899ca8)")
     setCategory((prev)=> prev === item ? "" : item);
-    // setVideoLib([...videoContextList?.filter((videoObj) =>   videoObj.snippet.tags === item)])
   }
   return (
     <div className='full-width'>
-      {/* <div className='categories-batch-container'>
-        {
-          categories.map((item) => (
-            <span className='categories-batch' onClick={()=>filterHandler(item)}> {item}</span>
-          ))
-        }
-      </div> */}
       <ul className='icons-cateogry-layer'>
         {CategoryList.map((item) => (
           <li className='cateogory-container-batch-icons' style={{

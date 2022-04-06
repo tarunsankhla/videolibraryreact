@@ -45,13 +45,11 @@ function HistortyPage() {
         }
       });
       setHistoryContextArray(res.data.history);
-      console.log(res);
       if (res.status === 200) { 
         Toast("success", "Cleared History!");
       }
     }
     catch (err) {
-      console.log(err);
       Toast("erro", "Couldn't Clear History! Try again Later");
     }
   }

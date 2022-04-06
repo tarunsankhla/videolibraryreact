@@ -10,10 +10,7 @@
 	color: aliceblue;
 	display: flex;
     padding-left: 1em;
-    /* background: linear-gradient(12deg, #3b5258 20%, #899ca8);
-    margin: 1em 1em 0; */
 	background-color: rgba(0,0,0,0.2);
-    /* border-radius: 0.5em 0.5em 0 0;*/
 }
 
 

@@ -33,7 +33,6 @@ const ProfileDetails = (state, action) => {
 function ProfilePage() {
     const {login, setlogin, userState, userDispatch} = useAuth();
     const [editON, setEditON] = useState(false);
-    console.log(editON);
     const [state, dispatch] = useReducer(ProfileDetails, {
         email: "",
         firstName: "",

@@ -6,15 +6,7 @@ import VideoCards from "../../components/UI/Cards/VideoCards/VideoCards";
 import WatchLaterVideoCards from "../../components/UI/Cards/WatchLaterVideoCards/WatchLaterVideoCards";
 import {useWatchlater} from "../../context/WatchLaterContext";
 import {
-    HolderImg1,
-    HolderImg2,
     HolderImg3,
-    HolderImg4,
-    HolderImg5,
-    HolderImg6,
-    HolderImg7,
-    HolderImg8,
-    HolderImg9
 } from "../../assets/Holders/holder";
 import {VAR_ENCODE_TOKEN} from "../../utils/Route";
 import { useLikes } from '../../context/LikesContext';
