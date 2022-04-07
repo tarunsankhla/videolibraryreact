@@ -11,7 +11,7 @@
 - [Features It has](#Feature)
 - [Features You will See in Future](#-features-you-will-see-in-future)
 - [Getting Started](#-getting-started)
-- [Connect with me](#-connect-with-me)
+- [Connect with me](#Connect with me)
 
 ---
  
