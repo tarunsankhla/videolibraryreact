@@ -41,25 +41,37 @@ function Homepage() {
         <div>
           <div className='category-title'>Trending</div>
             <div className='videolist-container'> {
-                videoLib.filter((videoObj) => videoObj.snippet.tags === 'trendings').slice(0, 3).map((item) => (<VideoCards key={
+                videoLib.filter((videoObj) => videoObj.snippet.tags === 'trendings').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
                     }
                     props={item}/>))
             } </div>
       </div>
+      <hr/>
       <div>
           <div className='category-title'>Entertainment</div>
             <div className='videolist-container'> {
-                videoLib.filter((videoObj) => videoObj.snippet.tags === 'entertainment').slice(0, 3).map((item) => (<VideoCards key={
+                videoLib.filter((videoObj) => videoObj.snippet.tags === 'entertainment').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
                     }
                     props={item}/>))
             } </div>
       </div>
+      <hr/>
       <div>
           <div className='category-title'>React</div>
             <div className='videolist-container'> {
-                videoLib.filter((videoObj) => videoObj.snippet.tags === 'React').slice(0, 3).map((item) => (<VideoCards key={
+                videoLib.filter((videoObj) => videoObj.snippet.tags === 'React').slice(0, 6).map((item) => (<VideoCards key={
+                        item.id
+                    }
+                    props={item}/>))
+            } </div>
+      </div>
+      <hr/>
+      <div>
+          <div className='category-title'>Music</div>
+            <div className='videolist-container'> {
+                videoLib.filter((videoObj) => videoObj.snippet.tags === 'music').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
                     }
                     props={item}/>))

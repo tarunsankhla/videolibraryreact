@@ -17,9 +17,13 @@ import {
 import "./VideoListingPage.css";
 import { category as CategoryList } from '../../data/category.data';
 import { URL } from 'uuid/dist/v35';
+import { IcRoundCancel } from '../../components/UI/Icons';
 
 function VideoListingPage() {
   const [videoLib, setVideoLib] = useState([]);
+  const [defaultVideoLib, setdefaultVideoLib] = useState([]);
+  const [query, setQuery] = useState("");
+  const [result,setresult] = useState(false)
   const { videoContextList, setVideoContextList } = useVideo();
   const [category, setCategory] = useState();
   const categories = ["music", "shoes", "React", "entertainment", "bollywood", "sports","trendings"];
@@ -49,6 +53,7 @@ function VideoListingPage() {
         var res = await axios.get("/api/videos");
         setVideoLib(res.data.videos);
         setVideoContextList(res.data.videos);
+        console.log(res.data.videos);
       })()
 
 
@@ -57,6 +62,7 @@ function VideoListingPage() {
         console.log("in use")
         setTimeout(() => {
           setCategory(location.search.split("=")[1]);
+          setresult(true);
         }, 1000);
     }
     }
@@ -71,8 +77,52 @@ function VideoListingPage() {
     :"linear-gradient(12deg, #3b5258 20%, #899ca8)")
     setCategory((prev)=> prev === item ? "" : item);
   }
+
+  const onchangeSearch = (item) => { 
+    setVideoLib([...videoContextList.filter((video) => {
+      return (video.snippet.title.toLowerCase().includes(item.toLowerCase())
+       || video.snippet.description.toLowerCase().includes(item.toLowerCase())
+      || video.snippet.channelTitle.toLowerCase().includes(item.toLowerCase())
+      || video.snippet.tags.toLowerCase().includes(item.toLowerCase()) )
+      })])
+  }
+  const searchHandler = (e) => {
+    e.preventDefault();
+    console.log(query);
+    setresult(true)
+    console.log([...videoContextList.filter((video) => {
+      return (video.snippet.title.toLowerCase().includes(query.toLowerCase())
+       || video.snippet.description.toLowerCase().includes(query.toLowerCase())
+      || video.snippet.channelTitle.toLowerCase().includes(query.toLowerCase())
+      || video.snippet.tags.toLowerCase().includes(query.toLowerCase()) )
+    })])
+    setVideoLib([...videoContextList.filter((video) => {
+      return (video.snippet.title.toLowerCase().includes(query.toLowerCase())
+       || video.snippet.description.toLowerCase().includes(query.toLowerCase())
+      || video.snippet.channelTitle.toLowerCase().includes(query.toLowerCase())
+      || video.snippet.tags.toLowerCase().includes(query.toLowerCase()) )
+      })])
+  }
   return (
     <div className='full-width'>
+      <div>
+        <form onSubmit={searchHandler}>
+          <input value={query} onChange={(e) => {
+            setQuery(e.target.value);
+            if (e.target.value.length === 0) { 
+              setVideoLib([...videoContextList]);
+            } else {
+              onchangeSearch(e.target.value);
+            }
+          }} />
+          <span class="material-icons-round" onClick={searchHandler}>
+            search
+          </span>
+          {/* <span class="material-icons-round" onClick={() => {}}>
+            cancel
+          </span> */}
+        </form>
+      </div>
       <div className='category-layer-container'>
         <ul className='icons-cateogry-layer'>
           {CategoryList.map((item) => (
@@ -87,11 +137,12 @@ function VideoListingPage() {
           ))}
         </ul>
       </div>
+      <div className='page-title sm-txt'>{result && `( Search Result : ${videoLib.length}) `  }</div>
       <div className='videolist-container'>
         {
         videoLib.length !== 0 ?  videoLib.map((item) => (
             <VideoCards key={item.id} props={item} />
-        )) : <div className='nocontent'> <div className='page-title md-txt'>Loading ...</div>
+        )) : <div className='nocontent'> <div className='page-title md-txt'>No Video exist.</div>
             <img src={HolderImg8} className="holders" alt='lodderLogo' /></div>
         }
       </div>

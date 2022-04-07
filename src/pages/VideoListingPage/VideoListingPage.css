@@ -112,6 +112,18 @@
 	width: 100%;
 }
 
+form{
+	background: white;
+    border-radius: 2em;
+    margin: 0.5em 2em;
+    display: flex;
+    flex-direction: row;
+	align-items: center;
+	width: 60vw;
+	justify-content: space-between;
+	padding: 0 0.5em;
+}
+
 @media screen and (max-width: 1030px) {
 	.icons-cateogry-layer {
 		width: 77vw;
@@ -155,6 +167,10 @@
 	.cateogory-container-batch-icons {
 		padding: 0.2em;
 		font-size: 0.7em;
+	}
+	form{
+		width: 100%;
+		margin: 0.5em 0;
 	}
 }
 
