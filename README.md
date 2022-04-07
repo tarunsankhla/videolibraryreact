@@ -26,30 +26,36 @@
 
 
 
-1. Home Page
+1. Home Page 
+[HomePage](https://fleets.netlify.app/).
   -  page with a list of few categories.
   - If  click on any one of the categories I will be redirected to the video list page with the selected category.
 
 2. Video Listing Page
+[VideoListingPage](https://fleets.netlify.app/explore).
  - All videos are listed.
  - On click of video card navigate to Single Video content page
  - on vidoe listing page you can Like, Dislike and Add and remover Video from Watch Later
 
 3. playlist Management
+[PlayListPage](https://fleets.netlify.app/playlist).
  - Create a PLaylist
  - View All playlist
  - On Clicking on individual playlist navigate to  a page containing video in that playlist and on that page can remove video from playlist
  - can delete entire playlist
 
 4. Like/Dislike
+[LikesPage](https://fleets.netlify.app/likes).
  - You can like or dislike a particular video from both video listing page or from a single video page which will add or remove the video from the Liked Videos List.
  - Can also navigate to LikedPage from nav to See all like video and remove video from likes from there.
 
 5. Watch Later
+[WatchLaterPage](https://fleets.netlify.app/watchlater).
  - can add or remove a particular video to watch later from both video listing page or from a single video page
  - can naivgate to wath later page via Aside Nav and can see AL watchLater videos and remove videos if needed.
  
  6. History Page
+ [HistoryPage](https://fleets.netlify.app/history).
  - When you click on video card it gets add in history.
  - you delete a particular video from the history
  - Clear full history which will clear all the history.
@@ -61,6 +67,7 @@
   -Add and remove video from watch later
 
 8. Filter Videos with Category
+[HomePage](https://fleets.netlify.app/).  you can click on category to filter
  -  videos by Category from the video listing page.
 
 
@@ -75,16 +82,24 @@
  - Create a new playlist 
  - Delete the whole playlist
 
+10. Search Video
+[ExplorePage](https://fleets.netlify.app/explore). on search bar you can search video
+ - search for a video from the video listing page 
 
-10. User Profile
+11. User Profile
+[ProfilePage](https://fleets.netlify.app/profile). 
  - user profile with details containing this email Id, First Name and Last Name and Can edit and update
+
 11. Sign-up Page
+[SignUpPage](https://fleets.netlify.app/signup).
 - email, first name, last name, password & confirm password.
 -  hide-show icon button that shows or hides my password.
 
 12. Login Page
+[LoginPage](https://fleets.netlify.app/login).
  - login email & password.
  - guest user
+
  13. Logout
  - logoutbutton Nav
 
