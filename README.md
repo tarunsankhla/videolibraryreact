@@ -8,7 +8,7 @@
 ## 📕 Table of Contents
 
 - [About](#-about)
-- [Features It has](#-features-it-has)
+- [Features It has](#Feature)
 - [Features You will See in Future](#-features-you-will-see-in-future)
 - [Getting Started](#-getting-started)
 - [Connect with me](#-connect-with-me)
@@ -16,7 +16,8 @@
 ---
  
  <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logobanner.png" alt="logoImage" width="100%" height="auto" /></p>
-## Feature
+ 
+ ## Feature
 
 
 
