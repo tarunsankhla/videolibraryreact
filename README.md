@@ -154,3 +154,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<p align="left"> <a href="https://twitter.com/tarunsankhla21" target="blank"><img src="https://img.shields.io/twitter/follow/tarunsankhla21?logo=twitter&style=for-the-badge" alt="tarunsankhla21" /></a> </p>
+
+ ## Connect with me
+<p align="center">
+<a href="https://twitter.com/tarunsankhla21" target="blank"><img align="center" src="https://img.icons8.com/fluency/2x/twitter-circled.png" alt="tarunsankhla21" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/tarun-sankhla/" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linkedin.png" alt="tarun sankhla" height="50" width="50" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://instagram.com/tarun_sankhla_" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/instagram.png" alt="tarun_sankhla_" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://linktr.ee/tarunsank" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linktree.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+<a href="https://tarunsankhla.hashnode.dev/" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/blog.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+  
+  
+  
+</p>
