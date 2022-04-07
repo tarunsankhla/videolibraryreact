@@ -11,7 +11,7 @@
 	height: 60vh !important;
 }
 img {
-	object-fit: cover;
+	object-fit: contain;
 }
 
 
@@ -29,8 +29,9 @@ img {
 	.carosel-body{
 		height: fit-content;
 	}
-	.carousel .carousel-slider {
+	.carousel.carousel-slider {
 		height: fit-content;
+		height: 35vh !important;
 	}
 }
 
@@ -38,17 +39,21 @@ img {
 	.carosel-body{
 		height: fit-content;
 	}
-	.carousel .carousel-slider {
+	.carousel.carousel-slider {
 		height: fit-content;
+		height: 35vh !important;
+
 	}
 }
 
 @media screen and (max-width: 480px) {
 	.carosel-body{
 		height: fit-content;
+		height: 28vh;
 	}
-	.carousel .carousel-slider {
+	.carousel.carousel-slider {
 		height: fit-content;
+		height: 28vh !important;
 	}
 }
 
