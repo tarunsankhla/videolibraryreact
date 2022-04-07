@@ -124,6 +124,15 @@ form{
 	padding: 0 0.5em;
 }
 
+.searchbar{
+		border: none;
+		padding: 0.4em;
+		margin: 0.3em;
+		border-radius: 1em;
+		min-width: 50% ;
+
+}
+
 @media screen and (max-width: 1030px) {
 	.icons-cateogry-layer {
 		width: 77vw;

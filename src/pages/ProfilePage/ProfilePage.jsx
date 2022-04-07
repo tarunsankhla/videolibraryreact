@@ -69,7 +69,7 @@ function ProfilePage() {
                 )
             }
                 {" "} </div>
-            <div>
+            <div className='profile-content-container'>
                 <label>
                 <span>First Name: </span>
                     <input placeholder='name'
@@ -84,7 +84,7 @@ function ProfilePage() {
                         }/></label>
             </div>
 
-            <div>
+            <div  className='profile-content-container'>
                 <label>
                 <span>Last Name:</span>
                     <input placeholder='name'
@@ -100,7 +100,7 @@ function ProfilePage() {
             </div>
 
 
-            <div>
+            <div  className='profile-content-container'>
                 <label>
                     <span>Email : </span>
                     <input placeholder='name'

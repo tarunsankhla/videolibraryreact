@@ -107,7 +107,7 @@ function VideoListingPage() {
     <div className='full-width'>
       <div>
         <form onSubmit={searchHandler}>
-          <input value={query} onChange={(e) => {
+          <input className='searchbar' value={query} onChange={(e) => {
             setQuery(e.target.value);
             if (e.target.value.length === 0) { 
               setVideoLib([...videoContextList]);

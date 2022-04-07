@@ -47,15 +47,42 @@ function VideoContentPage() {
   const AddToWatchlateHandler = async (props) => {
     try {
       if (login) {
-        var res = await axios.post("/api/user/watchlater",
-          { "video": { ...props } },
-          {
-            headers: { authorization: localStorage.getItem(VAR_ENCODE_TOKEN) }
+        if (WatchlaterProviderContextArray?.some((item) => item._id === data.videoid)) {
+          try {
+              var res = await axios.delete(`/api/user/watchlater/${data.videoid}`, {
+                  headers: {
+                      authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                  }
+              });
+              console.log(res);
+              setWatchlaterProviderContextArray(res.data.watchlater);
+              Toast("success", " Removed !!");
+          }
+          catch (err) {
+              console.log(err);
+              Toast("error", "Failed to Remove !!");
+          }
+      }
+      else {
+          var res = await axios.post("/api/user/watchlater", {
+              video: {
+                  ...props
+              }
+          }, {
+              headers: {
+                  authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+              }
           });
-        const { data: { watchlater }, status } = res;
-        if (status === 201) {
-          setWatchlaterProviderContextArray(watchlater);
-        }
+          console.log(res);
+          const { data: {
+              watchlater
+          }, status } = res;
+          console.log(watchlater, status);
+          if (status === 201) {
+              setWatchlaterProviderContextArray(watchlater);
+              Toast("success", "Added to WatchLater")
+          }
+      }
       } else {
         Toast("error", "You need to Login!!");
       }

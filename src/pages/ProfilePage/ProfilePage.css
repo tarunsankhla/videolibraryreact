@@ -15,7 +15,7 @@ input:disabled{
     font-size: 1.5em;
 }
 
-input{
+.profile-content-container input{
     border: none;
     padding: 0.4em;
     margin: 0.3em;
@@ -23,7 +23,7 @@ input{
     min-width: 50% ;
 }
 
-label{
+.profile-content-container label{
     margin: 0.2em;
     color: var(--shade-7);
     font-size: 1.5em;
