@@ -116,8 +116,10 @@ function SignupPage() {
                 userDispatch(userDetails)
                 setlogin(true);
                 Toast("success", "Sign Up Done!!");
-                navigate(-1);
+                navigate("/");
+                
             }
+            
             if (res.status === 422) {
                 console.log("Use exist")
             }
@@ -126,7 +128,8 @@ function SignupPage() {
             }
             
         } catch (error) {
-            Toast("error", "The User Exist or check you credentials!!");
+            console.log(error)
+            // Toast("error", "The User Exist or check you credentials!!");
         }
     }
 
