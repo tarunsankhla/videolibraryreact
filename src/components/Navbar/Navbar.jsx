@@ -14,35 +14,47 @@ function Navbar() {
     const OnSignOut = () => {
         setlogin(false);
         localStorage.removeItem(VAR_ENCODE_TOKEN);
-		localStorage.removeItem("FleetsUserId");
-		localStorage.removeItem("FleetsUserDetails");
+        localStorage.removeItem("FleetsUserId");
+        localStorage.removeItem("FleetsUserDetails");
         navigate("/login");
     };
-    return (<div className="Navbar">
-        <h3 style={
-            {marginLeft: "1em"}
-        } className="title-name">Fleets</h3>
-        <div className="navbar-container"> {
-            login ? (<button className="btn signout-btn  text-bold normal-btn"
-                onClick={OnSignOut}>
-                Signout
-                <IcOutlineLogout/>
-            </button>) : (<NavLink to={ROUTE_PATH_LoginPage}>
-                <LoginButton/>
-            </NavLink>)
-        }
-            <div onClick={() => { navigate(ROUTE_PATH_ProfilePage)}} style={{cursor:"pointer"}}> {" "}
-                {
-                login && (<div className="profile-initials"> {
-                    userState?.firstName[0]?.toString().toUpperCase() || ""
+    return (
+        <div className="Navbar">
+            <h3 style={
+                    {marginLeft: "1em"}
                 }
+                className="title-name">Fleets</h3>
+            <div className="navbar-container">
+                {
+                    login ? (
+                        <button className="btn signout-btn  text-bold normal-btn"
+                            onClick={OnSignOut}>
+                            Signout
+                            <IcOutlineLogout/>
+                        </button>
+                    ) : (
+                        <NavLink to={ROUTE_PATH_LoginPage}>
+                            <LoginButton/>
+                        </NavLink>
+                    )
+                }
+                <div onClick={() => {
+                            navigate(ROUTE_PATH_ProfilePage)
+                        }}
+                    style={ {cursor: "pointer"}}>
+                    {" "}
                     {
-                    userState?.lastName[0]?.toString().toUpperCase() || ""
-                } </div>)
-            }
-                {" "} </div>
+                    login && (
+                        <div className="profile-initials">
+                            {userState?.firstName[0]?.toString().toUpperCase() || "" }
+                                {userState?.lastName[0]?.toString().toUpperCase() || ""}
+                        </div>
+                    )}
+                    {" "}
+                </div>
+            </div>
         </div>
-    </div>);
+    );
 }
 
 export default Navbar;
