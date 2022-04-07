@@ -14,8 +14,12 @@
 - [Connect with me](#Connect-with-me)
 
 ---
- 
- <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logobanner.png" alt="logoImage" width="100%" height="auto" /></p>
+ ## About
+  <p align="center"> <img src="https://github.com/tarunsankhla/videolibraryreact/blob/master/src/assets/logobanner.png" alt="logoImage" width="100%" height="auto" /></p>
+  
+   [Fleets Live App](https://fleets.netlify.app/).
+   
+   Fleets is a Video Application where you can currently enjoy watching videos og entertainment, Learning and Sports.
  
  ## Feature
 
