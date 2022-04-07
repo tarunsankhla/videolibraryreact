@@ -136,9 +136,7 @@ function VideoContentPage() {
                         />}
                     </div>
                     <div className='video-action' onClick={() => AddToWatchlateHandler(data)}>
-                      {/* <IcBaselineAddTask />
-                <IcOutlineWatchLater />
-                <IcTwotoneWatchLater /> */}
+                 
                       {WatchlaterProviderContextArray?.some((item) => item._id === data._id) ? <IcBaselineAddTask /> : <IcOutlineWatchLater />}Add to Watch Later
                     </div>
                   </div>
@@ -151,7 +149,8 @@ function VideoContentPage() {
                 </div>
                 <hr />
                 <div className='video-content-channel'>
-                  <div className='channel-title'>{data.snippet.channelTitle}</div>
+                  <div className='channel-title'>
+                  <img className="channel-img" src={data.snippet.channelImg} alt="channelimg" />{data.snippet.channelTitle}</div>
                   <div className='video-description-container'>Description :
                     <div className='video-description'>{data.snippet.description}</div>
                   </div>

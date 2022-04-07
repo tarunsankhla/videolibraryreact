@@ -8,7 +8,7 @@
 }
 
 .carousel.carousel-slider {
-	height: 60vh;
+	height: 60vh !important;
 }
 img {
 	object-fit: cover;
@@ -16,20 +16,40 @@ img {
 
 
 
-@media screen and (max-width: 1030px) {
-
-}
+/* @media screen and (max-width: 1030px) {
+	.carosel-body{
+		height: fit-content;
+	}
+	.carousel .carousel-slider {
+		height: fit-content;
+	}
+} */
 
 @media screen and (max-width: 780px) {
-
+	.carosel-body{
+		height: fit-content;
+	}
+	.carousel .carousel-slider {
+		height: fit-content;
+	}
 }
 
 @media screen and (max-width: 660px) {
-
+	.carosel-body{
+		height: fit-content;
+	}
+	.carousel .carousel-slider {
+		height: fit-content;
+	}
 }
 
 @media screen and (max-width: 480px) {
-
+	.carosel-body{
+		height: fit-content;
+	}
+	.carousel .carousel-slider {
+		height: fit-content;
+	}
 }
 
 @media screen and (max-width: 360px) {

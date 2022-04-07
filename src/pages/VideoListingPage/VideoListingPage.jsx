@@ -37,11 +37,12 @@ function VideoListingPage() {
       }
       else if (category.length !== 0) {
         setVideoLib([...videoContextList?.filter((videoObj) => videoObj.snippet.tags === category)])
-      } else { 
+      } else {
         setVideoLib([...videoContextList])
       }
     }, 1000);
-   },[category])
+  }, [category]);
+
   useEffect(() => {
     try {
       (async () => {
@@ -72,18 +73,20 @@ function VideoListingPage() {
   }
   return (
     <div className='full-width'>
-      <ul className='icons-cateogry-layer'>
-        {CategoryList.map((item) => (
-          <li className='cateogory-container-batch-icons' style={{
-            background: category === item.type
-              ? "linear-gradient(192deg, rgb(176 215 255) 20%, rgb(40 44 52))"
-            :"linear-gradient(12deg, #3b5258 20%, #899ca8)" }} onClick={() => filterHandler(item.type)}
-            key={item.name}>
-            <img src={item.icon} alt="category "/>
-            { item.name}
-          </li>
-        ))}
-      </ul>
+      <div className='category-layer-container'>
+        <ul className='icons-cateogry-layer'>
+          {CategoryList.map((item) => (
+            <li className='cateogory-container-batch-icons' style={{
+              background: category === item.type
+                ? "linear-gradient(192deg, rgb(176 215 255) 20%, rgb(40 44 52))"
+              :"linear-gradient(12deg, #3b5258 20%, #899ca8)" }} onClick={() => filterHandler(item.type)}
+              key={item.name}>
+              <img src={item.icon} alt="category " className='category-layer-img'/>
+              { item.name}
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className='videolist-container'>
         {
         videoLib.length !== 0 ?  videoLib.map((item) => (

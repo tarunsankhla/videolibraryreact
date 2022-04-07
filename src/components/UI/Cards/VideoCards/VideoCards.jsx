@@ -176,8 +176,8 @@ function VideoCards({props}) {
                             AddVideoToWatchLater(props);
                         }}>
                         {WatchlaterProviderContextArray?.some((item) => item._id === videoid)
-                            ? <IcBaselineAddTask />
-                            : <IcOutlineWatchLater />}
+                            ? <IcBaselineAddTask color='var(--boldy-dark-green)'/>
+                            : <IcOutlineWatchLater color='var(--boldy-dark-green)' />}
                     </span>
                     <span className="like-badge"  onClick={() => {
                             LikeHandler(props);

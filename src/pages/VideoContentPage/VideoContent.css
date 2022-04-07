@@ -53,6 +53,7 @@
 	padding: 1em;
 	font-weight: 600;
 	display: flex;
+	gap: 1em;
 }
 .video-description-container {
 	padding: 0.5em;
@@ -85,20 +86,20 @@
 @media screen and (max-width: 660px) {
 	.iframe-video {
 		min-height: 50vh;
-		width: 90%;
+		width: 100%;
 	}
 }
 
 @media screen and (max-width: 480px) {
 	.iframe-video {
-		min-height: 45vh;
-		width: 83%;
+		min-height: 49vh;
+		width: 100%;
 	}
 }
 
 @media screen and (max-width: 360px) {
 	.iframe-video {
-		min-height: 40vh;
-		width: 80%;
+		min-height: 35vh;
+		width: 100%;
 	}
 }
