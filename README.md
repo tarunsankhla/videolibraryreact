@@ -10,7 +10,7 @@
 - [About](#-about)
 - [Features It has](#Feature)
 - [Features You will See in Future](#-features-you-will-see-in-future)
-- [Getting Started](#-getting-started)
+- [Getting Started](#Getting-Started-with-Create-React-App)
 - [Connect with me](#Connect-with-me)
 
 ---
