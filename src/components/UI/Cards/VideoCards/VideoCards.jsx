@@ -13,13 +13,15 @@ import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import { Toast } from "../../Toast/toast";
 import { useAuth } from "../../../../context/AuthContext";
 import { IcOutlineThumbUp, IcRoundThumbDownOffAlt } from "../../Icons";
+import { useNavigate } from 'react-router';
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
     const { login, setlogin } = useAuth();
     const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
     const { likesContextArray, setLikesContextArray } = useLikes();
-    const {videoid, snippet, statistics} = props;
+    const { videoid, snippet, statistics } = props;
+    const navigate = useNavigate();
 
      /**
      * The Methdod is to Add video in
@@ -86,17 +88,30 @@ function VideoCards({props}) {
     */
     const AddToHistoryHandler = async (props) => {
         try {
-            console.log(props);
-            var res = await axios.post("/api/user/history", {
-                video: {
-                    ...props
-                }
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
-                }
-            });
-            console.log(res);
+            if (!historyContextArray?.some((item) => item._id === videoid)) {
+                console.log(props);
+                var res = await axios.post("/api/user/history", {
+                    video: {
+                        ...props
+                    }
+                }, {
+                    headers: {
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                    }
+                });
+                console.log(res);
+                (async () => {
+                    var res = await axios.get("/api/user/history", {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                    console.log(res.data.history);
+                    setHistoryContextArray(res.data.history);
+        
+                })()
+            }
+            // navigate("/video/watch",{state:props})
         } catch (err) {
             console.log(err);
         }
@@ -135,13 +150,13 @@ function VideoCards({props}) {
     }
     }
     return (
-        <div onClick={
-            () => AddToHistoryHandler(props)
-        }>
+        <div>
             <div className="card cart-card">
                 <Link to="/video/watch"
                     state={props}>
-                    <div className="stretch">
+                    <div className="stretch"  onClick={
+                                () => AddToHistoryHandler(props)
+                            }>
                         <img className="card-img"
                             src={
                                 snippet.thumbnails

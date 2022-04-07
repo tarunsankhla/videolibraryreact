@@ -42,7 +42,7 @@ function VideoContentPage() {
   console.log(data);
   useEffect(() => {
     setVideoUrl(`https://www.youtube.com/embed/${data.videoid}?autoplay=1&origin=http://example.com`);
-  }, []);
+  }, data);
 
   const AddToWatchlateHandler = async (props) => {
     try {
@@ -134,7 +134,7 @@ function VideoContentPage() {
           data ?
             <div className='video-content-container'>
               <iframe
-                src={VideoUrl}
+                src={`https://www.youtube.com/embed/${data.videoid}?autoplay=1&origin=http://example.com`}
                 className="iframe-video"
                 frameBorder="0" type="text\html"
                 allow={
