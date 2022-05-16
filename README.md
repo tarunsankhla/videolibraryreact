@@ -20,7 +20,7 @@
   
    [Fleets Live App](https://fleets.netlify.app/).
    
-   Fleets is a Video Application where you can currently enjoy watching videos og entertainment, Learning and Sports.
+   Fleets is a Video Application where you can currently enjoy watching videos related to entertainment, Learning, and Sports.
  
  ## Feature
 
