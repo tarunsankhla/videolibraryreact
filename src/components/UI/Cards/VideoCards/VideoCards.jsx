@@ -162,9 +162,7 @@ function VideoCards({props}) {
                             src={
                                 snippet.thumbnails
                             }
-                            alt={
-                                snippet.channelTitle
-                            }/>
+                            alt=""/>
 
                         <div className="card-content">
                             <div className="card-body">

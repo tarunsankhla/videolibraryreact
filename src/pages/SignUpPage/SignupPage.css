@@ -77,7 +77,7 @@ main {
 .signup-credential-container > input {
 	width: 100%;
 	padding: 0.5em;
-	margin: 1em;
+	/* margin: 1em; */
 	border-radius: 0.5em;
 	border: 2px solid transparent !important;
 	outline: none;
