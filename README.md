@@ -9,7 +9,7 @@
 
 
 - [About](#About)
-- [Features It has](#Feature)
+- [Features It has](#Feature) 
 - [Getting Started](#Getting-Started-with-Create-React-App)
 - [Connect with me](#Connect-with-me)
 

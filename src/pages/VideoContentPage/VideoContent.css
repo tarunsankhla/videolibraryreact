@@ -61,14 +61,18 @@
 	flex-direction: column;
 	justify-content: start;
 	align-items: start;
+	background-color: rgba(0,0,0,0.1);
 }
 .video-description {
 	display: flex;
-	justify-content: end;
 	align-items: end;
 	word-break: break-all;
 	font-size: 0.7em;
 	padding: 0.5em;
+	text-align: justify;
+	white-space: pre-wrap;
+	width: 100%;
+	background-color: rgba(0,0,0,0.1);
 }
 
 @media screen and (max-width: 1030px) {

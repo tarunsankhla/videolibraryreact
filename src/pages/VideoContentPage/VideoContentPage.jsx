@@ -128,7 +128,7 @@ function VideoContentPage() {
     }
   }
   return (
-    <div>
+    <div className='full-width'>
       <div>
         {
           data ?
@@ -177,12 +177,17 @@ function VideoContentPage() {
                 <hr />
                 <div className='video-content-channel'>
                   <div className='channel-title'>
-                  <img className="channel-img" src={data.snippet.channelImg} alt="channelimg" />{data.snippet.channelTitle}</div>
+                    <img className="channel-img" src={data.snippet.channelImg} alt="channelimg" />
+                    {data.snippet.channelTitle}
+                  </div>
+                  <p className='text-start lg-txt'>
+                    <p className='md-txt'>Published :</p> {data?.snippet?.publishedAt.split("T")[0]}
+                  </p>
                   <div className='video-description-container'>Description :
                     <div className='video-description'>{data.snippet.description}</div>
                   </div>
-                  <div>published on : {data.snippet.publishedAt}</div>
-                  <div>comments : {data.statistics.commentCount}.</div>
+                 
+                  {/* <p className='text-start'>comments : {data.statistics.commentCount}.</p> */}
                 </div>
 
               </div>

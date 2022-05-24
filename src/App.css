@@ -171,3 +171,12 @@ span:hover {
 .pd-btm{
 	padding-bottom: 2px;
 }
+
+/* regular content */
+.full-width{
+	width: 100%;
+}
+
+.text-start{
+	text-align: start;
+}
