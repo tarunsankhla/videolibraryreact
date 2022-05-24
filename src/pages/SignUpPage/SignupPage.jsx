@@ -157,7 +157,7 @@ function SignupPage() {
                         <div>Discover the world around you</div>
                     </div>
                     <div className='artwork'>
-                        <img src={HolderImg7} alt="signuplogo"
+                        <img src={HolderImg7} alt="signuplogo" loading="lazy"
                             className="holders"/>
                     </div>
                 </div>

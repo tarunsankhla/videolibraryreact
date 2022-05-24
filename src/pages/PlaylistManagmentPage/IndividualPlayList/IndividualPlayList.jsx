@@ -34,7 +34,8 @@ function IndividualPlayList() {
       <div className='playlist-individual-container'>
         {PlayListVideos.length === 0 
           ? <div className='nocontent'>
-            <div className='page-title md-txt' >The Playlist Contains No Video </div><img src={HolderImg6} className="holders" alt='no video'/></div>
+            <div className='page-title md-txt' >The Playlist Contains No Video </div>
+            <img src={HolderImg6} className="holders" alt='no video' loading="lazy" /></div>
         :  PlayListVideos?.map((item) => (
           <PlayListVideoCards key={item.id} props={item} setPlayListVideos={setPlayListVideos} />
         ))}

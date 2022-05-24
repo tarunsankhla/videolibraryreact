@@ -65,7 +65,8 @@ function HistortyPage() {
       <div className='history-container'>
         {historyContextArray.length === 0
         ?<div className='nocontent'>
-        <div className='page-title md-txt' >Literally Nothing in your history, go and explore the App. Watch some video and ComeBack Later</div><img src={HolderImg5} className="holders"/></div>
+              <div className='page-title md-txt' >Literally Nothing in your history, go and explore the App. Watch some video and ComeBack Later</div>
+              <img src={HolderImg5} className="holders" loading="lazy" /></div>
           :historyContextArray.map((item) => (
           <HistoryVideoCards key={item.id} props={item} />
         ))}

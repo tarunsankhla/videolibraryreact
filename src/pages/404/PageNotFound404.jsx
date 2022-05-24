@@ -7,7 +7,7 @@ import "./PageNotFound404.css";
 function PageNotFound404() {
     return (<div className='pagenot-container'>
         <div className="page-title">Page Not Found</div>
-        <img src={HolderImg4}
+        <img src={HolderImg4} loading="lazy"
             className="holders"/>
         <div>
           <Button name={"Go to Home"}/>

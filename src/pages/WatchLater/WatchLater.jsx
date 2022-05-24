@@ -35,7 +35,7 @@ function WatchLater() {
 				{WatchlaterProviderContextArray.length === 0 ? (
 				<div className='nocontent'>
 						<div className='page-title md-txt' >No Items in Watch Later Explore the App and Comeback here.</div>
-						<img src={HolderImg3} className="holders" alt="watchleterlogo"/>
+						<img src={HolderImg3} loading="lazy" className="holders" alt="watchleterlogo"/>
 						</div>
 				) : (
 					WatchlaterProviderContextArray?.map((item) => (

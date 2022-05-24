@@ -43,7 +43,7 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
 
             <div className="card cart-card">
                 <Link to="/video/watch" state={props}>
-                    <img className="card-img" src={snippet.thumbnails} alt={snippet.channelTitle} />
+                    <img className="card-img" src={snippet.thumbnails} alt={snippet.channelTitle} loading="lazy" />
 
                     <div className="card-content">
                         <div className="card-body">
@@ -52,7 +52,7 @@ function PlayListVideoCards({ props, setPlayListVideos }) {
                                 }</span>
                                
                                 <div className="card-body-channel ">
-                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" loading="lazy" />
                                     <span className="elipsis md-txt elipsis-md"> {
                                         snippet.channelTitle
                                     }</span>

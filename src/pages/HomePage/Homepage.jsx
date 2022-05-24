@@ -33,7 +33,7 @@ function Homepage() {
       <div className='category-container'>
         {CategoryList.map((item) => (
         <div className='cateogory-container-item' onClick={()=>CategoryHandler(item.type)} key={item.name}>
-          <div><img src={item.icon} alt="category "/></div>
+          <div><img src={item.icon} alt="category " loading="lazy"/></div>
           <div>{ item.name}</div>
         </div>
       ))}</div>

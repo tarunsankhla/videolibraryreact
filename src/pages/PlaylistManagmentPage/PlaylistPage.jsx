@@ -71,7 +71,7 @@ function PlaylistPage() {
         {
           playListContextArray.length === 0 ? 
           <div className='nocontent'>
-          <div className='page-title md-txt' >Currently No PlayList exist </div> <img src={HolderImg1} className="holders"/></div>
+          <div className='page-title md-txt' >Currently No PlayList exist </div> <img src={HolderImg1} className="holders" loading="lazy"/></div>
           :
           playListContextArray.map((item) => (
             <PlayListMainCard key={item._id} props={item} />

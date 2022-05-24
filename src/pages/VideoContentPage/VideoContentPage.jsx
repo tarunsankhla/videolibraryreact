@@ -177,7 +177,7 @@ function VideoContentPage() {
                 <hr />
                 <div className='video-content-channel'>
                   <div className='channel-title'>
-                    <img className="channel-img" src={data.snippet.channelImg} alt="channelimg" />
+                    <img className="channel-img" src={data.snippet.channelImg} alt="channelimg" loading="lazy" />
                     {data.snippet.channelTitle}
                   </div>
                   <p className='text-start lg-txt'>
@@ -195,7 +195,7 @@ function VideoContentPage() {
             :
             <div className='nocontent'>
               <div className='page-title md-txt' >No Items in Watch Later Explore the App and Comeback here.</div>
-              <img src={HolderImg3} className="holders" alt="watchleterlogo" />
+              <img src={HolderImg3} className="holders" loading="lazy" alt="watchleterlogo" />
             </div>
         }
       </div>
@@ -214,7 +214,7 @@ function VideoContentPage() {
               <VideoCards key={item.id} props={item} /></p>))
             : <div className='nocontent'>
                 <div className='page-title md-txt'>Loading ...</div>
-              <img src={HolderImg8} className="holders" alt='lodderLogo' />
+              <img src={HolderImg8} loading="lazy" className="holders" alt='lodderLogo' />
             </div>
           }
           </div>

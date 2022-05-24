@@ -131,7 +131,7 @@ function VideoListingPage() {
                 ? "linear-gradient(192deg, rgb(176 215 255) 20%, rgb(40 44 52))"
               :"linear-gradient(12deg, #3b5258 20%, #899ca8)" }} onClick={() => filterHandler(item.type)}
               key={item.name}>
-              <img src={item.icon} alt="category " className='category-layer-img'/>
+              <img src={item.icon} loading="lazy" alt="category " className='category-layer-img'/>
               { item.name}
             </li>
           ))}
@@ -143,7 +143,7 @@ function VideoListingPage() {
         videoLib.length !== 0 ?  videoLib.map((item) => (
             <VideoCards key={item.id} props={item} />
         )) : <div className='nocontent'> <div className='page-title md-txt'>No Video exist.</div>
-            <img src={HolderImg8} className="holders" alt='lodderLogo' /></div>
+            <img src={HolderImg8} loading="lazy" className="holders" alt='lodderLogo' /></div>
         }
       </div>
     </div>

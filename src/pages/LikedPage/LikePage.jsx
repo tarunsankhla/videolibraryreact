@@ -37,7 +37,7 @@ const LikePage = () => {
                 likesContextArray.length === 0 ? (
                     <div className='nocontent'>
                         <div className='page-title md-txt'>Currently No video Liked !!.</div>
-                        <img src={HolderImg3}
+                        <img src={HolderImg3} loading="lazy"
                             className="holders" alt='holderImg'/>
                     </div>
                 ) : (likesContextArray?.map((item) => (

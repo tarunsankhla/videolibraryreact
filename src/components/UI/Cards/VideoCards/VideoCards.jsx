@@ -158,6 +158,7 @@ function VideoCards({props}) {
                                 () => AddToHistoryHandler(props)
                             }>
                         <img className="card-img"
+                            loading="lazy"
                             src={
                                 snippet.thumbnails
                             }
@@ -172,7 +173,7 @@ function VideoCards({props}) {
                                 }</span>
                                
                                 <div className="card-body-channel ">
-                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg"  loading="lazy"/>
                                     <span className="elipsis md-txt elipsis-md"> {
                                         snippet.channelTitle
                                     }</span>

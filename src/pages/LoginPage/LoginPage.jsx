@@ -67,7 +67,7 @@ function LoginPage() {
               <div>Discover the world around you</div>
             </header>
             <div className='artwork'>
-            <img src={HolderImg2} className="holders"/>
+            <img src={HolderImg2} className="holders" loading="lazy"/>
             </div>
           </div>
         </section>

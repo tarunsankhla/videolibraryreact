@@ -34,7 +34,7 @@ function WatchLaterVideoCards({ props }) {
             <div className="card cart-card transparent">
                 <div className='watchlater-content'>
                     <Link to="/video/watch" state={props}>
-                        <img className="card-img" src={snippet.thumbnails} alt={snippet.channelTitle} />
+                        <img className="card-img" loading="lazy" src={snippet.thumbnails} alt={snippet.channelTitle} />
 
                         <div className="card-content">
                             <div className="card-body">
@@ -43,7 +43,7 @@ function WatchLaterVideoCards({ props }) {
                                 }</span>
                                
                                 <div className="card-body-channel ">
-                                    <img className="channel-img" src={snippet.channelImg} alt="channelimg" />
+                                    <img className="channel-img" loading="lazy" src={snippet.channelImg} alt="channelimg" />
                                     <span className="elipsis md-txt elipsis-md"> {
                                         snippet.channelTitle
                                     }</span>
