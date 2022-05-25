@@ -69,14 +69,15 @@ main {
 .login-credential-container {
 	max-width: 90%;
 }
-.login-credential-container > input {
-	width: 100%;
-	padding: 0.5em;
-	margin: 1em;
-	border-radius: 0.5em;
-	border: 2px solid transparent !important;
-	outline: none;
-	background-color: white !important;
+.login-credential-container {
+	min-width: 70%;
+    display: block;
+    padding: 0.5em;
+    margin: 1em auto;
+    border-radius: 0.5em;
+    border: 2px solid #ffffff !important;
+    outline: none;
+    background-color: #f0f0ff !important;
 }
 
 .login-credential-container > label {
@@ -125,6 +126,7 @@ main {
 
 .login-footer {
 	cursor: pointer;
+	text-align: end;
 }
 
 .animation-login-1 {

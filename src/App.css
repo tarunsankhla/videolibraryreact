@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	word-wrap: break-word;
-	font-size: calc(10px + 2vmin);
+	font-size: calc(10px + 1vmin);
 	/* color: white; */
 	text-decoration: none;
 }
@@ -13,10 +13,13 @@
 	--shadow-box: 0 4px 2px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
 	0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
 	--sidenav-color: #f0f0ff;
+
+
+	--primary-color :#6c63ff;
+	--primary-hover-color:#b0abff;
+	--primary-dark-color:#564fcc;
 }
-body {
-	/* background-color: var(--nav-color); */
-}
+
 .App {
 	text-align: center;
 }
@@ -110,7 +113,6 @@ body::-webkit-scrollbar:hover {
     height: 100vh;
 
 }
-
 .sm-txt {
 	font-size: 0.4em;
 }
@@ -125,6 +127,13 @@ body::-webkit-scrollbar:hover {
 
 .xlg-txt {
 	font-size: 1em;
+}
+
+.xxlg-txt {
+	font-size: 1.3em;
+}
+.big-txt {
+	font-size: 3em;
 }
 
 input {
@@ -186,4 +195,116 @@ span:hover {
 
 .text-start{
 	text-align: start;
+}
+
+.hover {
+	color: var(--primary-dark-shade-color);
+}
+.hover:hover {
+	color: var(--hover-color);
+	cursor: pointer;
+}
+
+.stretch {
+	width: 100%;
+}
+
+.fn-wg-800 {
+	font-weight: 800;
+}
+
+.fn-wg-700 {
+	font-weight: 700;
+}
+
+.fn-wg-600 {
+	font-weight: 600;
+}
+
+.pd-5 {
+	padding: 5px;
+}
+.pd-10 {
+	padding: 10px;
+}
+.cursive {
+	font-family: cursive;
+}
+
+.font-family{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.underline {
+	text-decoration: underline;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+	flex-wrap: wrap;
+}
+
+.flex-cln {
+	display: flex;
+	flex-direction: column;
+}
+
+.space-btwn {
+	justify-content: space-between;
+}
+
+.flex {
+	display: flex;
+	gap: 5px;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.full-input {
+	width: 100%;
+	background-color: var(--secondary-color);
+}
+
+.cta-txt{
+	color: var(--primary-color);
+}
+
+.action-btn{
+	font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 3em;
+    /* margin: auto; */
+    grid-gap: 0.5em;
+    gap: 0.5em;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    outline: none;
+	cursor: pointer;
+	transition: background-color 2s ease;
+}
+
+
+.action-btn:hover{
+	transform: scale(1.03);
+	background-color: var(--primary-hover-color);
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useReducer, useState} from 'react';
-import { useNavigate as navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import {Link} from 'react-router-dom';
 import LoginButton from '../../components/UI/Buttons/LoginButton/LoginButton';
 import {useAuth} from '../../context/AuthContext';
@@ -50,7 +50,7 @@ const SignUpDetails = (state, action) => {
 function SignupPage() {
     const {login, setlogin, userDispatch} = useAuth();
     const [passwordType, setPasswordType] = useState("password");
-
+    const navigate = useNavigate();
     const [passwordCheckError, setPasswordCheckError] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState("");
     const [state, dispatch] = useReducer(SignUpDetails, {
@@ -95,7 +95,8 @@ function SignupPage() {
         setPasswordCheckError(HasAlphabets(value) & HasNumber(value) & HasSpecialCharacter(value));
     }
 
-    const onSubmittFunc = async () => {
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
         try {
             let object = {
                 "email": state.email,
@@ -148,12 +149,12 @@ function SignupPage() {
     }
 
     return (<>
-        <div className='signup-main-container'>
+        <div className='signup-main-container font-family'>
             <section className='auth-sidebar'>
                 <div className='auth-sidebar-content'>
                     <div className='header'> 
                         <div className='title-name page-title'>
-                            <Link to="/">Fleets</Link>
+                            <p className='xxlg-txt fn-wg-700 hover' onClick={()=>navigate("/")}>Fleets</p>
                         </div>
                         <p>Discover the world around you</p>
                     </div>
@@ -165,97 +166,63 @@ function SignupPage() {
             </section>
             <section className='content'>
                 <main>
-                    <div className="signup-container">
-
-                        <div className="signup-credential-container"> 
-                            <input placeholder="Email Address - xyz@gmail.com"
+                    <form className="signup-container" onSubmit={onSubmitHandler}>
+                        <div className='stretch'>
+                            <input placeholder="Email Address - xyz@gmail.com" className="signup-credential-container fn-wg-600" required
                                 onChange={
                                     (e) => dispatch({email: e.target.value})
                                 }/>
-                        </div>
-                        <div className="signup-credential-container"> 
                             <div className='password-holder'>
-                            <input type={passwordType}
-                                style={
-                                    {
-                                        borderColor: passwordCheckError,
-                                        outlineColor: passwordCheckError
-                                    }
-                                }
-                                onChange={
-                                    (e) => {
-                                        PasswordCheck(e.target.value);
-                                    }
-                                }
-                                name=""
-                                placeholder="Password"
-                                id=""/>{
-                                    passwordType === "password" ?
+                                <input type={passwordType} className="signup-credential-container fn-wg-600"
+                                    style={{  borderColor: passwordCheckError,
+                                            outlineColor: passwordCheckError }}
+                                    onChange={(e) => {PasswordCheck(e.target.value); }}
+                                    name="" placeholder="Password" id="" />
+                                {   passwordType === "password" ?
                                         <span className="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
-                                            visibility
-                                        </span>
+                                            visibility</span>
                                         : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
-                                            visibility_off
-                                        </span>}
-                                        </div>
+                                            visibility_off</span>}
+                            </div>
+                                
+                            <p className='error'>
+                                {CheckMinimalCharInPassword()}
+                            </p>
+                            <p className='error'>
+                                {VerifyPasswordChar()}
+                            </p>
+                            <input type="password" placeholder="Confirm Password" name="" id="" className="signup-credential-container fn-wg-600"
+                                style={{ borderColor: passwordCheckError,
+                                        outlineColor: passwordCheckError,
+                                        cursor :  passwordCheckError && confirmPassword.length >= 7 ?"pointer" : "not-allowed"  }}
+                                onChange={(e) => {setPasswordCheckError(e.target.value !== confirmPassword ? "red" : "black");}}
+                                disabled={ passwordCheckError && confirmPassword.length >= 7 ? false : true   }/>
                             
                             <p className='error'>
-                            {CheckMinimalCharInPassword()}
+                                {passwordCheckError === "red" && "Confirm Password Should match Password"}
                             </p>
-                            <p className='error'>{ VerifyPasswordChar()}</p>
-                        </div>
-                        <div className="signup-credential-container"> {/* <label>Confirm Password</label> */}
-                            <input type="password" placeholder="Confirm Password" name="" id=""
-                                style={
-                                    {
-                                        borderColor: passwordCheckError,
-                                        outlineColor: passwordCheckError,
-                                        cursor :  passwordCheckError && confirmPassword.length >= 7 ?"pointer" : "not-allowed"  
-                                    }
-                                }
-                                onChange={
-                                    (e) => {
-                                        setPasswordCheckError(e.target.value !== confirmPassword ? "red" : "black");
-                                    }
-                                }
-                                disabled={
-                                    passwordCheckError && confirmPassword.length >= 7 ? false : true
-                                }/>
-                            <p className='error'> {
-                                passwordCheckError === "red" && "Confirm Password Should match Password"
-                            }</p>
 
-                        </div>
-                        <div className="signup-credential-container"> {/* <label>First Name</label> */}
-                            <input type="email" placeholder="First Name"
-                                onChange={
-                                    (e) => dispatch({firstName: e.target.value})
-                                }/>
-                        </div>
-                        <div className="signup-credential-container"> {/* <label>Last Name</label> */}
-                            <input type="email" placeholder="Last Name"
-                                onChange={
-                                    (e) => dispatch({lastName: e.target.value})
-                                }/>
+                            <input type="email" placeholder="First Name" className="signup-credential-container fn-wg-600"
+                                onChange={ (e) => dispatch({firstName: e.target.value})} required/>
+                            
+                            <input type="email" placeholder="Last Name" className="signup-credential-container fn-wg-600"
+                                onChange={(e) => dispatch({lastName: e.target.value})} required/>
                         </div>
                         <div className="signup-remember-container">
 
                             <input type="checkbox" name="" id=""/>
                             I accept all Terms & Conditions
 
-                        </div>
-                        <div className="signup-btn-container">
-                            <div className=""
-                                onClick={onSubmittFunc}>
-                                <Button name={"SignUp"}/>
                             </div>
-                        </div>
-                        <Link className="signup-footer" to="/login">Already have an Account
+                            <button type="submit" className="action-btn">Sign Up</button>
+                        
+                            <p className="signup-footer lg-txt cta-txt underline fn-wg-700" onClick={() => navigate("/login")}>
+                                Already have an Account
                             <span className="material-icons-round">
                                 navigate_next
                             </span>
-                        </Link>
-                    </div>
+                        </p>
+                    </form>
                 </main>
             </section>
         </div>

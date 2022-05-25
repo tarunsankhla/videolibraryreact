@@ -128,7 +128,7 @@ export const videos = [
             channelTitle: "Beast Reacts",
             tags: "entertainment",
             categoryId: 24,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "5661742",
@@ -388,7 +388,7 @@ export const videos = [
             channelTitle: "Wall Street Journal",
             tags: "shoes",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "5120520",
@@ -482,7 +482,7 @@ export const videos = [
             channelTitle: "Sony Music India",
             tags: "trendings",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "26894032",
@@ -514,7 +514,7 @@ export const videos = [
             channelTitle: "Sony Music India",
             tags: "trendings",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "8435289",
@@ -578,7 +578,7 @@ export const videos = [
             channelTitle: "Excel Music",
             tags: "trendings",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "72548298",
@@ -833,7 +833,7 @@ export const videos = [
             thumbnails: "https://i.ytimg.com/vi/8bhp89AIsnc/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBlTWll_alEEqyAjHOP1Du1uK8Jqg",
             tags: "React",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "42520",
@@ -1057,7 +1057,7 @@ export const videos = [
                 "music"
             ,
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "1362642",
@@ -1126,7 +1126,7 @@ export const videos = [
             tags: 
                 "music"
             ,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
             categoryId: 10,
         },
         statistics: {
@@ -1410,7 +1410,7 @@ export const videos = [
             channelTitle: "Sony Music India",
             tags: "trendings",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "8435289",
@@ -1604,7 +1604,7 @@ export const videos = [
             channelTitle: "AshStudio 7",
             tags: "sports",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "1020520",
@@ -1698,7 +1698,7 @@ export const videos = [
             channelTitle: "Ben Awad",
             tags: "React",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "120520",
@@ -1822,7 +1822,7 @@ export const videos = [
             channelTitle: "SummerWalkerVEVO",
             tags: "music",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "1705305",
@@ -2052,7 +2052,7 @@ export const videos = [
             channelTitle: "Siroeno Yosui",
             tags: "shoes",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "4764414",
@@ -2592,7 +2592,7 @@ export const videos = [
             channelTitle: "Ben Awad",
             tags: "React",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "120520",
@@ -2654,7 +2654,7 @@ export const videos = [
             channelTitle: "CrossComm, Inc.",
             tags: "React",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "110520",
@@ -2977,7 +2977,7 @@ export const videos = [
             thumbnails: "https://i.ytimg.com/vi/xj0dPyCXISU/mqdefault.jpg",
             channelTitle: "Mega Process",
             tags: "shoes",
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
             categoryId: 10,
         },
         statistics: {
@@ -3135,7 +3135,7 @@ export const videos = [
             channelTitle: "Gucci Mane",
             tags: "music",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "5120520",
@@ -3199,7 +3199,7 @@ export const videos = [
             channelTitle: "Sony Music India",
             tags: "trendings",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "8435289",
@@ -3296,7 +3296,7 @@ export const videos = [
             channelTitle: "T-Series   ",
             tags: "bollywood",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "24678324",
@@ -3329,7 +3329,7 @@ export const videos = [
             channelTitle: "Maddock Films",
             tags: "bollywood",
             categoryId: 10,
-            channelImg:"https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s68-c-k-c0x00ffffff-no-rj",
+            channelImg:"https://yt3.ggpht.com/KDLFW5YWda7nuYUN3sGj6vIPKZedI_JsNeoldsPDSgw6UoC9hmqVLmRg8hVoxQxyb_EYeMLjfQ=s48-c-k-c0x00ffffff-no-rj",
         },
         statistics: {
             viewCount: "1820520",

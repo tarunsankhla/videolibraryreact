@@ -25,7 +25,8 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async (e) => {
+    e.preventDefault()
     try {
       var object = { "email": email, "password": password };
       console.log(object);
@@ -53,9 +54,10 @@ function LoginPage() {
     }
   }
 
-  const guestUserDetais = async () => { 
+  const guestUserDetais = async (e) => { 
     setEmail("adarshbalak@gmail.com");
     setPassword("adarshBalaki123");
+    e.preventDefault();
     try {
       var object = { "email": "adarshbalak@gmail.com", "password": "adarshBalaki123" };
       console.log(object);
@@ -84,12 +86,14 @@ function LoginPage() {
   }
   return (
     <>
-      <div className='login-main-container'>
+      <div className='login-main-container font-family'>
         <section className='auth-sidebar'>
           <div className='auth-sidebar-content'>
             <header className='header'>
-              <div className='title-name page-title'> <Link to="/">Fleets</Link></div>
-              <div>Discover the world around you</div>
+              <div className='title-name page-title'>
+                <p className='xxlg-txt fn-wg-700 hover' onClick={()=>navigate("/")}>Fleets</p>
+              </div>
+              <p >Discover the world around you</p>
             </header>
             <div className='artwork'>
             <img src={HolderImg2} className="holders" loading="lazy"/>
@@ -98,34 +102,39 @@ function LoginPage() {
         </section>
         <section className='content'>
           <nav className='auth-nav'>
-          <Link className="login-footer lg-txt" to="/signup">Not a member? Sign up now</Link>
+            <p className="login-footer lg-txt cta-txt underline fn-wg-700" onClick={() => navigate("/signup")}>Not a member? Sign up now</p>
           </nav>
           <main>
             <div className="login-container">
-              <div className="title-header">
+              <form className="title-header" onSubmit={onSubmitHandler}>
+                <input placeholder="Email Address - xyz@gmail.com" className='login-credential-container fn-wg-600'
+                  type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-                <div className="login-credential-container">
-                  <input placeholder="Email Address - xyz@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="login-credential-container">
-                  <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="" placeholder="Password" id="" />
-                </div>
-                <div className="login-rem-forgetpass-container">
+                <input type="password" onChange={(e) => setPassword(e.target.value)} className="login-credential-container fn-wg-600"
+                  value={password} name="" placeholder="Password" id="" />
+
+                {/* <div className="login-rem-forgetpass-container">
                   <div className='login-action-container md-txt'>
                     <input type="checkbox" name="" id="" />
                     Remember me
                   </div>
-                  <div className="btn-link md-txt">Forgot your password?</div>
-                </div>
-                <div className="login-btn-container">
+                  <p className="btn-link md-txt">Forgot your password?</p>
+                </div> */}
+               
+                {/* <div className="login-btn-container">
                   <div className='login-btn-container-body' onClick={onSubmitHandler}><LoginButton /></div>
-                </div>
-                <div className="login-btn-container">
+                </div> */}
+                
+                {/* <div className="login-btn-container">
                   <div className='login-btn-container-body' onClick={guestUserDetais}>
                     <Button name={"Guest User"} />
                   </div>
+                </div> */}
+                <div className='flex-center pd-10 '>
+                  <button type="submit" className="action-btn">Login</button>
+                  <button className="action-btn" onClick={guestUserDetais}> Guest User</button>
                 </div>
-              </div>
+              </form>
             </div>
           </main>
         </section>

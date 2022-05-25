@@ -14,9 +14,9 @@
 }
 
 .auth-nav p {
-	flex-grow: 1;
-	margin: 0;
-	text-align: right;
+	/* flex-grow: 1;
+	margin: 0; */
+	text-align: end;
 }
 
 .auth-sidebar .artwork {
@@ -75,15 +75,15 @@ main {
 	min-width: 70%;
 }
 
-.signup-credential-container > input {
-	width: 100%;
-	padding: 0.5em;
-	/* margin: 1em; */
-	border-radius: 0.5em;
-	border: 2px solid transparent !important;
-	outline: none;
-	font-size: 1.5rem;
-    background-color: #e8f0fe !important;
+.signup-credential-container  {
+	min-width: 70%;
+    display: block;
+    padding: 0.5em;
+    margin: 1em auto;
+    border-radius: 0.5em;
+    border: 2px solid #ffffff !important;
+    outline: none;
+    background-color: #f0f0ff !important;
 }
 
 .password-holder > input{
@@ -100,11 +100,11 @@ main {
 .password-holder{
 	align-items: center;
     display: flex;
-    margin: 0.5em;
+    margin: auto;
     background: #e8f0fe;
     justify-content: space-around;
 	border-radius: 0.5em;
-	width: 100%;
+	width: 70%;
 }
 
 .signup-credential-container>label {
@@ -147,6 +147,7 @@ main {
 
 .signup-footer {
 	cursor: pointer;
+	/* text-align: end; */
 }
 
 .animation-signup-1 {
@@ -196,7 +197,8 @@ button:disabled {
 
 	.auth-sidebar {
 		flex-grow: 0;
-		width: 450px;
+		/* width: 450px; */
+		width: 40vw;
 	}
 
 	.auth-sidebar .auth-sidebar-content {
