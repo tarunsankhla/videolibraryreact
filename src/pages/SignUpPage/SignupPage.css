@@ -5,11 +5,14 @@
 	color: #865c6c;
 	/* background: linear-gradient(12deg, #3b5258 20%, #899ca8); */
 	color: white;
-	background-color: var(--sidenav-color);
+	/* background-color: var(--sidenav-color); */
+	background-color: var(--primary-color);
 }
 
 .content {
 	width: 100%;
+	padding-top: 2em;
+	background-color: var(--dark-theme-color);
 	/* background: #d2c9ff; */
 }
 
@@ -175,7 +178,7 @@ button:disabled {
 }
 
 .auth-sidebar-content p {
-	color: black;
+	color: white;
 }
 @media screen and (max-width: 800px) {
 	.signup-container {

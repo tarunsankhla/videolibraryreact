@@ -4,15 +4,12 @@ import {Link} from "react-router-dom";
 import {useHistory} from "../../../../context/HistoryContext";
 import {useLikes} from "../../../../context/LikesContext";
 import ViewCount from "../../../../utils/ViewCount";
-import IcOutlineWatchLater from "../../Icons/IcOutlineWatchLater";
-import IcRoundCheckCircleConfirmWatchLater from "../../Icons/IcRoundCheckCircle";
-import IcBaselineAddTask from "../../Icons/IcBaselineAddTask";
+import {IcBaselineAddTask,IcOutlineWatchLater,IcRoundThumbDownOffAlt,IcOutlineThumbUp} from "../../Icons/index";
 import "./VideoCards.css";
 import { useWatchlater } from "../../../../context/WatchLaterContext";
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import { Toast } from "../../Toast/toast";
 import { useAuth } from "../../../../context/AuthContext";
-import { IcOutlineThumbUp, IcRoundThumbDownOffAlt } from "../../Icons";
 import { useNavigate } from 'react-router';
 
 function VideoCards({props}) {

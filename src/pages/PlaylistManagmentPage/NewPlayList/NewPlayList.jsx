@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, {useState} from 'react'
-import IcRoundCancel from '../../../components/UI/Icons/IcRoundCancel';
-import IcRoundCreate from '../../../components/UI/Icons/IcRoundCreate';
+import {IcRoundCancel} from '../../../components/UI/Icons';
 import {Toast} from '../../../components/UI/Toast/toast';
 import { useAuth } from '../../../context/AuthContext';
 import {usePlayList} from '../../../context/PlayListContext';

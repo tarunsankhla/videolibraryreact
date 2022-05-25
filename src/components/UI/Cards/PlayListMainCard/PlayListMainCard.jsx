@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { usePlayList } from '../../../../context/PlayListContext';
-import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {IcTwotoneDelete} from '../../Icons';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListMainCard.css";
 

@@ -18,6 +18,8 @@
 	--primary-color :#6c63ff;
 	--primary-hover-color:#b0abff;
 	--primary-dark-color:#564fcc;
+
+	--dark-theme-color:#3d3d3d;
 }
 
 .App {
@@ -96,7 +98,7 @@ body::-webkit-scrollbar:hover {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.2em;
+	padding: 10px;
 }
 
 .AsideNav {
@@ -111,6 +113,7 @@ body::-webkit-scrollbar:hover {
     position: sticky;
     top: 0;
     height: 100vh;
+	min-width: 230px;
 
 }
 .sm-txt {
@@ -307,4 +310,13 @@ span:hover {
 .action-btn:hover{
 	transform: scale(1.03);
 	background-color: var(--primary-hover-color);
+}
+
+.logo{
+	width: 3em;
+	height: 3em;
+}
+
+.white-txt{
+	color: white;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import IcOutlineLogIn from '../../Icons/IcOutlineLogIn';
+import {IcOutlineLogin} from '../../Icons/index';
 import "./LoginButton.css";
 
 function LoginButton() {
   return (
     <div className='btn login-button'>Login
-      <IcOutlineLogIn />
+      <IcOutlineLogin />
     </div>
   )
 }

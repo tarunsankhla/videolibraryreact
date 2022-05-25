@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import { IcOutlineWatchLater, IcTwotoneWatchLater } from '../../components/UI/Icons';
-import IcBaselineAddTask from '../../components/UI/Icons/IcBaselineAddTask';
-import IcOutlineThumbUp from '../../components/UI/Icons/IcOutlineThumbUp';
-import IcRoundPlaylistAdd from '../../components/UI/Icons/IcRoundPlaylistAdd';
-import IcRoundThumbDownOffAlt from '../../components/UI/Icons/IcRoundThumbDownOffAlt';
-import IcRoundThumbUp from '../../components/UI/Icons/IcRoundThumbUp';
+import {
+  IcBaselineAddTask, IcOutlineWatchLater, IcOutlineThumbUp,IcRoundPlaylistAdd, IcRoundThumbDownOffAlt
+} from '../../components/UI/Icons/index';
 import PlayListViewModal from '../../components/UI/Modal/PlayListViewModal/PlayListViewModal';
 import { useLikes } from '../../context/LikesContext';
 import { useWatchlater } from '../../context/WatchLaterContext';
@@ -15,20 +12,12 @@ import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import './VideoContent.css';
 import { useAuth } from '../../context/AuthContext';
 import {
-	HolderImg1,
-	HolderImg2,
 	HolderImg3,
-	HolderImg4,
-	HolderImg5,
-	HolderImg6,
-	HolderImg7,
 	HolderImg8,
-	HolderImg9,
 } from "../../assets/Holders/holder";
 import { Toast } from '../../components/UI/Toast/toast';
 import { useVideo } from '../../context/VideoContext';
 import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
-import { Link } from 'react-router-dom';
 
 function VideoContentPage() {
   const location = useLocation();

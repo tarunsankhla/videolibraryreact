@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, {useReducer, useState} from 'react';
 import { useNavigate } from 'react-router';
-import {Link} from 'react-router-dom';
-import LoginButton from '../../components/UI/Buttons/LoginButton/LoginButton';
 import {useAuth} from '../../context/AuthContext';
 import "./SignupPage.css";
 import {
@@ -19,6 +17,7 @@ import {
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
 import { Toast } from '../../components/UI/Toast/toast';
+import { IMAGES } from '../../assets';
 
 const SignUpDetails = (state, action) => {
     console.log(state, action);
@@ -167,6 +166,7 @@ function SignupPage() {
             <section className='content'>
                 <main>
                     <form className="signup-container" onSubmit={onSubmitHandler}>
+                        <img src={IMAGES.logoPNG}/>
                         <div className='stretch'>
                             <input placeholder="Email Address - xyz@gmail.com" className="signup-credential-container fn-wg-600" required
                                 onChange={
@@ -208,7 +208,7 @@ function SignupPage() {
                             <input type="email" placeholder="Last Name" className="signup-credential-container fn-wg-600"
                                 onChange={(e) => dispatch({lastName: e.target.value})} required/>
                         </div>
-                        <div className="signup-remember-container">
+                        <div className="signup-remember-container white-txt">
 
                             <input type="checkbox" name="" id=""/>
                             I accept all Terms & Conditions

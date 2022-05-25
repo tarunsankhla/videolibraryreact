@@ -18,6 +18,7 @@ import "./LoginPage.css";
 import Button from '../../components/UI/Buttons/Button/Button';
 import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from '../../utils/Route';
 import { Toast } from '../../components/UI/Toast/toast';
+import { IMAGES } from '../../assets';
 
 function LoginPage() {
   const { login, setlogin, userDispatch } = useAuth();
@@ -107,6 +108,7 @@ function LoginPage() {
           <main>
             <div className="login-container">
               <form className="title-header" onSubmit={onSubmitHandler}>
+              <img src={IMAGES.logoPNG}/>
                 <input placeholder="Email Address - xyz@gmail.com" className='login-credential-container fn-wg-600'
                   type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 

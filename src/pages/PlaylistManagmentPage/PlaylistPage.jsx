@@ -1,20 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PlayListMainCard from '../../components/UI/Modal/PlayListMainCard/PlayListMainCard';
-import IcRoundCreate from '../../components/UI/Icons/IcRoundCreate';
+import {IcRoundCreate} from '../../components/UI/Icons';
 import { usePlayList } from '../../context/PlayListContext';
 import NewPlayList from './NewPlayList/NewPlayList';
 import { VAR_ENCODE_TOKEN } from "../../utils/Route";
 import {
-  HolderImg1,
-  HolderImg2,
-  HolderImg3,
-  HolderImg4,
-  HolderImg5,
-  HolderImg6,
-  HolderImg7,
-  HolderImg8,
-  HolderImg9
+  HolderImg1
 } from "../../assets/Holders/holder";
 import "./PlaylistPage.css";
 import { Toast } from '../../components/UI/Toast/toast';

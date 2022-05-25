@@ -3,8 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from '../../../../context/HistoryContext';
 import ViewCount from '../../../../utils/ViewCount';
-import IcRoundCheckCircleConfirmWatchLater from '../../Icons/IcRoundCheckCircle';
-import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {IcTwotoneDelete} from '../../Icons';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route"
 import "./HistoryVideoCards.css";
 import { Toast } from '../../Toast/toast';

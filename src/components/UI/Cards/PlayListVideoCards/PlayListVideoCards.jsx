@@ -3,7 +3,7 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import ViewCount from '../../../../utils/ViewCount';
-import IcTwotoneDelete from '../../Icons/IcTwotoneDelete';
+import {IcTwotoneDelete} from '../../Icons';
 import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import "./PlayListVideoCards.css";
 import { Toast } from '../../Toast/toast';

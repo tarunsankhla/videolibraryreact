@@ -1,10 +1,6 @@
 import React from "react";
 import "./AsideNav.css";
-import IcTwotoneWatchLater from "../UI/Icons/IcTwotoneWatchLater";
-import IcTwotoneManageHistory from "../UI/Icons/IcTwotoneManageHistory";
-import IcTwotoneHome from "../UI/Icons/IcTwotoneHome";
-import IcTwotoneVideoLibrary from "../UI/Icons/IcTwotoneVideoLibrary";
-import IcTwotonePlaylistPlay from "../UI/Icons/IcTwotonePlaylistPlay";
+import {IcTwotoneWatchLater, IcTwotoneManageHistory, IcTwotoneHome, IcTwotoneVideoLibrary, IcTwotonePlaylistPlay} from "../UI/Icons";
 import { NavLink } from "react-router-dom";
 import { IcOutlineThumbUp } from "../UI/Icons";
 
@@ -46,7 +42,7 @@ function AsideNav() {
       <NavLink to="/watchlater" style={getActiveStyle} className="aside-nav-row">
         {/* <div> */}
           <IcTwotoneWatchLater />
-          <span className="icon-handle">Watch Later</span>
+          <span className="icon-handle">WatchLater</span>
         {/* </div> */}
       </NavLink>
       <NavLink to="/history" style={getActiveStyle} className="aside-nav-row">
