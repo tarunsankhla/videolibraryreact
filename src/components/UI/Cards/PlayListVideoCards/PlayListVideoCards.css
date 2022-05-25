@@ -2,7 +2,13 @@
 	cursor: pointer;
 	width: 2em;
 	height: 2em;
+	display: flex;
+    flex-direction: row;
+    gap: 7px;
+    padding: 3px;
+    box-shadow: 0 4px 2px rgb(0 0 0 / 20%), 0 8px 16px rgb(0 0 0 / 20%), 0 16px 10px rgb(0 0 0 / 1%), 0 26px 18px rgb(0 0 0 / 10%);
 }
+
 
 .elipsis {
 	text-overflow: ellipsis;
@@ -22,6 +28,7 @@
 .card-img {
 	height: 19rem;
 	object-fit: cover;
+	border-radius: 1px;
 }
 .card-content {
 	padding: 1rem;

@@ -6,8 +6,8 @@
 	display: flex;
 	/* justify-content: space-evenly; */
 	color: white;
-	
-    gap: 0.5em;
+
+	gap: 0.5em;
 }
 
 .aside-nav-row:hover {
@@ -26,8 +26,18 @@ span:hover {
 	color: #539987;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 770px) {
 	.icon-handle {
 		display: none;
+	}
+	.AsideNav {
+		position: fixed;
+		background-color: red;
+		z-index: 3;
+		width: 100vw;
+		flex-direction: row;
+		height: fit-content;
+		bottom: 0;
+		top: inherit;
 	}
 }

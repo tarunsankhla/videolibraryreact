@@ -112,16 +112,17 @@
 	width: 100%;
 }
 
-form{
+form.search-form{
 	background: white;
     border-radius: 2em;
-    margin: 0.5em 2em;
+    margin: 1em auto 0.5em;
     display: flex;
     flex-direction: row;
-	align-items: center;
-	width: 60vw;
-	justify-content: space-between;
-	padding: 0 0.5em;
+    align-items: center;
+    width: fit-content;
+    justify-content: space-between;
+    padding: 0 1em;
+    gap: 2em;
 }
 
 .searchbar{

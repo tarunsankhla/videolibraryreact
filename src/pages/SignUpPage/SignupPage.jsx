@@ -153,8 +153,9 @@ function SignupPage() {
                 <div className='auth-sidebar-content'>
                     <div className='header'> 
                         <div className='title-name page-title'>
-                        <Link to="/">Fleets</Link></div>
-                        <div>Discover the world around you</div>
+                            <Link to="/">Fleets</Link>
+                        </div>
+                        <p>Discover the world around you</p>
                     </div>
                     <div className='artwork'>
                         <img src={HolderImg7} alt="signuplogo" loading="lazy"

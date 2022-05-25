@@ -3,6 +3,7 @@
 	color: #000;
 	background: #f1cdd7;
 	color: white;
+	background-color: var(--sidenav-color);
 }
 
 .content {

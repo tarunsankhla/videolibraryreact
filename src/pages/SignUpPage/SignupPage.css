@@ -3,13 +3,14 @@
 	color: #000;
 	background: #f1cdd7;
 	color: #865c6c;
-	background: linear-gradient(12deg, #3b5258 20%, #899ca8);
+	/* background: linear-gradient(12deg, #3b5258 20%, #899ca8); */
 	color: white;
+	background-color: var(--sidenav-color);
 }
 
 .content {
 	width: 100%;
-	background: #d2c9ff;
+	/* background: #d2c9ff; */
 }
 
 .auth-nav p {
@@ -172,6 +173,9 @@ button:disabled {
 	cursor: not-allowed;
 }
 
+.auth-sidebar-content p {
+	color: black;
+}
 @media screen and (max-width: 800px) {
 	.signup-container {
 		width: 100vw;

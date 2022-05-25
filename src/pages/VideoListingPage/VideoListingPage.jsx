@@ -106,7 +106,7 @@ function VideoListingPage() {
   return (
     <div className='full-width'>
       <div>
-        <form onSubmit={searchHandler}>
+        <form onSubmit={searchHandler} className="search-form">
           <input className='searchbar' value={query} onChange={(e) => {
             setQuery(e.target.value);
             if (e.target.value.length === 0) { 

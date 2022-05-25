@@ -12,6 +12,7 @@
 	--hover-color: #539987;
 	--shadow-box: 0 4px 2px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
 	0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
+	--sidenav-color: #f0f0ff;
 }
 body {
 	/* background-color: var(--nav-color); */
@@ -84,6 +85,7 @@ body::-webkit-scrollbar:hover {
 	background-color: rgba(0, 0, 0, 0.1);
 	width: 100%;
 	min-height: 100vh;
+	position: relative;
 }
 
 .Navbar {
@@ -97,11 +99,16 @@ body::-webkit-scrollbar:hover {
 .AsideNav {
 	display: flex;
 	/* flex-basis: 15%; */
-	min-width: fit-content;
+	min-width: 20vw;
 	background-color: rgba(0, 0, 0, 0.1);
 	flex-direction: column;
 	padding-top: 1em;
 	padding: 0.5em;
+	align-items: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
 }
 
 .sm-txt {
