@@ -140,9 +140,11 @@ function VideoListingPage() {
       <div className='page-title sm-txt'>{result && `( Search Result : ${videoLib.length}) `  }</div>
       <div className='videolist-container'>
         {
-        videoLib.length !== 0 ?  videoLib.map((item) => (
-            <VideoCards key={item.id} props={item} />
-        )) : <div className='nocontent'> <div className='page-title md-txt'>No Video exist.</div>
+          videoLib.length !== 0 ?
+            videoLib.map((item) => (
+               <VideoCards key={item.id} props={item} />
+            ))
+            : <div className='nocontent'> <div className='page-title md-txt'>No Video exist.</div>
             <img src={HolderImg8} loading="lazy" className="holders" alt='lodderLogo' /></div>
         }
       </div>

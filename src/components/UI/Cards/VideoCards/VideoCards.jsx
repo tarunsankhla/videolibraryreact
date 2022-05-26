@@ -147,7 +147,7 @@ function VideoCards({props}) {
     }
     }
     return (
-        <div>
+    
             <div className="card cart-card">
                 <Link to="/video/watch"
                     state={props}>
@@ -199,7 +199,7 @@ function VideoCards({props}) {
                     </span>
                 </span>
             </div>
-        </div>
+     
     );
 }
 

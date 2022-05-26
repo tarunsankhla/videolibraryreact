@@ -167,7 +167,7 @@ a{
 
 @media screen and (max-width: 480px) {
 	.cart-card {
-		width: 13rem;
+		width: 17rem !important;
 		font-size: 0.75rem;
 	}
 	.cart-card > .card-img {
@@ -190,8 +190,11 @@ a{
 
 @media screen and (max-width: 360px) {
 	.cart-card {
-		width: 10rem !important;
-		font-size: 0.65rem;
+		/* width: 10rem !important;
+		font-size: 0.65rem; */
+		width: 100% !important;
+    font-size: 0.65rem;
+    transform: scale(1.01);
 	}
 	.cart-card > .card-img {
 		height: 8rem;

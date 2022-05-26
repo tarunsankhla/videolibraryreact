@@ -1,5 +1,10 @@
 .videolist-container {
+	display: flex;
 	justify-content: center;
+}
+
+.videolist-container + .card  {
+	flex-grow: 1;
 }
 
 .categories-batch {
