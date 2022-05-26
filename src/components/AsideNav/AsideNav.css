@@ -44,4 +44,12 @@ span:hover {
 		bottom: 0;
 		top: inherit;
 	}
+	.aside-nav-row:hover{
+		opacity: 1 !important;
+		transform: scale(1) !important;
+		
+	}
+	.aside-nav-row{
+		padding-left: 1px;
+	}
 }
