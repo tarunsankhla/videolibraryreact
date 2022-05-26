@@ -29,7 +29,8 @@ function WatchLater() {
 	}, []);
 	return (
         <div className="watchlater-container">
-            <div className="page-title">WatchLater</div>
+			<div className="page-title">WatchLater</div>
+			<hr/>
 			<div className="watchlater-list-container">
 				{" "}
 				{WatchlaterProviderContextArray.length === 0 ? (

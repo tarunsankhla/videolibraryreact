@@ -13,7 +13,8 @@
 }
 
 .aside-nav-row:hover {
-	color: #539987;
+	/* color: #539987; */
+	color: var(--primary-color);
 	transform: scale(1.1);
 	opacity: 0.9;
 	background-color: rgba(0, 0, 0, 0.1);
@@ -25,10 +26,11 @@
 }
 
 span:hover {
-	color: #539987;
+	/* color: #539987; */
+	color: var(--primary-color);
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 780px) {
 	.icon-handle {
 		display: none;
 	}

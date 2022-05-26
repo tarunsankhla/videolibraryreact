@@ -23,7 +23,7 @@ function Navbar() {
         <div className="Navbar">
             <div className="flex align-center ">
                 <img src={IMAGES.logoPNG} className="logo" />
-                <h3 style={{ marginLeft: "1em",color:"var(--primary-color)" }} className="title-name">
+                <h3 style={{ marginLeft: "1em",color:"var(--primary-dark-color)" }} className="title-name">
                     Fleets
                 </h3>
             </div>

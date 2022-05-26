@@ -6,7 +6,7 @@ import { IcOutlineThumbUp } from "../UI/Icons";
 
 function AsideNav() {
   const getActiveStyle = ({isActive}) =>({
-    color : isActive ?  "#539987" : "",
+    color : isActive ?  "var(--primary-color)" : "",
     transform: isActive ?  "scale(1.1)" : "",
     opacity: isActive ? "0.9" : "",
     backgroundColor: isActive ?  "rgba(0, 0, 0, 0.1)" : "",

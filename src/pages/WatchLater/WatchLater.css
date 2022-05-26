@@ -3,6 +3,7 @@
 	padding: 1em;
 	justify-content: start;
 	flex-wrap: wrap;
+	
 }
 
 
@@ -16,4 +17,5 @@
 	flex-wrap: wrap;
 	flex-direction: column;
 	width: 100%;
+	padding: 1em;
 }

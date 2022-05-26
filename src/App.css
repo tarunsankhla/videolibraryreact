@@ -18,33 +18,30 @@
 	--primary-color :#6c63ff;
 	--primary-hover-color:#b0abff;
 	--primary-dark-color:#564fcc;
-
+	--primary-color-shade1:#5752c2;;
 	--dark-theme-color:#3d3d3d;
+	--dark-theme-bg :rgba(0, 0, 0, 0.1);
 }
 
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
+body{
+	background-color: var(--dark-theme-bg);
+	overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
 	width: 1rem;
 }
 body::-webkit-scrollbar-track {
-	background-color: var(--shade-1);
+	background-color: var(--dark-theme-color);
 }
 body::-webkit-scrollbar-thumb {
-	background-color: var(--btn-text-color-2);
+	background-color: var(--primary-color-shade1);
 	border-radius: 1rem;
-	border: 3px solid var(--shade-1);
+	border: 3px solid var(--dark-theme-color);
 }
 
 body::-webkit-scrollbar:hover {
-	transform: scale(1.2);
+	/* transform: scale(1.2); */
 	cursor: pointer;
 }
 
@@ -54,20 +51,7 @@ body::-webkit-scrollbar:hover {
 	}
 }
 
-.App-header {
-	background-color: #282c34;
-	/* min-height: 100vh; */
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
 
-.App-link {
-	color: #61dafb;
-}
 
 @keyframes App-logo-spin {
 	from {
@@ -78,6 +62,8 @@ body::-webkit-scrollbar:hover {
 	}
 }
 
+
+
 /* MAin */
 .main-container {
 	display: flex;
@@ -87,7 +73,7 @@ body::-webkit-scrollbar:hover {
 
 .main-body {
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: var(--dark-theme-bg );
 	width: 100%;
 	min-height: 100vh;
 	position: relative;
@@ -105,7 +91,7 @@ body::-webkit-scrollbar:hover {
 	display: flex;
 	/* flex-basis: 15%; */
 	min-width: 20vw;
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: var(--dark-theme-bg) ;
 	flex-direction: column;
 	padding-top: 1em;
 	padding: 0.5em;
@@ -148,7 +134,7 @@ span {
 }
 
 span:hover {
-	color: #539987;
+	color: var(--primary-dark-color);
 }
 
 
@@ -204,7 +190,7 @@ span:hover {
 	color: var(--primary-dark-shade-color);
 }
 .hover:hover {
-	color: var(--hover-color);
+	color: var(--primary-color);
 	cursor: pointer;
 }
 
@@ -319,4 +305,17 @@ span:hover {
 
 .white-txt{
 	color: white;
+}
+
+/* all cards */
+
+
+.cart-card > .badge:hover{
+	transform: scale(1.03) !important;
+	transition: background-color 2s ease !important;
+}
+
+.cart-card:hover{
+	transform: scale(1.01) !important;
+	transition: scale 2s ease !important;
 }
