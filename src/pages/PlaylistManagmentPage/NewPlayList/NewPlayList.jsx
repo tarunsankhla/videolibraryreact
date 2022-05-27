@@ -17,23 +17,28 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
             if (login) {
                 console.log(playListContextArray.filter(i => i.name === playlistName).length === 0, playlistName === "");
 
+                if (playlistName.length) {
                 
-                ongoingReq = false;
-                var res = await axios.post("/api/user/playlists", {
-                    "playlist": {
-                        "name": playlistName
+                    ongoingReq = false;
+                    var res = await axios.post("/api/user/playlists", {
+                        "playlist": {
+                            "name": playlistName
+                        }
+                    }, {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                    if (res.status === 201) {
+                        Toast("success", "Adedd New Playlist!!");
+                        setPlayListName("");
+                        RenderPlayListData();
+                        setHandleCreatePlayList((prev) => !prev);
+                        ongoingReq = true
                     }
-                }, {
-                    headers: {
-                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
-                    }
-                });
-                if (res.status === 201) {
-                    Toast("success", "Adedd New Playlist!!");
-                    setPlayListName("");
-                    RenderPlayListData();
-                    setHandleCreatePlayList((prev) => !prev);
-                    ongoingReq = true
+                }
+                else {
+                    Toast("error","Playlist name can't be empty")
                 }
             } else {
                 Toast("error", "you need to login!!");
