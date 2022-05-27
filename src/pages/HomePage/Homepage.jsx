@@ -28,7 +28,8 @@ function Homepage() {
   const CategoryHandler = (categoryType) => { 
     navigate(`/explore?type=${categoryType}`)
   }
-    return (<div>
+  return (
+    <div>
       <Carousal />
       <div className='category-container'>
         {CategoryList.map((item) => (
@@ -39,7 +40,7 @@ function Homepage() {
       ))}</div>
       <hr/>
         <div>
-          <div className='category-title'>Trending</div>
+          <div className='category-title big-txt fn-wg-700'>Trending</div>
             <div className='videolist-container'> {
                 videoLib.filter((videoObj) => videoObj.snippet.tags === 'trendings').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
@@ -49,7 +50,7 @@ function Homepage() {
       </div>
       <hr/>
       <div>
-          <div className='category-title'>Entertainment</div>
+          <div className='category-title big-txt fn-wg-700'>Entertainment</div>
             <div className='videolist-container'> {
                 videoLib.filter((videoObj) => videoObj.snippet.tags === 'entertainment').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
@@ -59,7 +60,7 @@ function Homepage() {
       </div>
       <hr/>
       <div>
-          <div className='category-title'>React</div>
+          <div className='category-title big-txt fn-wg-700'>React</div>
             <div className='videolist-container'> {
                 videoLib.filter((videoObj) => videoObj.snippet.tags === 'React').slice(0, 6).map((item) => (<VideoCards key={
                         item.id
@@ -69,7 +70,7 @@ function Homepage() {
       </div>
       <hr/>
       <div>
-          <div className='category-title'>Music</div>
+          <div className='category-title big-txt fn-wg-700'>Music</div>
             <div className='videolist-container'> {
                 videoLib.filter((videoObj) => videoObj.snippet.tags === 'music').slice(0, 6).map((item) => (<VideoCards key={
                         item.id

@@ -5,12 +5,12 @@
 }
 
 .category-title{
-	font-size: 1em;
+	font-size: 2em;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	color: aliceblue;
+	color: var(--hover-color);
 	display: flex;
-    padding-left: 1em;
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.1);
+    padding: 10px;
 }
 
 
@@ -35,4 +35,8 @@
 }
 .cateogory-container-item:hover{
 	transform: scale(1.05);
+}
+
+hr{
+	color: var(--primary-color);
 }

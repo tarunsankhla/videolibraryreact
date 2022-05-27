@@ -153,7 +153,7 @@ function SignupPage() {
                 <div className='auth-sidebar-content'>
                     <div className='header'> 
                         <div className='title-name page-title'>
-                            <p className='xxlg-txt fn-wg-700 hover' onClick={()=>navigate("/")}>Fleets</p>
+                            <p className='xxlg-txt fn-wg-700 ' onClick={()=>navigate("/")}>Fleets</p>
                         </div>
                         <p>Discover the world around you</p>
                     </div>
