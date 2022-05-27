@@ -4,29 +4,18 @@ import { useLocation } from 'react-router';
 import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
 import { useVideo } from '../../context/VideoContext';
 import {
-  HolderImg1,
-  HolderImg2,
-  HolderImg3,
-  HolderImg4,
-  HolderImg5,
-  HolderImg6,
-  HolderImg7,
-  HolderImg8,
-  HolderImg9
+  HolderImg8
 } from "../../assets/Holders/holder";
 import "./VideoListingPage.css";
 import { category as CategoryList } from '../../data/category.data';
-import { URL } from 'uuid/dist/v35';
-import { IcRoundCancel } from '../../components/UI/Icons';
 
 function VideoListingPage() {
   const [videoLib, setVideoLib] = useState([]);
-  const [defaultVideoLib, setdefaultVideoLib] = useState([]);
   const [query, setQuery] = useState("");
   const [result,setresult] = useState(false)
   const { videoContextList, setVideoContextList } = useVideo();
   const [category, setCategory] = useState();
-  const categories = ["music", "shoes", "React", "entertainment", "bollywood", "sports","trendings"];
+  // const categories = ["music", "shoes", "React", "entertainment", "bollywood", "sports","trendings"];
   //music shoes technology  entertainment bollywood sports trendings 
   const location = useLocation();
 
@@ -44,6 +33,7 @@ function VideoListingPage() {
       } else {
         setVideoLib([...videoContextList])
       }
+      setresult(true);
     }, 1000);
   }, [category]);
 
@@ -125,6 +115,11 @@ function VideoListingPage() {
       </div>
       <div className='category-layer-container'>
         <ul className='icons-cateogry-layer'>
+        <li className='cateogory-container-batch-icons' style={{
+              background:"linear-gradient(12deg, #3b5258 20%, #899ca8)" }} onClick={() => setVideoLib(videoContextList)}
+              key="all">
+              All
+            </li>
           {CategoryList.map((item) => (
             <li className='cateogory-container-batch-icons' style={{
               background: category === item.type
