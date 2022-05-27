@@ -59,7 +59,7 @@ function HistortyPage() {
       <div className='history-main-container'>
       <div className="page-title">History</div>
       <div className='history-btn-container'>
-        <button className="normal-btn" onClick={() => deleteAllHistoryHandler()}>Clear Full History</button>
+        <button className="normal-btn-history" onClick={() => deleteAllHistoryHandler()}>Clear Full History</button>
       </div>
       <hr />
       <div className='history-container'>

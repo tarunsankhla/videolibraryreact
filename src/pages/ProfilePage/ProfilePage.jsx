@@ -1,4 +1,4 @@
-import { IcOutlineLogout } from 'components/UI/Icons';
+import { IcOutlineLogout, IcRoundCreate } from 'components/UI/Icons';
 import React, {useEffect, useReducer, useState} from 'react';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
@@ -81,6 +81,7 @@ function ProfilePage() {
                 <div className='profile-card-footer'>
                     <button onClick={() => {console.log(editON); setEditON(true)}}
                         style={{ visibility: editON ? "hidden" : "visible" }}> Edit
+                         <IcRoundCreate />
                     </button>
                     <button onClick={() => {UpdatedProfile()}}  style={{ visibility: !editON ? "hidden" : "visible" }}>
                         Save

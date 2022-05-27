@@ -13,12 +13,16 @@
 	flex-direction: column;
 	gap: 1em;
 }
-.normal-btn {
+.normal-btn-history {
 	border: none;
 	border-radius: 0.5em;
 	padding: 0.5em;
 	font-weight: 600;
+	font-size: 1em;
 	cursor: pointer;
+	color: white;
+	margin-top: 0 !important;
+	background-color: var(--primary-color) !important;
 }
 
 .history-btn-container {

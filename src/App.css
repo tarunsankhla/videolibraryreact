@@ -73,7 +73,7 @@ body::-webkit-scrollbar:hover {
 
 .main-body {
 	display: flex;
-	background-color: var(--dark-theme-bg );
+	/* background-color: var(--dark-theme-bg ); */
 	width: 100%;
 	min-height: 100vh;
 	position: relative;
@@ -85,13 +85,14 @@ body::-webkit-scrollbar:hover {
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px;
+	background-color: var(--dark-theme-bg );
 }
 
 .AsideNav {
 	display: flex;
 	/* flex-basis: 15%; */
 	min-width: 20vw;
-	background-color: var(--dark-theme-bg) ;
+	/* background-color: var(--dark-theme-bg) ; */
 	flex-direction: column;
 	padding-top: 1em;
 	padding: 0.5em;
