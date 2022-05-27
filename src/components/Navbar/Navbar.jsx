@@ -23,17 +23,13 @@ function Navbar() {
         <div className="Navbar">
             <div className="flex align-center ">
                 <img src={IMAGES.logoPNG} className="logo" />
-                <h3 style={{ marginLeft: "1em",color:"var(--primary-dark-color)" }} className="title-name">
+                <h3 style={{ color:"var(--primary-dark-color)" }} className="title-name">
                     Fleets
                 </h3>
             </div>
             <div className="navbar-container">
                 {
-                    login ? ( <button className="btn signout-btn  text-bold normal-btn"
-                            onClick={OnSignOut}>
-                            Signout
-                            <IcOutlineLogout/>
-                        </button> ) : (
+                    !login && (
                         <NavLink to={ROUTE_PATH_LoginPage}>
                             <LoginButton/>
                         </NavLink>)

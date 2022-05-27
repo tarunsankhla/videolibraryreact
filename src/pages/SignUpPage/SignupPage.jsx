@@ -165,7 +165,7 @@ function SignupPage() {
             </section>
             <section className='content'>
                 <main>
-                    <form className="signup-container" onSubmit={onSubmitHandler}>
+                    <form className="signup-container text-align" onSubmit={onSubmitHandler}>
                         <img src={IMAGES.logoPNG}/>
                         <div className='stretch'>
                             <input placeholder="Email Address - xyz@gmail.com" className="signup-credential-container fn-wg-600" required

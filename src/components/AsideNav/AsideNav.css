@@ -51,5 +51,6 @@ span:hover {
 	}
 	.aside-nav-row{
 		padding-left: 1px;
+		justify-content: center;
 	}
 }

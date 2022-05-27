@@ -10,4 +10,5 @@
 	margin-right: 3em;
 	gap: 0.5em;
     width: 100%;
+	background-color: var(--primary-color);
 }

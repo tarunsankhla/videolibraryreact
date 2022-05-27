@@ -21,10 +21,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: white;
     padding: 0.3em;
     color: rgba(0,0,0,0.5);
     font-weight: 800;
+	width: 3em;
+	height: 3em;
 }
 .navbar-container{
 	display: flex;

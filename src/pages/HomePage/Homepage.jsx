@@ -32,9 +32,9 @@ function Homepage() {
       <Carousal />
       <div className='category-container'>
         {CategoryList.map((item) => (
-        <div className='cateogory-container-item' onClick={()=>CategoryHandler(item.type)} key={item.name}>
-          <div><img src={item.icon} alt="category " loading="lazy"/></div>
-          <div>{ item.name}</div>
+        <div className='cateogory-container-item text-align' onClick={()=>CategoryHandler(item.type)} key={item.name}>
+          <img src={item.icon} alt="category " loading="lazy"/>
+          <p>{ item.name}</p>
         </div>
       ))}</div>
       <hr/>

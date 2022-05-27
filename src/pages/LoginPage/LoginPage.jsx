@@ -107,7 +107,7 @@ function LoginPage() {
           </nav>
           <main>
             <div className="login-container">
-              <form className="title-header" onSubmit={onSubmitHandler}>
+              <form className="title-header text-align" onSubmit={onSubmitHandler}>
               <img src={IMAGES.logoPNG}/>
                 <input placeholder="Email Address - xyz@gmail.com" className='login-credential-container fn-wg-600'
                   type="email" value={email} onChange={(e) => setEmail(e.target.value)} />

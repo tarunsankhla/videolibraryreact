@@ -185,6 +185,9 @@ span:hover {
 .text-start{
 	text-align: start;
 }
+.text-align{
+	text-align: center;
+}
 
 .hover {
 	color: var(--primary-dark-shade-color);
@@ -318,4 +321,8 @@ span:hover {
 .cart-card:hover{
 	transform: scale(1.01) !important;
 	transition: scale 2s ease !important;
+}
+
+.cart-card {
+    flex-grow: 1 !important;
 }
