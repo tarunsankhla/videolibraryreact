@@ -60,7 +60,10 @@ function App() {
                 : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
 
             <Route path={ROUTE_PATH_PlayListPage_Individual}
-              element={login ? <IndividualPlayList /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
+              element={login ?
+                <Suspense fallback={<Loader />}>
+                  <IndividualPlayList />
+                </Suspense> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
 
             <Route path={ROUTE_PATH_WatchLaterPage}
               element={login ?
