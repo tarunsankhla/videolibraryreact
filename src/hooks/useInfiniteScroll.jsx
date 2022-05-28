@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export const useInfiniteScroll = ({ lastElement }) => { 
     const { videoContextList, setVideoContextList } = useVideo();
-    const totalPages = Math.ceil((videoContextList?.length || 0) / 6);
+    const totalPages = Math.ceil((videoContextList?.length || 0) / 15);
     const [pageNum, setPageNum] = useState(1);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
