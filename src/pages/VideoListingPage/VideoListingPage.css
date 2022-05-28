@@ -146,6 +146,12 @@ form.search-form{
 
 }
 
+.search-form button{
+	border:none;
+	outline:none;
+	background-color:transparent;
+}
+
 
 @media screen and (max-width: 1160px) {
 	.icons-cateogry-layer {

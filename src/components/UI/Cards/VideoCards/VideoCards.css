@@ -119,6 +119,13 @@ a{
 	}
 }
 
+@media screen and (min-width : 780px) {
+	.cart-card{
+		max-width: 50vw;
+	}
+	
+}
+
 @media screen and (max-width: 780px) {
 	.cart-card {
 		width: 14rem;

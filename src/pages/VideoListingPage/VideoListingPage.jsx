@@ -7,6 +7,7 @@ import {
   HolderImg8
 } from "../../assets/Holders/holder";
 import "./VideoListingPage.css";
+import { debounce } from 'utils/debounce';
 import { category as CategoryList } from '../../data/category.data';
 
 function VideoListingPage() {
@@ -69,6 +70,7 @@ function VideoListingPage() {
   }
 
   const onchangeSearch = (item) => { 
+    console.log("debounce");
     setVideoLib([...videoContextList.filter((video) => {
       return (video.snippet.title.toLowerCase().includes(item.toLowerCase())
        || video.snippet.description.toLowerCase().includes(item.toLowerCase())
@@ -80,12 +82,12 @@ function VideoListingPage() {
     e.preventDefault();
     console.log(query);
     setresult(true)
-    console.log([...videoContextList.filter((video) => {
-      return (video.snippet.title.toLowerCase().includes(query.toLowerCase())
-       || video.snippet.description.toLowerCase().includes(query.toLowerCase())
-      || video.snippet.channelTitle.toLowerCase().includes(query.toLowerCase())
-      || video.snippet.tags.toLowerCase().includes(query.toLowerCase()) )
-    })])
+    // console.log([...videoContextList.filter((video) => {
+    //   return (video.snippet.title.toLowerCase().includes(query.toLowerCase())
+    //    || video.snippet.description.toLowerCase().includes(query.toLowerCase())
+    //   || video.snippet.channelTitle.toLowerCase().includes(query.toLowerCase())
+    //   || video.snippet.tags.toLowerCase().includes(query.toLowerCase()) )
+    // })])
     setVideoLib([...videoContextList.filter((video) => {
       return (video.snippet.title.toLowerCase().includes(query.toLowerCase())
        || video.snippet.description.toLowerCase().includes(query.toLowerCase())
@@ -102,12 +104,12 @@ function VideoListingPage() {
             if (e.target.value.length === 0) { 
               setVideoLib([...videoContextList]);
             } else {
-              onchangeSearch(e.target.value);
+              debounce(()=>onchangeSearch(e.target.value),500);
             }
           }} />
-          <span class="material-icons-round" onClick={searchHandler}>
+          <button type="submit" class="material-icons-round" onClick={searchHandler}>
             search
-          </span>
+          </button>
           {/* <span class="material-icons-round" onClick={() => {}}>
             cancel
           </span> */}
