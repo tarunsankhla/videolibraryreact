@@ -1,6 +1,8 @@
 .videolist-container {
 	display: flex;
 	justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .videolist-container + .card  {

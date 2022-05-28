@@ -60,34 +60,37 @@ function NewPlayList({setHandleCreatePlayList}) { // const { setHandleCreatePlay
         })()
     }
     return (
-        <div className=' new-playlist-modal lg-txt dialog'>
-            <div className='playlist-modal-header dailog-header'>
-                <h2>Create New Playlist</h2>
-                <span onClick={
-                    () => {
-                        setHandleCreatePlayList(false)
-                    }
-                }><IcRoundCancel/></span>
-            </div>
-            <div className='dailog-body confirmation-body'>
-                <input value={playlistName}
-                    className='input-playlist'
-                    onChange={
-                        (e) => {
-                            setPlayListName(e.target.value)
+        <div className='modal-body-main' onClick={(e) =>
+        {
+            if (e.target.classList.contains("modal-body-main")) {
+                setHandleCreatePlayList(false)
+            }
+        }}>
+            {/* <div className='new-playlist-modal lg-txt dialog'> */}
+            <div className='new-playlist-modal'>
+                <div className='playlist-modal-header dailog-header'>
+                    <p className='xlg-txt fn-wg-700'>Create Playlist</p>
+                    <span onClick={
+                        () => {
+                            setHandleCreatePlayList(false)
                         }
-                    }
-                    placeholder='PlayList Name'/>
+                    }><IcRoundCancel/></span>
+                </div>
+                <div className='dailog-body confirmation-body'>
+                    <input value={playlistName}
+                        className='input-playlist'
+                        onChange={(e) => { setPlayListName(e.target.value); }}
+                        placeholder='PlayList Name'/>
+                </div>
+                <div className="dailog-footer">
+                    <button className='btn-create-playlist lg-txt'
+                        onClick={
+                            () => createPlaylistHandler()}>
+                        Add PlayList
+                    </button>
+                </div>
             </div>
-        <div class="dailog-footer">
-            <button button className='btn-create-playlist lg-txt'
-                onClick={
-                    () => createPlaylistHandler()
-            }>
-                Add PlayList
-            </button>
         </div>
-    </div>
     )
 }
 

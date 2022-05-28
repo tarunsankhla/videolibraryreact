@@ -312,6 +312,18 @@ span:hover {
 	color: white;
 }
 
+.modal-body-main{
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+    left: 0;
+}
+
 /* all cards */
 
 
@@ -327,4 +339,35 @@ span:hover {
 
 .cart-card {
     flex-grow: 1 !important;
+}
+
+.holders{
+    width: 25vw;
+	height: auto;
+	margin: auto;
+}
+
+
+.videolist-container {
+	display: flex;
+	justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.videolist-container + .card  {
+	flex-grow: 1;
+}
+
+.new-playlist-modal {
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	padding: 1em;
+	background-color: var(--shade-0);
+	/* border-radius: 1rem; */
+	/* position: fixed;	 */
+
+	min-width: fit-content;
+    width: 35vw;
 }

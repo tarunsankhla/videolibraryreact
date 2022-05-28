@@ -101,35 +101,47 @@ function PlayListViewModal({data, setPlayListModal}) {
     }
 
     return (
-        <div className="dialog playlistmodal-contatiner">
-            <div className="dailog-header"><span style={{fontWeight:700}}>My PlayList</span>
-                <span className="dailog-header" onClick={() => { setPlayListModal((prev) => !prev) }}><IcRoundCancel /></span>
-            </div>
-            <div className="dailog-body confirmation-body">
-                <ul>
-                    {playListContextArray.length === 0
-                        ? <><li className="dialog-body-item">No Playlist exist</li>
-                        </>
-                        : playListContextArray?.map((item) => (
-                            <li key={item._id}>
-                                <input type="checkbox" name="playlist" value={item._id}
-                                    //  checked={item.some((playlistvideo) => playlistvideo.id === data._id)}
-                                    checked={item.videos.some((i)=> i._id === data._id)}
-                                    onClick={(e) => SelectedPlayListHandler(e.target.value,item) }/>
-                                <span className="dialog-body-item"> {item.name}</span>
-                            </li>))
-                    }
-                </ul>
-            </div>
-            <div className="dailog-footer">
-                <button  onClick={() => setHandleCreatePlayList((prev) => !prev)}>Create Playlist +</button>
-                <div>
-                    {
-                    handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
-                    }
+        <>
+        <div className='modal-body-main-container' onClick={(e) =>
+            {
+                console.log(1)
+                if (e.target.classList.contains("modal-body-main-container")) {
+                    console.log(2)
+                    setPlayListModal(false)
+                }
+            }}>
+            <div className="playlistmodal-contatiner">
+                <div className="dailog-header"><span style={{fontWeight:700}}>My PlayList</span>
+                    <span className="dailog-header" onClick={() => { setPlayListModal((prev) => !prev) }}><IcRoundCancel /></span>
+                </div>
+                <div className="dailog-body confirmation-body">
+                    <ul>
+                        {playListContextArray.length === 0
+                            ? <><li className="dialog-body-item">No Playlist exist</li>
+                            </>
+                            : playListContextArray?.map((item) => (
+                                <li key={item._id}>
+                                    <input type="checkbox" name="playlist" value={item._id}
+                                        //  checked={item.some((playlistvideo) => playlistvideo.id === data._id)}
+                                        checked={item.videos.some((i)=> i._id === data._id)}
+                                        onClick={(e) => SelectedPlayListHandler(e.target.value,item) }/>
+                                    <span className="dialog-body-item"> {item.name}</span>
+                                </li>))
+                        }
+                    </ul>
+                </div>
+                <div className="dailog-footer">
+                    <button  onClick={() => setHandleCreatePlayList((prev) => !prev)}>Create Playlist +</button>
+                    {/* <div>
+                       
+                    </div> */}
                 </div>
             </div>
-        </div>
+            </div>
+            {
+                handleCreatePlayList && <NewPlayList setHandleCreatePlayList={setHandleCreatePlayList} />
+            }
+        </>
         )
     }
                                     

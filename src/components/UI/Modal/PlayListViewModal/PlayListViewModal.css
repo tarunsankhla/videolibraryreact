@@ -1,7 +1,17 @@
 .playlistmodal-contatiner {
-	position: fixed;
-	top: 25%;
-    left: 25%;
+	/* position: fixed; */
+	/* top: 25%;
+    left: 25%; */
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	padding: 1em;
+	background-color: var(--shade-0);
+	/* border-radius: 1rem; */
+	/* position: fixed;	 */
+	width: fit-content;
+	min-width: fit-content;
+    width: 30vw;
 }
 
 .playlist-list {
@@ -19,7 +29,9 @@
 .dailog-header{
 	color :var(--shade-9);
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
+    display: flex;
+    font-size: 1.5em;
 }
 
 .dialog{
@@ -37,4 +49,16 @@
 	transform: scale(1.01);
 	background: var(--shade-9);
 	color: white;
+}
+
+.modal-body-main-container{
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+    left: 0;
 }

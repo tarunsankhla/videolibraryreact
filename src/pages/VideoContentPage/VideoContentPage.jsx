@@ -110,7 +110,8 @@ function VideoContentPage() {
 
   const NotLoginErrorHandler = () => { 
     if (login) {
-      setShowPlayListModal((prev) => !prev);
+      console.log(3);
+      setShowPlayListModal(true);
     }
     else {
       Toast("error", "You need to login!!");
@@ -144,13 +145,9 @@ function VideoContentPage() {
                     <div className='video-action' onClick={() => NotLoginErrorHandler()}><IcRoundPlaylistAdd />
                       Add to Playlist
                     </div>
-                    <div>
-                      {showPlayListModal &&
-                        <PlayListViewModal
-                          data={data}
-                          setPlayListModal={setShowPlayListModal}
-                        />}
-                    </div>
+                    {/* <div>
+                    
+                    </div> */}
                     <div className='video-action' onClick={() => AddToWatchlateHandler(data)}>
                  
                       {WatchlaterProviderContextArray?.some((item) => item._id === data._id) ? <IcBaselineAddTask /> : <IcOutlineWatchLater />}Add to Watch Later
@@ -170,7 +167,7 @@ function VideoContentPage() {
                     {data.snippet.channelTitle}
                   </div>
                   <p className='text-start lg-txt'>
-                    <p className='md-txt'>Published :</p> {data?.snippet?.publishedAt.split("T")[0]}
+                    <h1 className='lg-txt'>Published :</h1> {data?.snippet?.publishedAt.split("T")[0]}
                   </p>
                   <div className='video-description-container'>Description :
                     <div className='video-description'>{data.snippet.description}</div>
@@ -193,14 +190,14 @@ function VideoContentPage() {
           Explore More
         </div>
         <div className='videolist-container'>
-        {
-          videoContextList.length !== 0
+          {
+            videoContextList.length !== 0
               ? videoContextList.map((item) => (
-                <p onClick={() => { 
+                <span key={item.id } onClick={() => { 
                   document.body.scrollTop =0;
                   document.documentElement.scrollTop =0;
                 }}>
-              <VideoCards key={item.id} props={item} /></p>))
+              <VideoCards key={item.id} props={item} /></span>))
             : <div className='nocontent'>
                 <div className='page-title md-txt'>Loading ...</div>
               <img src={HolderImg8} loading="lazy" className="holders" alt='lodderLogo' />
@@ -208,6 +205,13 @@ function VideoContentPage() {
           }
           </div>
       </div>
+      {
+        showPlayListModal &&
+          <PlayListViewModal
+            data={data}
+            setPlayListModal={setShowPlayListModal}
+        />
+      }
     </div>
   )
 }
