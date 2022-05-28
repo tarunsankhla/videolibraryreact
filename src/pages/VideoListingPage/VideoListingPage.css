@@ -152,6 +152,18 @@ form.search-form{
 	background-color:transparent;
 }
 
+.interseptor{
+	display: block;
+	background-color: red;
+	padding: 2px;
+	margin: 2px;
+}
+
+.loader-div{
+	flex: 0 0 100%;
+    order: 2;
+	margin: auto;
+}
 
 @media screen and (max-width: 1160px) {
 	.icons-cateogry-layer {

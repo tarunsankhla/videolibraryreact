@@ -5,7 +5,7 @@ import Main from './Main';
 import Homepage from './pages/HomePage/Homepage';
 import PlaylistPage from './pages/PlaylistManagmentPage/PlaylistPage';
 import WatchLater from './pages/WatchLater/WatchLater';
-import VideoListingPage from './pages/VideoListingPage/VideoListingPage';
+// import VideoListingPage from './pages/VideoListingPage/VideoListingPage';
 import HistortyPage from './pages/HistoryPage/HistortyPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignupPage from './pages/SignUpPage/SignupPage';
@@ -21,7 +21,12 @@ import IndividualPlayList from './pages/PlaylistManagmentPage/IndividualPlayList
 import PageNotFound404 from './pages/404/PageNotFound404';
 import { ToastContainer } from 'react-toastify';
 import LikePage from './pages/LikedPage/LikePage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+// import ProfilePage from './pages/ProfilePage/ProfilePage';
+import { lazy, Suspense } from 'react';
+import Loader from 'components/UI/Loader/Loader';
+
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage'));
+const VideoListingPage = lazy(()=> import('./pages/VideoListingPage/VideoListingPage'));
 
 function App() {
   const { login, setlogin } = useAuth();
@@ -32,21 +37,37 @@ function App() {
         <Routes >
           <Route element={<Main />}>
             <Route path={ROUTE_PATH_HomePage} element={<Homepage />} />
-            <Route path={ROUTE_PATH_PlayListPage} element={login ? <PlaylistPage /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
-            <Route path={ROUTE_PATH_PlayListPage_Individual} element={login ? <IndividualPlayList /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
+
+            <Route path={ROUTE_PATH_PlayListPage}
+              element={login ? <PlaylistPage /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
+
+            <Route path={ROUTE_PATH_PlayListPage_Individual}
+              element={login ? <IndividualPlayList /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
 
             <Route path={ROUTE_PATH_WatchLaterPage}
               element={login ? <WatchLater /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
-            <Route path={ROUTE_PATH_VideoListingPage} element={<VideoListingPage />} />
+            
+            <Route path={ROUTE_PATH_VideoListingPage} element={
+              <Suspense fallback={<Loader/>}>
+                <VideoListingPage />
+              </Suspense>} />
+
             <Route path={ROUTE_PATH_HistoryPage}
               element={login ? <HistortyPage /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
+            
             <Route path={ROUTE_PATH_LikePage}
               element={login ? <LikePage /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
 
             <Route path={ROUTE_PATH_VideoContentPage} element={<VideoContentPage />} />
+
             <Route path={ROUTE_PATH_Unkown} element={<PageNotFound404 />} />
+            
             <Route path={ROUTE_PATH_ProfilePage}
-              element={login ? <ProfilePage /> : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
+              element={login ?
+                <Suspense fallback={<Loader/>}>
+                  <ProfilePage />
+                </Suspense>
+                : <Navigate to={ROUTE_PATH_LoginPage} replace />} />
           </Route>
           <Route path={ROUTE_PATH_LoginPage}
             element={!login ? <LoginPage /> : <Navigate to="/" replace />} />

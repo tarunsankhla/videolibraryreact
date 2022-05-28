@@ -18,7 +18,7 @@ function Homepage() {
               var res = await axios.get("/api/videos");
               console.log(res.data.videos)
               setVideoLib(res.data.videos);
-              setVideoContextList(res.data.videos);
+              // setVideoContextList(res.data.videos);
             })()
         } catch (error) {
             console.log("Product list page error", error);

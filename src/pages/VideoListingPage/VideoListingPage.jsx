@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import VideoCards from '../../components/UI/Cards/VideoCards/VideoCards';
 import { useVideo } from '../../context/VideoContext';
@@ -9,6 +9,8 @@ import {
 import "./VideoListingPage.css";
 import { debounce } from 'utils/debounce';
 import { category as CategoryList } from '../../data/category.data';
+import { useInfiniteScroll } from 'hooks/useInfiniteScroll';
+import Loader from 'components/UI/Loader/Loader';
 
 function VideoListingPage() {
   const [videoLib, setVideoLib] = useState([]);
@@ -19,6 +21,13 @@ function VideoListingPage() {
   // const categories = ["music", "shoes", "React", "entertainment", "bollywood", "sports","trendings"];
   //music shoes technology  entertainment bollywood sports trendings 
   const location = useLocation();
+  const lastElement = useRef(null);
+  const { pageNum, loading } = useInfiniteScroll({
+    lastElement
+  });
+  let firstSlice = videoLib.slice(0, (pageNum - 1) * 6);
+  let secondSlice = videoLib.slice((pageNum - 1) * 6, pageNum * 6);
+  console.log(videoContextList.length,videoLib.length, firstSlice, secondSlice);
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,7 +52,7 @@ function VideoListingPage() {
       (async () => {
         var res = await axios.get("/api/videos");
         setVideoLib(res.data.videos);
-        setVideoContextList(res.data.videos);
+        // setVideoContextList(res.data.videos);
         console.log(res.data.videos);
       })()
 
@@ -95,6 +104,8 @@ function VideoListingPage() {
       || video.snippet.tags.toLowerCase().includes(query.toLowerCase()) )
       })])
   }
+
+  console.log(firstSlice.length,secondSlice.length)
   return (
     <div className='full-width'>
       <div>
@@ -107,7 +118,7 @@ function VideoListingPage() {
               debounce(()=>onchangeSearch(e.target.value),500);
             }
           }} />
-          <button type="submit" class="material-icons-round" onClick={searchHandler}>
+          <button type="submit" className="material-icons-round" onClick={searchHandler}>
             search
           </button>
           {/* <span class="material-icons-round" onClick={() => {}}>
@@ -134,17 +145,34 @@ function VideoListingPage() {
           ))}
         </ul>
       </div>
-      <div className='page-title sm-txt'>{result && `( Search Result : ${videoLib.length}) `  }</div>
+      {/* <div className='page-title sm-txt'>{result && `( Search Result : ${videoLib.length}) `}</div> */}
+      <div className='page-title sm-txt'>{result && `( Search Result : ${firstSlice.length + secondSlice.length}) `  }</div>
       <div className='videolist-container'>
-        {
+        {/* {
           videoLib.length !== 0 ?
             videoLib.map((item) => (
                <VideoCards key={item.id} props={item} />
             ))
             : <div className='nocontent'> <div className='page-title md-txt'>No Video exist.</div>
             <img src={HolderImg8} loading="lazy" className="holders" alt='lodderLogo' /></div>
+        } */}
+        
+        {
+          firstSlice?.map((item) => (
+            <VideoCards key={item.id} props={item } />
+          ))
         }
+        {/* {pageNum} */}
+        <div className='loader-div'> {loading ? <Loader /> : null}</div>
+
+        {
+          !loading && secondSlice?.map((item) => (
+            <VideoCards key={item.id} props={item } />
+          ))
+        }
+      
       </div>
+       <div className='interseptor' ref={lastElement} key="xyz"> {" "}</div>
     </div>
   )
 }
