@@ -20,7 +20,7 @@ function VideoCards({props}) {
     const { likesContextArray, setLikesContextArray } = useLikes();
     const { videoid, snippet, statistics } = props;
     const [play] = useSound();
-    console.log(play);
+    // console.log(play);
     const navigate = useNavigate();
 
      /**
