@@ -11,6 +11,7 @@ import {VAR_ENCODE_TOKEN} from "../../../../utils/Route";
 import { Toast } from "../../Toast/toast";
 import { useAuth } from "../../../../context/AuthContext";
 import { useNavigate } from 'react-router';
+import useSound from "hooks/useSound";
 
 function VideoCards({props}) {
     const {historyContextArray, setHistoryContextArray} = useHistory();
@@ -18,6 +19,8 @@ function VideoCards({props}) {
     const { WatchlaterProviderContextArray, setWatchlaterProviderContextArray } = useWatchlater();
     const { likesContextArray, setLikesContextArray } = useLikes();
     const { videoid, snippet, statistics } = props;
+    const [play] = useSound();
+    console.log(play);
     const navigate = useNavigate();
 
      /**
@@ -116,6 +119,7 @@ function VideoCards({props}) {
 
      // This method is to add likes of video in array
     const LikeHandler = async (props) => {
+        play();
         try {
         console.log(props, likesContextArray);
         if(login){
